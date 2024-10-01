@@ -1,4 +1,2 @@
 # TypeScript-Portfolio
-
-# TypeScript-Portfolio
-# TypeScript-Portfolio
+my new next js typescript portfolio
