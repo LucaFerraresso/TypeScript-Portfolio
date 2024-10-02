@@ -1,19 +1,21 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <div className="flex">
-      <Link href="/">
-        <button>Luca Ferraresso</button>
+    <div className="flex justify-between items-center bg-[#1E1E1E] px-4 py-2">
+      <Link href={"/"}>
+        <button className="text-white">Luca Ferraresso</button>
       </Link>
-      <Link href="/">
-        <button>Home</button>
-      </Link>
-      <Link href="/Projects">
-        <button>Projects</button>
-      </Link>
+      <div className="flex items-center gap-4">
+        <Link href={"/Login"}>
+          <button className="text-white">Login</button>
+        </Link>
+        <Link href={"/Projects"}>
+          <button className="text-white">Projects</button>
+        </Link>
+      </div>
     </div>
   );
 };
-export default Navbar;
+export default NavBar;
