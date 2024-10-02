@@ -1,13 +1,26 @@
+// components/Navbar.tsx
+import styled from "styled-components";
+
+const NavbarContainer = styled.nav`
+  background-color: #0070f3;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+`;
+
 const Navbar = () => {
   return (
-    <div className="top-0 flex flex-row justify-between items-center  text-white h-16 px-8">
-      <div className="text-2xl font-bold">Logo</div>
-      <div className="flex gap-4">
-        <div>Home</div>
-        <div>About</div>
-        <div>Contact</div>
-      </div>
-    </div>
+    <NavbarContainer>
+      <div>Logo</div>
+      <ul style={{ display: "flex", gap: "16px" }}>
+        <li>Home</li>
+        <li>About</li>
+        <li>Portfolio</li>
+        <li>Contact</li>
+      </ul>
+    </NavbarContainer>
   );
 };
+
 export default Navbar;
