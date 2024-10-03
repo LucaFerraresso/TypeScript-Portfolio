@@ -2,26 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Variabili globali */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #1f2937; /* Gray-800 */
+  --secondary-color: #f3f4f6; /* Gray-100 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset globale moderno */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Stile immagini e media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Input, button, textarea */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Tipografia */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Utility per l'effetto hover con sottolineatura */
+.hover-underline-animation {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: var(--foreground);
+  transition: width 0.3s ease;
+}
+
+.hover-underline-animation:hover::after {
+  width: 100%;
+  left: 0;
+  background: var(--foreground);
 }
