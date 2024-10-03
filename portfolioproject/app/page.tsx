@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="mt-[400px] flex flex-col justify-center items-center text-center p-4 border-2">
+      <div className=" flex flex-col justify-center items-center text-center p-4 border-2">
         {/* Hero Section */}
         <motion.div
           className="border-2 p-4 flex justify-center items-center text-center "
