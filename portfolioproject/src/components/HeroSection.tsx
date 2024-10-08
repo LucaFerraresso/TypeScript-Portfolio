@@ -6,12 +6,13 @@ import { fadeInVariants } from "@/animation/animation";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="w-full">
-      <div className="w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2">
+      <div>
         <motion.div
           variants={fadeInVariants}
           initial="hidden"
           animate="visible"
+          className="w-full flex  flex-col md:flex-row md:justify-around "
         >
           <Image
             src="/images/myFoto.jpg"
@@ -45,12 +46,13 @@ const HeroSection: React.FC = () => {
         </motion.p>
 
         {/* Icone per LinkedIn e GitHub con animazioni */}
-        <div className="w-full">
+        <div>
           {" "}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
+            className="w-full flex flex-row"
           >
             <a
               href="https://www.linkedin.com/in/tuo-linkedin"

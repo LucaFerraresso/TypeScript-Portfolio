@@ -51,16 +51,17 @@ const projects: Project[] = [
 
 const ProjectSection: React.FC = () => {
   return (
-    <div className="w-full">
+    <div>
       <h1>My Projects</h1>
-      <div className="w-full">
+      <div>
         {projects.map((project, index) => (
           <motion.div
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
+            className="w-full flex flex-col md:flex-row border border-red-700 p-5"
           >
-            <div key={index} className="w-full">
+            <div key={index}>
               <Image
                 src={project.imageUrl}
                 width={250}

@@ -28,9 +28,9 @@ const icons = [
 
 const TechSection: React.FC = () => {
   return (
-    <div className="w-full flex-col justify-center items-center text-center p-6">
+    <div className="text-center">
       <h1>Technologies I Use</h1>
-      <div>
+      <div className="w-full flex flex-col p-6 md:flex-row md:justify-around">
         {icons.map((icon, index) => (
           <motion.div
             key={index}
