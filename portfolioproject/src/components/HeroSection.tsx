@@ -41,7 +41,7 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Hi, I'm Luca Ferraresso. I’m a passionete front-end developer based
+          Hi, I'm Luca Ferraresso. I am a passionete front-end developer based
           near Venice, (ITA). My expertise is focused on React and JavaScript,
           with the goal always being to create responsive and engaging web
           experiences. I love tacking complex challenges to transform them into
