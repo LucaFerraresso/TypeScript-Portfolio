@@ -36,17 +36,13 @@ const HeroSection: React.FC = () => {
         >
           Web Developer
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
+        <p>
           Hi, I'm Luca Ferraresso. I am a passionete front-end developer based
           near Venice. My expertise is focused on React and JavaScript, with the
           goal always being to create responsive and engaging web experiences. I
           love tacking complex challenges to transform them into intuitive and
           user-friendly solutions
-        </motion.p>
+        </p>
 
         {/* Icone per LinkedIn e GitHub con animazioni */}
         <div>
