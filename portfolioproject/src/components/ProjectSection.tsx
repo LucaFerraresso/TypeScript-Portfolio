@@ -13,35 +13,35 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Progetto 1",
+    title: "CRUD MONGODB OPERATIONS",
     description: "mongodb implementation",
     imageUrl: "/images/homepage/mongodb-app-preview.png",
     vercelLink: "https://yourproject1.vercel.app",
     githubLink: "https://github.com/tuo-username/project1",
   },
   {
-    title: "Progetto 2",
+    title: "TODO APP (JAVASCRIPT ONLY)",
     description: "todoapp (javascript only)",
     imageUrl: "/images/homepage/todoapp-preview1.png",
     vercelLink: "https://yourproject2.vercel.app",
     githubLink: "https://github.com/tuo-username/project2",
   },
   {
-    title: "Progetto 3",
+    title: "ICECREAM-APP (JAVASCRIPT ONLY)",
     description: "ice scream menu (javascript only)",
     imageUrl: "/images/homepage/ice-cream-menu-preview1.png",
     vercelLink: "https://yourproject3.vercel.app",
     githubLink: "https://github.com/tuo-username/project3",
   },
   {
-    title: "Progetto 4",
+    title: "FINAL PROJECT 1",
     description: "SicilyPulse App",
     imageUrl: "/images/homepage/sicily-pulse-app.png",
     vercelLink: "https://yourproject1.vercel.app",
     githubLink: "https://github.com/tuo-username/project1",
   },
   {
-    title: "Progetto 5",
+    title: "Coming soon",
     description: "coming soon",
     imageUrl: "/images/homepage/coming-soon.jpg",
     vercelLink: "https://yourproject1.vercel.app",
@@ -56,6 +56,7 @@ const ProjectSection: React.FC = () => {
       <div>
         {projects.map((project, index) => (
           <motion.div
+            key={index}
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
