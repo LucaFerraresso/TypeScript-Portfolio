@@ -17,15 +17,15 @@ const HeroSection: React.FC = () => {
           <Image
             src="/images/myFoto.jpg"
             alt="Luca Ferraresso"
-            width={250}
             height={250}
-            className="w-full"
+            width={250}
+            className="rounded-3xl mt-4 mb-4"
           />
         </motion.div>
       </div>
 
       {/* Contenuto Testuale */}
-      <div className="w-full">
+      <div className="w-full flex flex-col justify-center items-center p-8">
         <motion.h2 variants={fadeInVariants} initial="hidden" animate="visible">
           Luca Ferraresso
         </motion.h2>
@@ -41,8 +41,11 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Mi piace sviluppare interfacce intuitive e adoro esplorare nuove
-          tecnologie.
+          Hi, I'm Luca Ferraresso. I’m a passionete front-end developer based
+          near Venice, (ITA). My expertise is focused on React and JavaScript,
+          with the goal always being to create responsive and engaging web
+          experiences. I love tacking complex challenges to transform them into
+          intuitive and user-friendly solutions
         </motion.p>
 
         {/* Icone per LinkedIn e GitHub con animazioni */}

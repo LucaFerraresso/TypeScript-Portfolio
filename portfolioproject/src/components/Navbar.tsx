@@ -14,9 +14,9 @@ const Footer = () => {
           Projects
         </button>
       </Link>
-      <Link href="/Login">
+      <Link href="/TechStack">
         <button className="text-sm hover:text-gray-600 hover-underline-animation">
-          Login
+          TechStack
         </button>
       </Link>
     </nav>

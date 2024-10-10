@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const Login = () => {
+const TechStack = () => {
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -18,9 +18,9 @@ const Login = () => {
       initial="hidden"
       animate="visible"
     >
-      <h1 className="text-3xl font-bold">Login</h1>
+      <h1 className="text-3xl font-bold">TechStack</h1>
     </motion.div>
   );
 };
 
-export default Login;
+export default TechStack;
