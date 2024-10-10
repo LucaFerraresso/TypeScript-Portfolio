@@ -30,9 +30,9 @@ const HeroSection: React.FC = () => {
           <h2>Luca Ferraresso</h2>
           <h1>Web Developer</h1>
           <p>
-            Hi, I'm Luca Ferraresso. I am a passionete front-end developer based
-            near Venice. My expertise is focused on React and JavaScript, with
-            the goal always being to create responsive and engaging web
+            Hi, I am Luca Ferraresso. I am a passionete front-end developer
+            based near Venice. My expertise is focused on React and JavaScript,
+            with the goal always being to create responsive and engaging web
             experiences. I love tacking complex challenges to transform them
             into intuitive and user-friendly solutions
           </p>
