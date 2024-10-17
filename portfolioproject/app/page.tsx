@@ -6,21 +6,15 @@ import ProjectSection from "@/src/components/ProjectSection";
 
 export default function Home() {
   return (
-    <div className=" p-4">
+    <div className="p-4">
       {/* Hero Section */}
-      <>
-        <HeroSection />
-      </>
+      <HeroSection />
 
       {/* Tech Section */}
-      <>
-        <TechSection />
-      </>
+      <TechSection />
 
       {/* Project Section */}
-      <>
-        <ProjectSection />
-      </>
+      <ProjectSection />
     </div>
   );
 }

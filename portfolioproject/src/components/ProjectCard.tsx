@@ -1,43 +1,51 @@
-import React from "react";
+"use client";
+import React, { memo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { fadeInVariants } from "@/animation/animation";
 
 interface ProjectCardProps {
-  title: string | undefined;
-  description?: string | undefined;
-  imageUrl?: string | undefined;
-  githubLink?: string | undefined;
-  vercelLink?: string | undefined;
-  technologies?: string[] | undefined;
-  date?: string | undefined;
-  backgroundColor?: string | undefined;
+  project: {
+    title: string;
+    description?: string;
+    imageUrl?: string;
+    githubLink?: string;
+    vercelLink?: string;
+    technologies?: string[];
+    date?: string;
+  };
+  animationDelay: number;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  description,
-  imageUrl,
-  githubLink,
-  vercelLink,
-  technologies,
-  date,
-  backgroundColor = "#f0f0f0",
+  project,
+  animationDelay,
 }) => {
+  const {
+    title,
+    description,
+    imageUrl = "/images/homepage/coming-soon.jpg",
+    githubLink = "#",
+    vercelLink = "#",
+    technologies = [],
+    date,
+  } = project;
+
   return (
     <motion.div
       className="flex flex-col items-center rounded-lg border border-gray-300 p-4 transition-transform duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl mb-4"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: "#f2f2f2" }}
+      variants={fadeInVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: animationDelay, duration: 1.5, ease: "easeInOut" }}
       whileTap={{ scale: 0.98 }}
     >
       <div className="relative w-full h-52 overflow-hidden rounded-md mb-4">
-        <Link
-          href={vercelLink || "/"}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href={vercelLink} target="_blank" rel="noopener noreferrer">
           <Image
-            src={imageUrl || "/images/homepage/coming-soon.jpg"}
+            src={imageUrl}
             alt={title || "Project Image"}
             layout="fill"
             objectFit="cover"
@@ -53,29 +61,42 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <p className="text-sm text-gray-600 mb-4 text-center">{description}</p>
       <div className="text-sm text-gray-600 mb-4 text-center">
         Used tech:{" "}
-        <span className="font-semibold">{technologies?.join(", ")}</span>
+        <span className="font-semibold">{technologies.join(", ")}</span>
       </div>
 
       <div className="flex space-x-4">
-        <a
-          href={vercelLink || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-        >
-          Vercel
-        </a>
-        <a
-          href={githubLink || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-5 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
-        >
-          GitHub
-        </a>
+        <ActionButton
+          url={vercelLink}
+          label="Vercel"
+          bgColor="bg-blue-600"
+          hoverColor="hover:bg-blue-700"
+        />
+        <ActionButton
+          url={githubLink}
+          label="GitHub"
+          bgColor="bg-gray-800"
+          hoverColor="hover:bg-gray-900"
+        />
       </div>
     </motion.div>
   );
 };
 
-export default ProjectCard;
+// Componente per i pulsanti di azione (Vercel e GitHub)
+const ActionButton: React.FC<{
+  url: string;
+  label: string;
+  bgColor: string;
+  hoverColor: string;
+}> = ({ url, label, bgColor, hoverColor }) => (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`px-5 py-2 ${bgColor} text-white rounded-md ${hoverColor} transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+  >
+    {label}
+  </a>
+);
+
+export default memo(ProjectCard);

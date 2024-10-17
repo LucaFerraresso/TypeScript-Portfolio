@@ -1,24 +1,29 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import icons from "@/assets/DataArray/TechSectionArray";
 import TechIcon from "./TechIcon";
 import { fadeInVariants } from "@/animation/animation";
 
 const TechSection: React.FC = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.div variants={fadeInVariants} initial="hidden" animate="visible">
       <div className="text-center overflow-hidden mt-4 mb-4">
         <h1 className="text-2xl font-bold mb-6">Technologies I Use</h1>
 
         <motion.div
-          className="flex"
+          className="flex flex-nowrap items-center"
           initial={{ x: 0 }}
-          animate={{ x: "-100%" }}
-          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-          style={{ display: "flex", minWidth: "200%" }} // Assicura che la larghezza sia sufficiente a contenere entrambe le liste
+          animate={{ x: isHovered ? 0 : "-100%" }} // Fermare lo scorrimento all'hover
+          transition={{ repeat: Infinity, duration: 20 }}
+          style={{ minWidth: "200%" }}
+          onMouseEnter={() => setIsHovered(true)} // Attiva lo stato di hover
+          onMouseLeave={() => setIsHovered(false)} // Disattiva lo stato di hover
         >
           {/* Prima lista di icone */}
-          <div className="flex items-center justify-around min-w-full ">
+          <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4">
             {icons.map((icon, index) => (
               <TechIcon
                 key={`original-${index}`}
@@ -28,7 +33,7 @@ const TechSection: React.FC = () => {
             ))}
           </div>
           {/* Duplicato della lista di icone */}
-          <div className="flex items-center justify-around min-w-full">
+          <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4">
             {icons.map((icon, index) => (
               <TechIcon
                 key={`duplicate-${index}`}

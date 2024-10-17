@@ -1,5 +1,11 @@
-import React from "react";
+"use client";
+import React, { memo } from "react";
 import { motion } from "framer-motion";
+import {
+  hoverEffectVariants,
+  iconHoverVariants,
+  textHoverVariants,
+} from "@/animation/animation";
 
 interface TechIconProps {
   icon: React.ReactElement;
@@ -9,17 +15,25 @@ interface TechIconProps {
 const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
   return (
     <motion.div
-      className="flex flex-col items-center mb-4 border-2 border-blue-500 p-4 rounded-lg min-w-[120px] transition-shadow duration-300 ease-in-out hover:shadow-lg hover:bg-blue-50"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      className="flex flex-col items-center mb-4 border-2 border-blue-500 p-4 cursor-pointer rounded-lg min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg"
+      initial="initial"
+      whileHover="hover"
+      variants={hoverEffectVariants}
+      style={{ willChange: "transform, background-color, border-color" }}
       title={title}
-      aria-label={title} // Migliora l'accessibilità
+      aria-label={title}
     >
-      <div className="text-4xl mb-2 text-blue-600">{icon}</div>
-      <p className="text-sm text-center text-gray-800 font-medium">{title}</p>
+      <motion.div className="text-4xl mb-2" variants={iconHoverVariants}>
+        {icon}
+      </motion.div>
+      <motion.p
+        className="text-sm text-center text-gray-800 font-medium"
+        variants={textHoverVariants}
+      >
+        {title}
+      </motion.p>
     </motion.div>
   );
 };
 
-export default TechIcon;
+export default memo(TechIcon);
