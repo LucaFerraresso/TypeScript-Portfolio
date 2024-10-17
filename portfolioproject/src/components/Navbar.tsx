@@ -19,6 +19,11 @@ const Navbar = () => {
           TechStack
         </button>
       </Link>
+      <Link href="/ErrorPage">
+        <button className="text-sm hover:text-gray-600 hover-underline-animation">
+          ErrorPage
+        </button>
+      </Link>
     </nav>
   );
 };
