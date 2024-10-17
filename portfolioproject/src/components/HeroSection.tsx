@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
-            className="w-full flex  flex-col md:flex-row md:justify-around "
+            className="w-full flex justify-center items-center flex-col md:flex-row md:justify-around "
           >
             <Image
               src="/images/myFoto.jpg"
@@ -47,7 +47,7 @@ const HeroSection: React.FC = () => {
               className="w-full flex flex-row"
             >
               <a
-                href="https://www.linkedin.com/in/tuo-linkedin"
+                href="https://www.linkedin.com/in/luca-ferraresso/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
                 <FaLinkedin color="blue" />
               </a>
               <a
-                href="https://github.com/tuo-github"
+                href="https://github.com/LucaFerraresso/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

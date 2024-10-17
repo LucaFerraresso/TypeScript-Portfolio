@@ -3,12 +3,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-  githubLink: string;
-  vercelLink: string;
-  backgroundColor?: string; // Colore di sfondo opzionale
+  title: string | undefined;
+  description?: string | undefined;
+  imageUrl?: string | undefined;
+  githubLink?: string | undefined;
+  vercelLink?: string | undefined;
+  technologies?: string[] | undefined;
+  date?: string | undefined;
+  backgroundColor?: string | undefined;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -17,7 +19,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   imageUrl,
   githubLink,
   vercelLink,
-  backgroundColor = "#f0f0f0", // Colore di default
+  technologies,
+  date,
+  backgroundColor = "#f0f0f0",
 }) => {
   return (
     <motion.div
@@ -30,15 +34,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           src={imageUrl}
           layout="fill"
           objectFit="cover"
-          alt={title}
           loading="lazy"
           className="transition-transform duration-500 ease-in-out transform hover:scale-105"
         />
       </div>
       <h2 className="text-xl font-bold text-gray-800 mb-2 text-center">
-        {title}
+        Title:{title}
       </h2>
-      <p className="text-sm text-gray-600 mb-4 text-center">{description}</p>
+      <p className="text-sm text-gray-600 mb-2 text-center italic">
+        Date:{date}
+      </p>
+      <p className="text-sm text-gray-600 mb-4 text-center">
+        Description:{description}
+      </p>
+      <div className="text-sm text-gray-600 mb-4 text-center">
+        Used tech:
+        {technologies}
+      </div>
+
       <div className="flex space-x-4">
         <a
           href={vercelLink}

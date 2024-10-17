@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Footer = () => {
+const Navbar = () => {
   return (
     <nav className="w-full bg-gray-200 p-5 gap-2 border border-b-gray-800 fixed top-0 left-0 flex flex-col z-50 md:flex-row md:justify-around md:gap-8">
       <Link href="/">
@@ -23,4 +23,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Navbar;

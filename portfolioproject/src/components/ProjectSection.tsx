@@ -11,6 +11,8 @@ const projects = [
     vercelLink: "https://mongodb-crud-operations.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/REACT-Portfolio/tree/main/my-next-mongodb-app",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
   {
     title: "ToDo App",
@@ -19,6 +21,8 @@ const projects = [
     vercelLink: "https://todoapp-bice-two.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
   {
     title: "Ice-cream menu App",
@@ -27,6 +31,8 @@ const projects = [
     vercelLink: "https://icescream-menu-app.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
   {
     title: "SicilyPulse App",
@@ -34,6 +40,8 @@ const projects = [
     imageUrl: "/images/homepage/sicily-pulse-app.png",
     vercelLink: "https://edgemony-final-project.vercel.app/",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
   {
     title: "myPortfolio in React",
@@ -41,6 +49,8 @@ const projects = [
     imageUrl: "/images/homepage/portfolio-preview.png",
     vercelLink: "https://react-portfolio-coral-five.vercel.app/homepage",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
   {
     title: "Coming soon",
@@ -48,6 +58,8 @@ const projects = [
     imageUrl: "/images/homepage/coming-soon.jpg",
     vercelLink: "https://yourproject1.vercel.app",
     githubLink: "https://github.com/tuo-username/project1",
+    technologies: ["Javascript", "VScode", "GitHub"],
+    date: "1-1-2024",
   },
 ];
 
@@ -61,7 +73,7 @@ const ProjectSection: React.FC = () => {
     >
       <h1 className="text-2xl font-bold mb-6">My Projects</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 p-4 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -81,6 +93,8 @@ const ProjectSection: React.FC = () => {
               githubLink={project.githubLink}
               vercelLink={project.vercelLink}
               backgroundColor="#e0e7ff"
+              technologies={project.technologies}
+              date={project.date}
             />
           </motion.div>
         ))}

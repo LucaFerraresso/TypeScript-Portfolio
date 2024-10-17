@@ -4,10 +4,33 @@
 
 /* Variabili globali */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary-color: #1f2937; /* Gray-800 */
-  --secondary-color: #f3f4f6; /* Gray-100 */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-primary: #1f2937; /* Gray-800 */
+  --color-secondary: #f3f4f6; /* Gray-100 */
+  --color-accent: #3b82f6; /* Blue-500 */
+  --color-accent-light: #93c5fd; /* Blue-300 */
+  --color-accent-dark: #1e40af; /* Blue-900 */
+  --color-border: #d1d5db; /* Gray-300 */
+  --color-text: #374151; /* Gray-700 */
+  --color-hover: #4b5563; /* Gray-600 */
+  --color-light: #e5e7eb; /* Gray-200 */
+  --transition-duration: 0.3s;
+  --transition-ease: ease-in-out;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hover-underline-animation::after {
+  background: var(--color-accent);
+}
+
+.hover-underline-animation:hover::after {
+  background: var(--color-accent-dark);
 }
 
 /* Reset globale moderno */
@@ -19,14 +42,6 @@
 
 * {
   margin: 0;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Stile immagini e media */
@@ -62,29 +77,4 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
-}
-
-/* Utility per l'effetto hover con sottolineatura */
-.hover-underline-animation {
-  position: relative;
-  color: inherit;
-  text-decoration: none;
-}
-
-.hover-underline-animation::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  display: block;
-  margin-top: 5px;
-  right: 0;
-  background: var(--foreground);
-  transition: width 0.3s ease;
-}
-
-.hover-underline-animation:hover::after {
-  width: 100%;
-  left: 0;
-  background: var(--foreground);
 }
