@@ -13,7 +13,7 @@ const TechStack = () => {
 
   return (
     <motion.div
-      className="container mx-auto py-20"
+      className="flex flex-col justify-center items-center"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"

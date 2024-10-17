@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center  px-4">
+    <div className="flex flex-col justify-center items-center">
       <motion.h1
         className="text-8xl font-extrabold text-red-600 mb-6"
         initial={{ scale: 0.5, opacity: 0 }}
