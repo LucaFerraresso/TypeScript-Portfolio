@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { fadeInVariants } from "@/animation/animation";
+import SectionSeparator from "./SectionSeparator";
 
 // Componente per le icone social
 const SocialIcon: React.FC<{
@@ -22,10 +23,12 @@ const SocialIcon: React.FC<{
   </a>
 );
 
+const imageUrl = "/images/myFoto.jpg";
 // Contenuto della sezione Hero
 const HeroSection: React.FC = () => {
   return (
     <>
+      <SectionSeparator />
       <motion.section
         variants={fadeInVariants}
         initial="hidden"

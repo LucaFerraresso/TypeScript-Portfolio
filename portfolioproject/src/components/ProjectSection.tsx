@@ -4,11 +4,12 @@ import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import projects from "@/assets/DataArray/ProjectSectionArray";
+import SectionSeparator from "./SectionSeparator";
 
 const ProjectSection: React.FC = () => {
   return (
     <>
-      <hr />
+      <SectionSeparator />
       <section className="my-8">
         <motion.div
           variants={fadeInVariants}
@@ -28,6 +29,7 @@ const ProjectSection: React.FC = () => {
           </div>
         </motion.div>
       </section>
+      <SectionSeparator />
     </>
   );
 };
