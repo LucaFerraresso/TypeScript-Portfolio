@@ -77,10 +77,10 @@ const SectionSeparator: React.FC = () => {
         }}
       >
         <path
-          d="M0,10 Q20,0 40,10 T100,10" // Curva ondulata
+          d="M0,10 Q20,-20 40,10 T100,10"
           fill="none"
-          stroke="url(#gradient)" // Usa un gradiente se vuoi
-          strokeWidth="1"
+          stroke="url(#gradient)"
+          strokeWidth="2" // Aumentato per renderlo più visibile
         />
       </motion.svg>
     </div>
