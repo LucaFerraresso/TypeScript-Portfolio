@@ -72,3 +72,15 @@ export const invertVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 0, transition: { duration: 2 } },
 };
+
+export const fadeInVariantsSeparator2 = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
+
+export const fadeInVariants2 = {
+  fadeIn: { opacity: 1, transition: { duration: 3 } },
+  fadeOut: { opacity: 0, transition: { duration: 3 } },
+  invert: { opacity: 1, transition: { duration: 3 } }, // Mantenere solo l'opacità
+  pause: { opacity: 1, transition: { duration: 0 } },
+};
