@@ -1,20 +1,18 @@
 "use client";
+import React, { Suspense, lazy } from "react";
 
-import HeroSection from "@/src/components/HeroSection";
-import TechSection from "@/src/components/TechSection";
-import ProjectSection from "@/src/components/ProjectSection";
+const HeroSection = lazy(() => import("@/src/components/HeroSection"));
+const TechSection = lazy(() => import("@/src/components/TechSection"));
+const ProjectSection = lazy(() => import("@/src/components/ProjectSection"));
 
 export default function Home() {
   return (
     <div className="p-4">
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Tech Section */}
-      <TechSection />
-
-      {/* Project Section */}
-      <ProjectSection />
+      <Suspense fallback={<div>Loading...</div>}>
+        <HeroSection />
+        <TechSection />
+        <ProjectSection />
+      </Suspense>
     </div>
   );
 }
