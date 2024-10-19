@@ -12,16 +12,18 @@ const Contacts = () => {
   };
 
   return (
-    <motion.div
-      className="flex flex-col justify-center items-center"
-      variants={fadeInVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <h1 className="text-3xl font-bold">Contacts</h1>
-      <p className="mt-4">Phone: 000000000000</p>
-      <p>Email: info@example.com</p>
-    </motion.div>
+    <>
+      <motion.div
+        className="flex flex-col justify-center items-center"
+        variants={fadeInVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <h1 className="text-3xl font-bold">Contacts</h1>
+        <p className="mt-4">Phone: 000000000000</p>
+        <p>Email: info@example.com</p>
+      </motion.div>
+    </>
   );
 };
 

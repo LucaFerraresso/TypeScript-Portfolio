@@ -10,7 +10,7 @@ const TechSection: React.FC = () => {
 
   return (
     <>
-      <hr></hr>
+      <hr />
       <motion.div variants={fadeInVariants} initial="hidden" animate="visible">
         <div className="text-center overflow-hidden mt-4 mb-4">
           <h1 className="text-2xl font-bold mb-6">Technologies I Use</h1>
@@ -18,11 +18,14 @@ const TechSection: React.FC = () => {
           <motion.div
             className="flex flex-nowrap items-center"
             initial={{ x: 0 }}
-            animate={{ x: isHovered ? 0 : "-100%" }} // Fermare lo scorrimento all'hover
-            transition={{ repeat: Infinity, duration: 20 }}
+            animate={{ x: isHovered ? 0 : "-100%" }}
+            transition={{
+              repeat: Infinity,
+              duration: isHovered ? 40 : 20, // Rallenta se in hover
+            }}
             style={{ minWidth: "200%" }}
-            onMouseEnter={() => setIsHovered(true)} // Attiva lo stato di hover
-            onMouseLeave={() => setIsHovered(false)} // Disattiva lo stato di hover
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             {/* Prima lista di icone */}
             <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4">

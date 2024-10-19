@@ -29,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     githubLink = "#",
     vercelLink = "#",
     technologies = [],
-    date = "TBD", // Default value for date
+    date = "TBD",
   } = project;
 
   return (
@@ -51,16 +51,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p className="text-sm text-gray-600 mb-4 text-center line-clamp-2">
           {description || "Details will be available soon."}
         </p>
-        <h1 className="text-lg font-semibold text-black">Anteprima:</h1>
+        <h3 className="text-lg font-semibold text-black">Anteprima:</h3>
         <div className="relative w-full h-40 overflow-hidden rounded-md mb-4">
           <Link href={vercelLink} target="_blank" rel="noopener noreferrer">
             <Image
               src={imageUrl}
               alt={title || "Project Image"}
-              layout="fill"
-              objectFit="cover"
-              loading="lazy"
-              className="transition-transform duration-700 ease-in-out transform hover:scale-105"
+              fill // Utilizza il prop fill
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              className=" object-cover transition-transform duration-700 ease-in-out transform hover:scale-105"
+              priority // Imposta priority per LCP
             />
           </Link>
         </div>
@@ -84,7 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <ActionButton
             url={githubLink}
             label="View on GitHub Repository"
-            bgColor="bg-green-600" // Changed color for visibility
+            bgColor="bg-green-600"
             hoverColor="hover:bg-green-700"
           />
         </div>
@@ -93,21 +93,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
-// Componente per i pulsanti di azione (Vercel e GitHub)
+// Componente per i pulsanti di azione
 const ActionButton: React.FC<{
   url: string;
   label: string;
   bgColor: string;
   hoverColor: string;
 }> = ({ url, label, bgColor, hoverColor }) => (
-  <a
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`px-4 py-2 ${bgColor} max-w-[100px] flex md:max-w-[150px] text-center  justify-center  items-center md:items-center text-white rounded-md ${hoverColor} transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-50`}
-  >
-    {label}
-  </a>
+  <>
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`px-4 py-2 ${bgColor} max-w-[100px] flex md:max-w-[150px] text-center justify-center items-center text-white rounded-md ${hoverColor} transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+    >
+      {label}
+    </a>
+  </>
 );
 
 export default memo(ProjectCard);

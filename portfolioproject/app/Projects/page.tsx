@@ -12,14 +12,16 @@ const Projects = () => {
   };
 
   return (
-    <motion.div
-      className="flex flex-col justify-center items-center"
-      variants={fadeInVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <h1 className="text-3xl font-bold">Projects</h1>
-    </motion.div>
+    <>
+      <motion.div
+        className="flex flex-col justify-center items-center"
+        variants={fadeInVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <h1 className="text-3xl font-bold">Projects</h1>
+      </motion.div>
+    </>
   );
 };
 

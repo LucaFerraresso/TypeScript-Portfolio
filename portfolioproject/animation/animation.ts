@@ -22,16 +22,17 @@ export const hoverEffectVariants = {
     scale: 1.2,
     y: -5,
     rotateY: 20,
-    borderColor: "#000000",
+    borderColor: "#1E40AF", // Blu scuro
     transition: { type: "spring", stiffness: 300, damping: 20 },
   },
 };
 
 export const iconHoverVariants = {
-  initial: { color: "#1D4ED8" },
+  initial: { color: "#1D4ED8", rotate: 0 },
   hover: {
     color: "#000000",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    rotate: 360, // Rotazione completa
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
 
