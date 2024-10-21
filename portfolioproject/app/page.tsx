@@ -1,4 +1,3 @@
-// home.tsx
 "use client";
 import React, { Suspense, lazy } from "react";
 import type { Metadata } from "next";
@@ -19,7 +18,7 @@ const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Header metadata={metadata} /> {/* Passa i metadata al layout */}
+      <Header metadata={metadata} />
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
           <HeroSection />

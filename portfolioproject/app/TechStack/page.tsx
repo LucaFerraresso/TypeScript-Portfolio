@@ -1,4 +1,3 @@
-// contact.tsx
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
@@ -26,7 +25,7 @@ const TechStack: React.FC = () => {
 
   return (
     <>
-      <Header metadata={metadata} /> {/* Passa i metadata al layout */}
+      <Header metadata={metadata} />
       <motion.div
         className="flex flex-col justify-center items-center"
         variants={fadeInVariants}

@@ -1,4 +1,3 @@
-// contact.tsx
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
@@ -17,8 +16,8 @@ const Projects: React.FC = () => {
 
   // Definisci i metadata specifici per la pagina
   const metadata: Metadata = {
-    title: "MyProjects",
-    description: "My Projects",
+    title: "Projects",
+    description: "Projects",
     icons: {
       icon: "/svg/logoProject.svg",
     },
@@ -26,7 +25,7 @@ const Projects: React.FC = () => {
 
   return (
     <>
-      <Header metadata={metadata} /> {/* Passa i metadata al layout */}
+      <Header metadata={metadata} />
       <motion.div
         className="flex flex-col justify-center items-center"
         variants={fadeInVariants}
