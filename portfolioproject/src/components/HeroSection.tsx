@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
             className="flex justify-center items-center"
           >
             <Image
-              src="/images/myFoto.jpg"
+              src={imageUrl}
               alt="Luca Ferraresso"
               height={250}
               width={250}
