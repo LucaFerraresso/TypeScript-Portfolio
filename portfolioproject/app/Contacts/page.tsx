@@ -20,7 +20,7 @@ const Contacts: React.FC = () => {
     title: "Contacts",
     description: "Contacts",
     icons: {
-      icon: "/svg/logoContact.svg",
+      icon: "/svg/logoContacts.svg",
     },
   };
 

@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
     title: "MyProjects",
     description: "My Projects",
     icons: {
-      icon: "/svg/logoProjects.svg",
+      icon: "/svg/logoProject.svg",
     },
   };
 

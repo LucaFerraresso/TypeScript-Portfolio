@@ -20,7 +20,7 @@ const AboutMe: React.FC = () => {
     title: "AboutMe",
     description: "AboutMe",
     icons: {
-      icon: "/svg/logoAboutMe.svg",
+      icon: "/svg/logoAbout.svg",
     },
   };
 

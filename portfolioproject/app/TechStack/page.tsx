@@ -20,7 +20,7 @@ const TechStack: React.FC = () => {
     title: "TechStack",
     description: "TechStack",
     icons: {
-      icon: "/svg/logoTechStack.svg",
+      icon: "/svg/logoTech.svg",
     },
   };
 
