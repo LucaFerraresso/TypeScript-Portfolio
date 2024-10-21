@@ -1,8 +1,12 @@
+// contact.tsx
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
+import type { Metadata } from "next";
 
-const TechStack = () => {
+import Header from "@/src/components/Header";
+
+const TechStack: React.FC = () => {
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -11,8 +15,18 @@ const TechStack = () => {
     },
   };
 
+  // Definisci i metadata specifici per la pagina
+  const metadata: Metadata = {
+    title: "TechStack",
+    description: "TechStack",
+    icons: {
+      icon: "/svg/logoTechStack.svg",
+    },
+  };
+
   return (
     <>
+      <Header metadata={metadata} /> {/* Passa i metadata al layout */}
       <motion.div
         className="flex flex-col justify-center items-center"
         variants={fadeInVariants}

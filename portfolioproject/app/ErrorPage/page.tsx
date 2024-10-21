@@ -3,10 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import type { Metadata } from "next";
+import Header from "@/src/components/Header";
 
-const ErrorPage = () => {
+const ErrorPage: React.FC = () => {
+  // Definisci i metadata specifici per la pagina
+  const metadata: Metadata = {
+    title: "ErrorPage",
+    description: "ErrorPage",
+    icons: {
+      icon: "/svg/logoErrors.svg",
+    },
+  };
   return (
     <>
+      <Header metadata={metadata} />
       <div className="flex flex-col justify-center items-center text-center">
         <motion.h1
           className="text-8xl font-extrabold text-red-600 mb-6"

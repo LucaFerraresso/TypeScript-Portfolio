@@ -1,8 +1,12 @@
+// contact.tsx
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
+import type { Metadata } from "next";
 
-const Contacts = () => {
+import Header from "@/src/components/Header";
+
+const Contacts: React.FC = () => {
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -11,8 +15,18 @@ const Contacts = () => {
     },
   };
 
+  // Definisci i metadata specifici per la pagina
+  const metadata: Metadata = {
+    title: "Contacts",
+    description: "Contacts",
+    icons: {
+      icon: "/svg/logoContact.svg",
+    },
+  };
+
   return (
     <>
+      <Header metadata={metadata} /> {/* Passa i metadata al layout */}
       <motion.div
         className="flex flex-col justify-center items-center"
         variants={fadeInVariants}
