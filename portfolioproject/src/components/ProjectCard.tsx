@@ -5,6 +5,7 @@ import Link from "next/link";
 import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
+import Button from "./Button";
 
 interface Project {
   title: string;
@@ -161,17 +162,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {!isFirst && !generatedDescription && (
-          <button
-            onClick={handleGenerateDescription}
-            className={`px-4 py-2 text-white rounded-md transition-all duration-300 ${
-              isGenerating
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 hover:bg-green-700"
-            }`}
+          <Button
+            text="Genera Descrizione"
+            color="bg-green-600"
+            hoverColor="hover:bg-green-700"
             disabled={isGenerating}
-          >
-            {isGenerating ? "Generando..." : "Genera"}
-          </button>
+            loading={isGenerating}
+            onClick={handleGenerateDescription}
+          />
         )}
 
         {generatedDescription && (
@@ -225,16 +223,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </>
         ) : (
           <>
-            <ActionButton
-              url={vercelLink}
-              label="View on Vercel"
-              bgColor="bg-blue-600"
+            <Button
+              link={vercelLink}
+              text="View on Vercel"
+              color="bg-blue-600"
               hoverColor="hover:bg-blue-700"
             />
-            <ActionButton
-              url={githubLink}
-              label="View on GitHub"
-              bgColor="bg-green-600"
+            <Button
+              link={githubLink}
+              text="View on GitHub"
+              color="bg-green-600"
               hoverColor="hover:bg-green-700"
             />
           </>

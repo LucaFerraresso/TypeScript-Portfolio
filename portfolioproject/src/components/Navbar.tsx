@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import navItems from "@/assets/DataArray/NavbarArray";
+import Button from "./Button";
 
 const Navbar: React.FC = () => {
   const activePath = usePathname();
@@ -17,14 +18,11 @@ const Navbar: React.FC = () => {
 
           return (
             <Link key={item.href} href={item.href} passHref>
-              <motion.button
-                className={`text-sm font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  isActive ? "text-blue-600 font-bold" : "hover:text-blue-600"
-                }`}
-                whileHover={{ scale: 1.05 }}
-              >
-                {item.labelKey}
-              </motion.button>
+              <Button
+                text={item.labelKey}
+                color="bg-gray-200"
+                hoverColor="hover:bg-gray-200"
+              />
             </Link>
           );
         })}

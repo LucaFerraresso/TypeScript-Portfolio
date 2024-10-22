@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 import footerItems from "@/assets/DataArray/FooterArray";
+import Button from "./Button";
 
 const Footer: React.FC = () => {
   const activePath = usePathname();
@@ -15,13 +16,11 @@ const Footer: React.FC = () => {
 
           return (
             <Link key={item.href} href={item.href}>
-              <button
-                className={`text-sm font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  isActive ? "text-blue-600 font-bold" : "hover:text-blue-600"
-                }`}
-              >
-                {item.label}
-              </button>
+              <Button
+                text={item.label}
+                color="bg-gray-200"
+                hoverColor="hover:bg-gray-200"
+              />
             </Link>
           );
         })}
