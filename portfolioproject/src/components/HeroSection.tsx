@@ -4,29 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { fadeInVariants } from "@/animation/animation";
-import SectionSeparator from "./SectionSeparator";
 import Skeleton from "./Skeleton";
-// Componente per le icone social
-const SocialIcon: React.FC<{
-  href: string;
-  label: string;
-  icon: React.ReactNode;
-}> = ({ href, label, icon }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    className="cursor-pointer mx-2 transition-transform duration-300 ease-in-out transform hover:scale-110"
-  >
-    {icon}
-  </a>
-);
+import SocialIcon from "./SocialIcon";
 
-const imageUrl = "/images/myFoto.jpg";
+const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
 
 const HeroSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [description, setDescription] = useState("");
 
   // Simula un ritardo di 3 secondi nel caricamento
   useEffect(() => {
@@ -36,9 +21,39 @@ const HeroSection: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const fetchDescription = async () => {
+      const prompt =
+        "genera una descrizione professionale di un ragazzo che ha appena finito un bootcamp intensivo frontend e backend, con tutte le tecnologie annesse. utilizza 80 parole e cerca di essere preciso e ordinato. pero' fai molta attenzione al modo in cui ti esprimi. voglio una descrizione pacata e umile. il ragazzo si chiama Luca Ferraresso.";
+
+      try {
+        const res = await fetch("/api/gemini", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        });
+
+        if (!res.ok) {
+          throw new Error("Errore nella richiesta");
+        }
+
+        const data = await res.json();
+
+        setDescription(data.output);
+
+        console.log(data.output);
+      } catch (error) {
+        console.error("Error:", error);
+        setDescription("There was an error with the API.");
+      }
+    };
+    fetchDescription();
+  }, []);
+
   return (
     <>
-      <SectionSeparator />
       <motion.section
         variants={fadeInVariants}
         initial="hidden"
@@ -91,11 +106,8 @@ const HeroSection: React.FC = () => {
               <Skeleton width="100%" height="60px" className="mb-6" />
             ) : (
               <p className="text-base text-gray-600 mb-6">
-                Hi, I am Luca Ferraresso. I am a passionate front-end developer
-                based near Venice. My expertise is focused on React and
-                JavaScript, aiming to create responsive and engaging web
-                experiences. I love tackling complex challenges to transform
-                them into intuitive and user-friendly solutions.
+                {/* Descrizione dinamica */}
+                {description}
               </p>
             )}
 

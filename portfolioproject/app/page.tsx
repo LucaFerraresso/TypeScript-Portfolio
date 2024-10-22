@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from "react";
 import type { Metadata } from "next";
 import Header from "@/src/components/Header";
+import SectionSeparator from "@/src/components/SectionSeparator";
 import PromptForm from "@/src/components/PromptForm";
 
 const HeroSection = lazy(() => import("@/src/components/HeroSection"));
@@ -22,10 +23,15 @@ export default function Home() {
       <Header metadata={metadata} />
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
+          <SectionSeparator />
           <HeroSection />
-          <PromptForm />
+          <SectionSeparator />
           <TechSection />
+          <SectionSeparator />
           <ProjectSection />
+          <SectionSeparator />
+          <PromptForm />
+          <SectionSeparator />
         </Suspense>
       </div>
     </>

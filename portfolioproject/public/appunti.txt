@@ -14,6 +14,18 @@ sicilypulse:SicilyPulse è un'app web interattiva che offre informazioni su even
 myPortfolio:## myPortfolio: un portfolio web interattivo realizzato con React, che mette in mostra le competenze di Luca Ferraresso. Il sito, costruito con React, HTML, CSS, JavaScript, API/REST API, Express.js, MongoDB, FireBase, Tailwind CSS e altri strumenti, presenta un design moderno e responsive, e offre un'esperienza utente fluida ed informativa.
 prossimamente:Per favore, fornisci maggiori informazioni sul progetto. Ad esempio, di cosa si tratta, quali sono le sue funzionalità principali, qual è il suo scopo? Più informazioni mi dai, più dettagliata e precisa sarà la mia descrizione.
 ///////////////////////////////////////////////////////////////////////////
+descrizione herosection:
+
+                Hi, I am Luca Ferraresso. I am a passionate front-end developer
+                based near Venice. My expertise is focused on React and
+                JavaScript, aiming to create responsive and engaging web
+                experiences. I love tackling complex challenges to transform
+                them into intuitive and user-friendly solutions.
+
+                2.Sviluppatore Full-Stack con una solida esperienza pratica acquisita durante un bootcamp intensivo. Padroneggia le tecnologie front-end come HTML, CSS, JavaScript, React e le librerie correlate. Conosce anche i principi del backend con Node.js, Express.js, SQL e MongoDB. Esperto nella creazione di applicazioni web responsive, interattive e efficienti. Entusiasta del lavoro di squadra, ha una forte passione per l'apprendimento continuo e la creazione di soluzioni innovative.
+                3.Luca Ferraresso è un giovane sviluppatore con una solida formazione in sviluppo frontend e backend, acquisita recentemente durante un bootcamp intensivo. Ha una conoscenza approfondita di HTML, CSS, JavaScript, React, Node.js e linguaggi di scripting lato server come Python e PHP. Luca è appassionato di creare applicazioni web innovative e ha una forte attenzione al dettaglio e alla qualità del codice. È eager di applicare le sue nuove competenze in un ambiente di lavoro stimolante e di imparare continuamente.
+                
+///////////////////////////////////////////////////////////////////////////////
 feth da cambiare chiave, funzionante:risolto
 /////////////////////////////////////////////////////////////////////////////
 email gemini:

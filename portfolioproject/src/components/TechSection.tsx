@@ -4,15 +4,12 @@ import { motion } from "framer-motion";
 import icons from "@/assets/DataArray/TechSectionArray";
 import TechIcon from "./TechIcon";
 import { fadeInVariants } from "@/animation/animation";
-import SectionSeparator from "./SectionSeparator";
 
 const TechSection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <>
-      <SectionSeparator />
-
       <motion.div variants={fadeInVariants} initial="hidden" animate="visible">
         <div className="text-center overflow-hidden mt-4 mb-4">
           <h1 className="text-2xl font-bold mb-6">Technologies I Use</h1>
