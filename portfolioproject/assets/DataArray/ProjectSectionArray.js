@@ -7,7 +7,20 @@ const projects = [
     vercelLink: "https://mongodb-crud-operations.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/REACT-Portfolio/tree/main/my-next-mongodb-app",
-    technologies: ["Javascript", "MondoDB", "mongoose", "Nextjs"],
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "Next.js",
+      "API/REST API",
+      "MongoDB",
+      "Express.js",
+      "Tailwind CSS",
+      "npm",
+      "GitHub",
+      "VSCode",
+    ],
     date: "02/09/2024-07/09/2024",
   },
   {
@@ -18,7 +31,7 @@ const projects = [
     vercelLink: "https://todoapp-bice-two.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
-    technologies: ["Javascript"],
+    technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
   },
   {
@@ -29,7 +42,7 @@ const projects = [
     vercelLink: "https://icescream-menu-app.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
-    technologies: ["Javascript"],
+    technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
   },
   {
@@ -39,7 +52,21 @@ const projects = [
     imageUrl: "/images/homepage/sicily-pulse-app.png",
     vercelLink: "https://edgemony-final-project.vercel.app/",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
-    technologies: ["TypeScript", "MongoDB", "FireBase", "GEMINI API", "Nextjs"],
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "Next.js",
+      "API/REST API",
+      "MongoDB",
+      "Express.js",
+      "FireBase",
+      "Tailwind CSS",
+      "npm",
+      "GitHub",
+      "VSCode",
+    ],
     date: "09/09/2024-22/09/2024",
   },
   {
@@ -49,7 +76,19 @@ const projects = [
     imageUrl: "/images/homepage/portfolio-preview.png",
     vercelLink: "https://react-portfolio-coral-five.vercel.app/homepage",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
-    technologies: ["JavaScript", "MongoDB", "FireBase", "Vuejs", "React"],
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "API/REST API",
+      "Express.js",
+      "MongoDB",
+      "FireBase",
+      "Tailwind CSS",
+      "npm",
+      "GitHub",
+      "VSCode",
+    ],
     date: "05/08/2024-30/08/2024",
   },
   {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import icons from "@/assets/DataArray/TechSectionArray";
 import TechIcon from "./TechIcon";
@@ -12,6 +12,7 @@ const TechSection: React.FC = () => {
   return (
     <>
       <SectionSeparator />
+
       <motion.div variants={fadeInVariants} initial="hidden" animate="visible">
         <div className="text-center overflow-hidden mt-4 mb-4">
           <h1 className="text-2xl font-bold mb-6">Technologies I Use</h1>
@@ -29,7 +30,9 @@ const TechSection: React.FC = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Prima lista di icone */}
-            <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4">
+            <div
+              className={`flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4  `}
+            >
               {icons.map((icon, index) => (
                 <TechIcon
                   key={`original-${index}`}

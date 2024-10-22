@@ -22,7 +22,7 @@ export const hoverEffectVariants = {
     scale: 1.2,
     y: -5,
     rotateY: 20,
-    borderColor: "#1E40AF", // Blu scuro
+
     transition: { type: "spring", stiffness: 300, damping: 20 },
   },
 };

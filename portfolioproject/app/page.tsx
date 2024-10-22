@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from "react";
 import type { Metadata } from "next";
 import Header from "@/src/components/Header";
+import PromptForm from "@/src/components/PromptForm";
 
 const HeroSection = lazy(() => import("@/src/components/HeroSection"));
 const TechSection = lazy(() => import("@/src/components/TechSection"));
@@ -22,6 +23,7 @@ export default function Home() {
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
           <HeroSection />
+          <PromptForm />
           <TechSection />
           <ProjectSection />
         </Suspense>
