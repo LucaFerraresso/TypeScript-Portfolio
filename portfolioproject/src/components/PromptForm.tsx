@@ -11,12 +11,21 @@ const PromptForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Crea il prompt utilizzando il progetto selezionato
     const projectDetails = projects.find(
       (project) => project.title === selectedProject
     );
-    const newPrompt = `Genera una descrizione di 50 parole per il progetto ${projectDetails?.title}, 
-    disponibile al link: ${projectDetails?.vercelLink} e repository GitHub: ${projectDetails?.githubLink}.`;
+
+    const newPrompt = `Genera una descrizione dettagliata e comporensibile di 50 parole per il progetto ${
+      projectDetails?.title
+    }, 
+    visitando il link: ${projectDetails?.vercelLink} e repository GitHub: ${
+      projectDetails?.githubLink
+    } puoi farti un'idea della complessita', inotre, enfatizza le Tecnologie utilizzate: ${projectDetails?.technologies.join(
+      ", "
+    )},spiegando il loro funzionamento e scopo. c'e gia' anche una piccola descrizione : 
+    Descrizione: ${
+      projectDetails?.description
+    },voglio che me ne generi una piu' tecnica e specifica.`;
 
     try {
       const res = await fetch("/api/gemini", {
@@ -33,6 +42,8 @@ const PromptForm = () => {
 
       const data = await res.json();
       setResponse(data.output);
+      console.log(newPrompt);
+      console.log(data.output);
     } catch (error) {
       console.error("Error:", error);
       setResponse("There was an error with the API.");
@@ -42,7 +53,10 @@ const PromptForm = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="max-w-md mx-auto p-4 bg-white shadow-lg rounded-md">
+      <h2 className="text-xl font-semibold text-center mb-4">
+        Genera Descrizione Progetto
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
@@ -60,7 +74,7 @@ const PromptForm = () => {
             required
           >
             <option value="" disabled>
-              Select a project
+              Seleziona un progetto
             </option>
             {projects.map((project) => (
               <option key={project.title} value={project.title}>
@@ -98,7 +112,7 @@ const PromptForm = () => {
 
       {response && (
         <div className="mt-6">
-          <h3 className="text-lg font-medium text-gray-900">API Response:</h3>
+          <h3 className="text-lg font-medium text-gray-900">Risposta API:</h3>
           <p className="mt-2 text-gray-600">{response}</p>
         </div>
       )}

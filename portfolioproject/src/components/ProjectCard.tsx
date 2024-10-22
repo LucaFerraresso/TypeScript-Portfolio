@@ -8,7 +8,6 @@ import icons from "@/assets/DataArray/TechSectionArray";
 
 interface Project {
   title: string;
-  description?: string;
   imageUrl?: string;
   githubLink?: string;
   vercelLink?: string;
@@ -27,10 +26,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [generatedDescription, setGeneratedDescription] = useState<string>("");
 
   const {
     title,
-    description,
     imageUrl = "/images/homepage/coming-soon.jpg",
     githubLink = "#",
     vercelLink = "#",
@@ -39,11 +38,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   } = project;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+    const fetchGeneratedDescription = async () => {
+      try {
+        const res = await fetch("/api/gemini", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
+              ", "
+            )}.`,
+          }),
+        });
+
+        if (!res.ok) throw new Error("Errore nella richiesta");
+
+        const data = await res.json();
+        setGeneratedDescription(data.output);
+      } catch (error) {
+        console.error("Error fetching description:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchGeneratedDescription();
+  }, [title, vercelLink, githubLink, technologies]);
 
   return (
     <motion.div
@@ -98,7 +119,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {isLoading ? (
             <Skeleton width="100%" height="16px" />
           ) : (
-            description || "Details will be available soon."
+            generatedDescription || "Details will be available soon."
           )}
         </div>
 
@@ -107,7 +128,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className="text-blue-600 hover:underline text-sm"
           style={{ display: isLoading ? "none" : "inline" }}
         >
-          {isExpanded ? "close" : "..."}
+          {isExpanded ? "...close" : "...view more"}
         </button>
 
         <h3 className="text-lg font-semibold text-gray-800 mt-4">
@@ -125,7 +146,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               return (
                 <div
                   key={index}
-                  className={` flex items-center border-2  text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105`}
+                  className={`flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105`}
                 >
                   {icon ? icon.component : null}
                   <span className="ml-1 text-black">{tech}</span>
