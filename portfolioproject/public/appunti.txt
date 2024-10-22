@@ -25,6 +25,10 @@ descrizione herosection:
                 2.Sviluppatore Full-Stack con una solida esperienza pratica acquisita durante un bootcamp intensivo. Padroneggia le tecnologie front-end come HTML, CSS, JavaScript, React e le librerie correlate. Conosce anche i principi del backend con Node.js, Express.js, SQL e MongoDB. Esperto nella creazione di applicazioni web responsive, interattive e efficienti. Entusiasta del lavoro di squadra, ha una forte passione per l'apprendimento continuo e la creazione di soluzioni innovative.
                 3.Luca Ferraresso è un giovane sviluppatore con una solida formazione in sviluppo frontend e backend, acquisita recentemente durante un bootcamp intensivo. Ha una conoscenza approfondita di HTML, CSS, JavaScript, React, Node.js e linguaggi di scripting lato server come Python e PHP. Luca è appassionato di creare applicazioni web innovative e ha una forte attenzione al dettaglio e alla qualità del codice. È eager di applicare le sue nuove competenze in un ambiente di lavoro stimolante e di imparare continuamente.
                 
+                4. DA USARE:
+                
+                Luca Ferraresso è un aspirante sviluppatore web con una solida formazione in sviluppo front-end, recentemente completata con un bootcamp intensivo. Luca padroneggia HTML, CSS, JavaScript, React e ha una conoscenza base di linguaggi back-end come Node.js e Python. Il suo percorso formativo gli ha permesso di sviluppare capacità di problem-solving, teamwork e di lavorare in modo indipendente su progetti web complessi. Luca è attualmente alla ricerca di un'opportunità come sviluppatore web per mettere in pratica le sue competenze e crescere professionalmente in un contesto stimolante.
+
 ///////////////////////////////////////////////////////////////////////////////
 feth da cambiare chiave, funzionante:risolto
 /////////////////////////////////////////////////////////////////////////////

@@ -12,7 +12,7 @@ const TechSection: React.FC = () => {
     <>
       <motion.div variants={fadeInVariants} initial="hidden" animate="visible">
         <div className="text-center overflow-hidden mt-4 mb-4">
-          <h1 className="text-2xl font-bold mb-6">Technologies I Use</h1>
+          <h1 className="text-2xl font-bold mb-6">Tech Stack</h1>
 
           <motion.div
             className="flex flex-nowrap items-center"

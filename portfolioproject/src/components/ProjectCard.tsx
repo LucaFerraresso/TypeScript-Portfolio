@@ -84,9 +84,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
+          prompt: `Crea una descrizione accattivante e dettagliata di 30 parole per il progetto "${title}". Spiega brevemente le sue funzionalità e invita i lettori a esplorarlo su Vercel: ${vercelLink} e su GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
             ", "
-          )}.`,
+          )}. Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`,
         }),
       });
 

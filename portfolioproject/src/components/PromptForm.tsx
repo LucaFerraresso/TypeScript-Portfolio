@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation"; // Assicurati di avere i tuoi varianti di animazione
 
 const PromptForm = () => {
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [maxWords, setMaxWords] = useState(50);
@@ -35,10 +35,10 @@ const PromptForm = () => {
       }
 
       const data = await res.json();
-      setResponse(data.output);
+      setResponse(data.output.split(" ")); // Spezza la risposta in parole
     } catch (error) {
       console.error("Error:", error);
-      setResponse("There was an error with the API.");
+      setResponse(["There was an error with the API."]);
     } finally {
       setLoading(false);
     }
@@ -46,12 +46,13 @@ const PromptForm = () => {
 
   const handleReload = () => {
     setPrompt("");
-    setResponse("");
+    setResponse([]);
     setMaxWords(50);
+    setLoading(false); // Resetta il loading
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(response);
+    navigator.clipboard.writeText(response.join(" "));
     alert("Testo copiato negli appunti!");
   };
 
@@ -131,10 +132,23 @@ const PromptForm = () => {
           </motion.form>
         )}
 
-        {response && (
+        {response.length > 0 && (
           <div className="mt-6 bg-white text-gray-900 p-4 rounded-md shadow-md">
             <h3 className="text-lg font-medium">Risposta API:</h3>
-            <p className="mt-2">{response}</p>
+            <div className="mt-2 flex flex-wrap">
+              {response.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={fadeInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="mr-1"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </div>
             <button
               onClick={handleCopy}
               className="mt-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md bg-green-500 hover:bg-green-600 text-white"

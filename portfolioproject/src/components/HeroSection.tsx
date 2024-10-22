@@ -24,8 +24,7 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const fetchDescription = async () => {
       const prompt =
-        "genera una descrizione professionale di un ragazzo che ha appena finito un bootcamp intensivo frontend e backend, con tutte le tecnologie annesse. utilizza 80 parole e cerca di essere preciso e ordinato. pero' fai molta attenzione al modo in cui ti esprimi. voglio una descrizione pacata e umile. il ragazzo si chiama Luca Ferraresso.";
-
+        "Scrivi una descrizione concisa per un ragazzo di nome Luca Ferraresso, che ha recentemente completato un bootcamp intensivo in sviluppo front-end, con basi di back-end. Utilizza 80 parole per delineare le sue competenze tecniche, le tecnologie utilizzate e il suo obiettivo di trovare una posizione come sviluppatore web. La descrizione deve essere chiara e professionale, senza toni emotivi o esagerati.";
       try {
         const res = await fetch("/api/gemini", {
           method: "POST",
