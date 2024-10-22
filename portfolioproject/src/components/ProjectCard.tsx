@@ -13,20 +13,24 @@ interface Project {
   vercelLink?: string;
   technologies?: string[];
   date?: string;
+  description?: string; // Aggiungi la descrizione se non già presente
 }
 
 interface ProjectCardProps {
   project: Project;
   animationDelay: number;
+  isFirst: boolean; // Aggiungi una prop per determinare se è il primo progetto
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   animationDelay,
+  isFirst,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [generatedDescription, setGeneratedDescription] = useState<string>("");
+  const [isGenerating, setIsGenerating] = useState<boolean>(false);
 
   const {
     title,
@@ -35,36 +39,67 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     vercelLink = "#",
     technologies = [],
     date = "TBD",
+    description = "Details will be available soon.",
   } = project;
 
   useEffect(() => {
     const fetchGeneratedDescription = async () => {
-      try {
-        const res = await fetch("/api/gemini", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
-              ", "
-            )}.`,
-          }),
-        });
+      if (isFirst) {
+        try {
+          const res = await fetch("/api/gemini", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
+                ", "
+              )}.`,
+            }),
+          });
 
-        if (!res.ok) throw new Error("Errore nella richiesta");
+          if (!res.ok) throw new Error("Errore nella richiesta");
 
-        const data = await res.json();
-        setGeneratedDescription(data.output);
-      } catch (error) {
-        console.error("Error fetching description:", error);
-      } finally {
+          const data = await res.json();
+          setGeneratedDescription(data.output);
+        } catch (error) {
+          console.error("Error fetching description:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
         setIsLoading(false);
       }
     };
 
     fetchGeneratedDescription();
-  }, [title, vercelLink, githubLink, technologies]);
+  }, [title, vercelLink, githubLink, technologies, isFirst]);
+
+  const handleGenerateDescription = async () => {
+    setIsGenerating(true);
+    try {
+      const res = await fetch("/api/gemini", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
+            ", "
+          )}.`,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Errore nella richiesta");
+
+      const data = await res.json();
+      setGeneratedDescription(data.output);
+    } catch (error) {
+      console.error("Error fetching description:", error);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   return (
     <motion.div
@@ -118,45 +153,68 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         >
           {isLoading ? (
             <Skeleton width="100%" height="16px" />
+          ) : isFirst ? (
+            generatedDescription || "descrizione"
           ) : (
-            generatedDescription || "Details will be available soon."
+            "Details will be available soon."
           )}
         </div>
 
-        <button
-          onClick={() => setIsExpanded((prev) => !prev)}
-          className="text-blue-600 hover:underline text-sm"
-          style={{ display: isLoading ? "none" : "inline" }}
-        >
-          {isExpanded ? "...close" : "...view more"}
-        </button>
+        {!isFirst && !generatedDescription && (
+          <button
+            onClick={handleGenerateDescription}
+            className={`px-4 py-2 text-white rounded-md transition-all duration-300 ${
+              isGenerating
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-green-600 hover:bg-green-700"
+            }`}
+            disabled={isGenerating}
+          >
+            {isGenerating ? "Generando..." : "Genera"}
+          </button>
+        )}
+
+        {generatedDescription && (
+          <div className="mt-2 text-gray-600">{generatedDescription}</div>
+        )}
 
         <h3 className="text-lg font-semibold text-gray-800 mt-4">
           Tecnologie:
         </h3>
-        <div className="flex flex-wrap mt-2">
+        <div className="flex flex-wrap mt-2 items-center justify-center">
           {isLoading ? (
             <Skeleton width="60%" height="16px" />
           ) : technologies.length > 0 ? (
-            technologies.map((tech, index) => {
-              const icon = icons.find(
-                (icon) => icon.title.toLowerCase() === tech.toLowerCase()
-              );
+            technologies
+              .slice(0, isExpanded ? technologies.length : 4)
+              .map((tech, index) => {
+                const icon = icons.find(
+                  (icon) => icon.title.toLowerCase() === tech.toLowerCase()
+                );
 
-              return (
-                <div
-                  key={index}
-                  className={`flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105`}
-                >
-                  {icon ? icon.component : null}
-                  <span className="ml-1 text-black">{tech}</span>
-                </div>
-              );
-            })
+                return (
+                  <div
+                    key={index}
+                    className={`flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105`}
+                  >
+                    {icon ? icon.component : null}
+                    <span className="ml-1 text-black">{tech}</span>
+                  </div>
+                );
+              })
           ) : (
             "Coming soon..."
           )}
         </div>
+
+        {technologies.length > 4 && (
+          <button
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="text-blue-600 hover:underline text-sm mt-2"
+          >
+            {isExpanded ? "...close" : "...view more"}
+          </button>
+        )}
       </div>
 
       <div className="flex justify-center space-x-4 p-4">
