@@ -24,13 +24,13 @@ export default function Home() {
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
           <SectionSeparator />
+          <PromptForm />
+          <SectionSeparator />
           <HeroSection />
           <SectionSeparator />
           <TechSection />
           <SectionSeparator />
           <ProjectSection />
-          <SectionSeparator />
-          <PromptForm />
           <SectionSeparator />
         </Suspense>
       </div>

@@ -85,8 +85,8 @@ const PromptForm = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="absolute top-4 left-4 z-10">
+    <div className="relative flex flex-col justify-center items-center z-50">
+      <div className="absolute left-4 z-10">
         <Button
           text="Assistente Gemini"
           color="bg-blue-500"
@@ -97,7 +97,7 @@ const PromptForm = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 p-80 flex flex-col justify-center items-center"
           onClick={handleOutsideClick}
         >
           <motion.div
@@ -105,13 +105,13 @@ const PromptForm = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="max-w-md mx-auto p-6 border border-gray-900 rounded-lg shadow-lg text-gray-900 bg-gray-300 mt-10"
+            className="max-w-md mx-auto p-6 border border-gray-900 rounded-lg shadow-lg text-gray-900 bg-gray-300 mt-2 flex flex-col justify-center items-center"
           >
             {isLoading ? (
               <Skeleton width="100%" height="300px" className="mb-4" />
             ) : (
               <motion.div
-                className="space-y-4"
+                className="space-y-4 "
                 variants={fadeInVariants}
                 initial="hidden"
                 animate="visible"

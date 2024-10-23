@@ -143,7 +143,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
       </table>
 
       {modalImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80">
           <div className="bg-white p-4 rounded-lg z-50">
             <Button onClick={closeModal} text="chiudi" />
 
