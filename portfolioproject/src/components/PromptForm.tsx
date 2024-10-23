@@ -61,7 +61,7 @@ const PromptForm = () => {
       setMaxWords(0);
       setLoading(false); // Resetta il loading
       setIsExiting(false); // Inizia l'entrata
-    }, 300); // Regola questo valore in base alla tua animazione
+    }, 1000); // Regola questo valore in base alla tua animazione
 
     setIsLoading(true);
     setTimeout(() => {
@@ -144,6 +144,8 @@ const PromptForm = () => {
                 text="Ricarica"
                 color="bg-red-500"
                 hoverColor="hover:bg-red-600"
+                disabled={loading}
+                loading={loading}
               />
             </div>
           </motion.div>
@@ -171,6 +173,8 @@ const PromptForm = () => {
               text="Copia"
               color="bg-blue-500"
               hoverColor="hover:bg-blue-600"
+              disabled={loading}
+              loading={loading}
             />
           </div>
         )}

@@ -40,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
   const buttonClasses = ` rouded-lg flex items-center justify-center py-2 px-4 text-gray-900 font-bold rounded transition-all duration-300 ease-in-out 
     ${color} 
     ${!disabled && !isLoading ? hoverColor : "bg-gray-400 cursor-not-allowed"} 
-    transform ${isLoading ? "opacity-75" : "hover:scale-105"} 
+    transform ${isLoading ? "opacity-75" : "hover:scale-105 "} 
     ${disabled ? "cursor-not-allowed" : ""}`;
 
   // Se è presente un link, renderizza un tag <a>

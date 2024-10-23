@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="flex flex-wrap w-full bg-gray-200 p-5 gap-4 border-t border-gray-800 fixed bottom-0 justify-around items-center z-50 md:flex-row md:text-start">
+      <footer className="flex flex-wrap w-full bg-gray-200 p-5 gap-4 border-t border-gray-800 fixed bottom-0 justify-around items-center z-40 md:flex-row md:text-start">
         {footerItems.map((item) => {
           const isActive = activePath === item.href; // Verifica se il link è attivo
 

@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="flex flex-wrap w-full bg-gray-200 p-5 gap-4 border-b border-gray-800 fixed top-0 justify-around items-center z-50 md:flex-row">
+      <nav className="flex flex-wrap w-full bg-gray-200 p-5 gap-4 border-b border-gray-800 fixed top-0 justify-around items-center z-40 md:flex-row">
         {navItems.map((item) => {
           const isActive = activePath === item.href;
 
