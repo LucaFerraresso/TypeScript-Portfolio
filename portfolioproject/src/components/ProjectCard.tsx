@@ -7,6 +7,8 @@ import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "./Button";
 
+import { usePathname } from "next/navigation";
+
 interface Project {
   title: string;
   imageUrl?: string;
@@ -238,6 +240,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </>
         )}
       </div>
+      <Link href={"/Projects"} passHref>
+        <Button
+          text="vedi altro"
+          color="bg-gray-200"
+          hoverColor="hover:bg-gray-200"
+        />
+      </Link>
     </motion.div>
   );
 };
