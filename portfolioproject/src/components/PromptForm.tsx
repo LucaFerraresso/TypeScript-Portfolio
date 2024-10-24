@@ -99,7 +99,7 @@ const PromptForm = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 p-80 flex flex-col justify-center items-center"
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 p-80 flex flex-col justify-center items-center overflow-auto"
           onClick={handleOutsideClick}
         >
           <motion.div
