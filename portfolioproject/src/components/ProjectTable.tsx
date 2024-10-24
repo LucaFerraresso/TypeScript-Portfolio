@@ -24,9 +24,11 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
     [key: number]: string;
   }>({});
   const [modalImage, setModalImage] = useState<string | null>(null); // Stato per la modale dell'immagine
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleGenerateDescription = async (index: number, project: Project) => {
     setIsGenerating((prev) => ({ ...prev, [index]: true }));
+    setIsLoading(true);
     try {
       const res = await fetch("/api/gemini", {
         method: "POST",
@@ -54,6 +56,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
       console.error("Error fetching description:", error);
     } finally {
       setIsGenerating((prev) => ({ ...prev, [index]: false }));
+      setIsLoading(false);
     }
   };
 
@@ -145,7 +148,12 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
       {modalImage && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80">
           <div className="bg-white p-4 rounded-lg z-50">
-            <Button onClick={closeModal} text="chiudi" />
+            <Button
+              onClick={closeModal}
+              text="chiudi"
+              loading={isLoading}
+              disabled={isLoading}
+            />
 
             <img
               src={modalImage}

@@ -92,6 +92,8 @@ const PromptForm = () => {
           color="bg-blue-500"
           hoverColor="hover:bg-blue-600"
           onClick={toggleForm}
+          loading={loading}
+          disabled={loading}
         />
       </div>
 

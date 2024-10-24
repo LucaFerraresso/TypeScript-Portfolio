@@ -7,8 +7,6 @@ import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "./Button";
 
-import { usePathname } from "next/navigation";
-
 interface Project {
   title: string;
   imageUrl?: string;
@@ -16,13 +14,13 @@ interface Project {
   vercelLink?: string;
   technologies?: string[];
   date?: string;
-  description?: string; // Aggiungi la descrizione se non già presente
+  description?: string;
 }
 
 interface ProjectCardProps {
   project: Project;
   animationDelay: number;
-  isFirst: boolean; // Aggiungi una prop per determinare se è il primo progetto
+  isFirst: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -30,10 +28,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   animationDelay,
   isFirst,
 }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [generatedDescription, setGeneratedDescription] = useState<string>("");
-  const [isGenerating, setIsGenerating] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [generatedDescription, setGeneratedDescription] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const {
     title,
@@ -51,18 +49,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         try {
           const res = await fetch("/api/gemini", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              prompt: `Genera una descrizione dettagliata e comprensibile di 30 parole per il progetto ${title}, disponibile al link: ${vercelLink} e repository GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
-                ", "
-              )}.`,
+              prompt: `Genera una descrizione dettagliata di 30 parole per il progetto ${title}.`,
             }),
           });
 
           if (!res.ok) throw new Error("Errore nella richiesta");
-
           const data = await res.json();
           setGeneratedDescription(data.output);
         } catch (error) {
@@ -83,18 +76,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     try {
       const res = await fetch("/api/gemini", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `Crea una descrizione accattivante e dettagliata di 30 parole per il progetto "${title}". Spiega brevemente le sue funzionalità e invita i lettori a esplorarlo su Vercel: ${vercelLink} e su GitHub: ${githubLink}. Tecnologie utilizzate: ${technologies.join(
-            ", "
-          )}. Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`,
+          prompt: `Crea una descrizione accattivante di 30 parole per "${title}".`,
         }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
-
       const data = await res.json();
       setGeneratedDescription(data.output);
     } catch (error) {
@@ -106,7 +94,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-4 max-w-sm w-full"
+      className="flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-4 max-w-sm w-full h-full"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
@@ -134,13 +122,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </Link>
 
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-grow">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          {isLoading ? (
-            <Skeleton width="70%" height="24px" />
-          ) : (
-            title || "Coming Soon!"
-          )}
+          {isLoading ? <Skeleton width="70%" height="24px" /> : title}
         </h2>
         <div className="bg-blue-100 text-blue-800 rounded p-2 mb-2">
           <span className="text-sm italic">
@@ -166,8 +150,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {!isFirst && !generatedDescription && (
           <Button
             text="Genera Descrizione"
-            color="bg-green-600"
-            hoverColor="hover:bg-green-700"
+            color="bg-orange-600"
+            hoverColor="hover:bg-orange-700"
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
@@ -191,11 +175,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 const icon = icons.find(
                   (icon) => icon.title.toLowerCase() === tech.toLowerCase()
                 );
-
                 return (
                   <div
                     key={index}
-                    className={`flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105`}
+                    className="flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105"
                   >
                     {icon ? icon.component : null}
                     <span className="ml-1 text-black">{tech}</span>
@@ -215,6 +198,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {isExpanded ? "...close" : "...view more"}
           </button>
         )}
+      </div>
+      <div className="flex justify-center space-x-4 p-4 w-full">
+        <Link href="/Projects" passHref>
+          <Button
+            text="Vedi altro"
+            color="bg-blue-200"
+            hoverColor="hover:bg-blue-300"
+          />
+        </Link>
       </div>
 
       <div className="flex justify-center space-x-4 p-4">
@@ -240,38 +232,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </>
         )}
       </div>
-      <Link href={"/Projects"} passHref>
-        <Button
-          text="vedi altro"
-          color="bg-gray-200"
-          hoverColor="hover:bg-gray-200"
-        />
-      </Link>
     </motion.div>
   );
 };
-
-interface ActionButtonProps {
-  url: string;
-  label: string;
-  bgColor: string;
-  hoverColor: string;
-}
-
-const ActionButton: React.FC<ActionButtonProps> = ({
-  url,
-  label,
-  bgColor,
-  hoverColor,
-}) => (
-  <a
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`px-4 py-2 ${bgColor} text-white rounded-md shadow-md transition-all duration-300 ease-in-out ${hoverColor} hover:shadow-lg`}
-  >
-    {label}
-  </a>
-);
 
 export default memo(ProjectCard);
