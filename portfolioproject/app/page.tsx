@@ -23,7 +23,6 @@ export default function Home() {
       <Header metadata={metadata} />
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
-          <SectionSeparator />
           <PromptForm />
           <SectionSeparator />
           <HeroSection />

@@ -3,6 +3,7 @@ import Skeleton from "./Skeleton"; // Assicurati di importare il tuo componente 
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation"; // Assicurati di avere i tuoi varianti di animazione
 import Button from "./Button";
+import GenericModal from "./GenericModal";
 
 const fadeVariants = {
   hidden: { opacity: 0 },
@@ -86,127 +87,107 @@ const PromptForm = () => {
 
   return (
     <div className="relative flex flex-col justify-center items-center z-50">
-      <div className="absolute left-4 z-10">
-        <Button
-          text="Assistente Gemini"
-          color="bg-blue-500"
-          hoverColor="hover:bg-blue-600"
-          onClick={toggleForm}
-          loading={loading}
-          disabled={loading}
-        />
+      <div className="fixed  r-2 t-2 ml-[1170px] mt-[20px] z-50">
+        <Button text="Assistente Gemini" onClick={toggleForm} />
       </div>
 
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 p-80 flex flex-col justify-center items-center overflow-auto"
-          onClick={handleOutsideClick}
+      <GenericModal
+        isOpen={isOpen}
+        onClose={toggleForm}
+        title="Assistente Gemini"
+      >
+        <motion.div
+          className="space-y-4 "
+          variants={fadeInVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <motion.div
-            variants={fadeVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="max-w-md mx-auto p-6 border border-gray-900 rounded-lg shadow-lg text-gray-900 bg-gray-300 mt-2 flex flex-col justify-center items-center"
-          >
-            {isLoading ? (
-              <Skeleton width="100%" height="300px" className="mb-4" />
-            ) : (
-              <motion.div
-                className="space-y-4 "
-                variants={fadeInVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <h2 className="text-2xl text-green-500 font-bold text-center mb-4">
-                  Assistente Gemini: chiedi quello che ti serve
-                </h2>
-                <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200">
-                  <label
-                    htmlFor="prompt"
-                    className="block text-sm mb-4 ml-2 mt-2 font-bold"
-                  >
-                    Inserisci Prompt:
-                  </label>
-                  <input
-                    id="prompt"
-                    name="prompt"
-                    type="text"
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 px-3 py-5"
-                    required
-                  />
-                </div>
-                <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200">
-                  <label
-                    htmlFor="maxWords"
-                    className="block text-sm mb-4 ml-2 mt-2 font-bold"
-                  >
-                    Inserisci numero massimo di parole nella risposta:
-                  </label>
-                  <input
-                    id="maxWords"
-                    name="maxWords"
-                    type="number"
-                    value={maxWords}
-                    onChange={(e) => setMaxWords(Number(e.target.value))}
-                    min={1}
-                    className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 p-3"
-                    required
-                  />
-                </div>
-                <div className="flex justify-between items-center">
-                  <Button
-                    text="Risposta"
-                    color="bg-blue-300"
-                    hoverColor="hover:bg-blue-400"
-                    disabled={loading}
-                    loading={loading}
-                    onClick={handleSubmit}
-                  />
-                  <Button
-                    onClick={handleReload}
-                    text="Ricarica"
-                    color="bg-red-500"
-                    hoverColor="hover:bg-red-600"
-                    disabled={loading}
-                    loading={loading}
-                  />
-                </div>
-              </motion.div>
-            )}
+          <h2 className="text-2xl text-green-500 font-bold text-center mb-4">
+            Assistente Gemini: chiedi quello che ti serve
+          </h2>
+          <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200">
+            <label
+              htmlFor="prompt"
+              className="block text-sm mb-4 ml-2 mt-2 font-bold"
+            >
+              Inserisci Prompt:
+            </label>
+            <input
+              id="prompt"
+              name="prompt"
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 px-3 py-5"
+              required
+            />
+          </div>
+          <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200">
+            <label
+              htmlFor="maxWords"
+              className="block text-sm mb-4 ml-2 mt-2 font-bold"
+            >
+              Inserisci numero massimo di parole nella risposta:
+            </label>
+            <input
+              id="maxWords"
+              name="maxWords"
+              type="number"
+              value={maxWords}
+              onChange={(e) => setMaxWords(Number(e.target.value))}
+              min={1}
+              className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 p-3"
+              required
+            />
+          </div>
+          <div className="flex justify-between items-center">
+            <Button
+              text="Risposta"
+              color="bg-blue-300"
+              hoverColor="hover:bg-blue-400"
+              disabled={loading}
+              loading={loading}
+              onClick={handleSubmit}
+            />
+            <Button
+              onClick={handleReload}
+              text="Ricarica"
+              color="bg-red-500"
+              hoverColor="hover:bg-red-600"
+              disabled={loading}
+              loading={loading}
+            />
+          </div>
+        </motion.div>
 
-            {response.length > 0 && (
-              <div className="mt-6 border border-gray-900 text-gray-900 p-4 rounded-md bg-gray-200">
-                <h3 className="text-lg font-medium">Risposta API:</h3>
-                <div className="mt-2 flex flex-wrap">
-                  {response.map((word, index) => (
-                    <motion.span
-                      key={index}
-                      variants={fadeInVariants}
-                      initial="hidden"
-                      animate="visible"
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="mr-1"
-                    >
-                      {word === " " ? <br /> : word}
-                    </motion.span>
-                  ))}
-                </div>
-                <Button
-                  onClick={handleCopy}
-                  text="Copia"
-                  color="bg-blue-500"
-                  hoverColor="hover:bg-blue-600"
-                  disabled={loading}
-                  loading={loading}
-                />
-              </div>
-            )}
-          </motion.div>
-        </div>
-      )}
+        {response.length > 0 && (
+          <div className="mt-6 border border-gray-900 text-gray-900 p-4 rounded-md bg-gray-200">
+            <h3 className="text-lg font-medium">Risposta API:</h3>
+            <div className="mt-2 flex flex-wrap">
+              {response.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={fadeInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="mr-1"
+                >
+                  {word === " " ? <br /> : word}
+                </motion.span>
+              ))}
+            </div>
+            <Button
+              onClick={handleCopy}
+              text="Copia"
+              color="bg-blue-500"
+              hoverColor="hover:bg-blue-600"
+              disabled={loading}
+              loading={loading}
+            />
+          </div>
+        )}
+      </GenericModal>
     </div>
   );
 };
