@@ -6,6 +6,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "./Button";
+import GenericModal from "./GenericModal";
 
 interface Project {
   title: string;
@@ -90,6 +91,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     } finally {
       setIsGenerating(false);
     }
+  };
+  const [modalImage, setModalImage] = useState<string | null>(null); // Stato per la modale dell'immagine
+  const handleImageClick = (imageUrl: string) => {
+    setModalImage(imageUrl);
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
   };
 
   return (
