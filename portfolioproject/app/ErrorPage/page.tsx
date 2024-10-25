@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Metadata } from "next";
 import Header from "@/src/components/Header";
+import Button from "@/src/components/Button";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -52,6 +53,13 @@ const ErrorPage: React.FC = () => {
             <button className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-blue-700 hover:text-white transition-all duration-300 ease-in-out border border-black focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50">
               Go Back Home
             </button>
+            <Button
+              text="Go Back Home"
+              color="bg-blue-600 text-white"
+              hoverColor="hover:bg-blue-700"
+              disabled={false}
+              loading={false}
+            />
           </Link>
         </motion.div>
       </div>

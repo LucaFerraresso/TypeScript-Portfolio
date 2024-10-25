@@ -18,21 +18,24 @@ const GenericModal: React.FC<GenericModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80"
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80 "
       onClick={onClose}
     >
       <div
         className="bg-white p-4 rounded-lg z-50"
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="fixed z-50">
+          <Button
+            onClick={onClose}
+            color="bg-red-400 text-white"
+            hoverColor="hover:bg-red-500"
+            text="X"
+          />
+        </div>
         {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
-        <div>{children}</div>
-        <Button
-          onClick={onClose}
-          color="bg-red-200"
-          hoverColor="hover:bg-red-300"
-          text="chiudi modale"
-        />
+
+        <div className="p-2">{children}</div>
       </div>
     </div>
   );

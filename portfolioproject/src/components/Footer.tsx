@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             <Link href={item.href}>
               <Button
                 text={item.label}
-                color="bg-gray-200"
+                color="bg-gray-200 text-white"
                 hoverColor="hover:bg-gray-200"
               />
             </Link>

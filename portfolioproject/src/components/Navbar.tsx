@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             <Link href={item.href} passHref>
               <Button
                 text={item.labelKey}
-                color="bg-gray-200"
+                color="bg-gray-200 text-white"
                 hoverColor="hover:bg-gray-200"
                 loading={false}
                 disabled={false}
