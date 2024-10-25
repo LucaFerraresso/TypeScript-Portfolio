@@ -6,7 +6,6 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "./Button";
-import GenericModal from "./GenericModal";
 
 interface Project {
   title: string;

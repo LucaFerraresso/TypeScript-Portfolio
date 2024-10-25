@@ -2,18 +2,10 @@
 import { motion } from "framer-motion";
 import React from "react";
 import type { Metadata } from "next";
-
 import Header from "@/src/components/Header";
+import { fadeInVariants } from "@/animation/animation";
 
 const Contacts: React.FC = () => {
-  const fadeInVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 1.5, ease: "easeInOut" },
-    },
-  };
-
   // Definisci i metadata specifici per la pagina
   const metadata: Metadata = {
     title: "Contacts",
