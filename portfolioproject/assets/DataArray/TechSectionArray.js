@@ -51,7 +51,7 @@ const icons = [
   { component: <FaGithub color="black" />, title: "GitHub" },
   {
     component: <FaNode color="green" />,
-    title: "Express.js",
+    title: "Node.js",
   },
   { component: <SiNpm color="red" />, title: "npm" },
   {
