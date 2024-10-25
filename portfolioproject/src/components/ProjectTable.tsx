@@ -143,6 +143,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       hoverColor="bg-green-700"
                       onClick={() => handleGenerateDescription(index, project)}
                       disabled={isGenerating[index]}
+                      loading={isLoading}
                     />
                   </div>
                 </td>

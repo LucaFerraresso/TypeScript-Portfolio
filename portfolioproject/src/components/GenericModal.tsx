@@ -25,7 +25,7 @@ const GenericModal: React.FC<GenericModalProps> = ({
         className="bg-white p-4 rounded-lg z-50 flex flex-col justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="fixed z-50 ">
+        <div className="fixed z-50 mt-[-490px]  ">
           <Button
             onClick={onClose}
             color="bg-red-400 text-white"

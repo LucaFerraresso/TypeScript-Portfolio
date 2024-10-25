@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import Button from "./Button";
 import GenericModal from "./GenericModal";
-import { FaGlassWater } from "react-icons/fa6";
 
 const PromptForm = () => {
   const [messages, setMessages] = useState<
@@ -59,8 +58,8 @@ const PromptForm = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center z-50">
-      <div className="fixed r-2 t-2 ml-[1170px] mt-[-25px] z-50 border-3">
+    <div className="relative flex flex-col justify-center items-center z-39">
+      <div className="sm:fixed sm:r-2 sm:t-2 sm:ml-[1170px] sm:mt-[-25px] z-39 sm:border-3">
         <Button
           text="Assistente Gemini"
           onClick={toggleForm}

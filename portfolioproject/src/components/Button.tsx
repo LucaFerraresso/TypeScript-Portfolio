@@ -30,8 +30,6 @@ const Button: React.FC<ButtonProps> = ({
     if (onClick) {
       onClick(event); // Passa l'evento al callback
     }
-
-    // Simula un caricamento di 2 secondi
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
