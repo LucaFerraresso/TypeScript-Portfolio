@@ -160,7 +160,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Button
             text="Genera Descrizione"
             color="bg-orange-600 text-white"
-            hoverColor="hover:bg-orange-700"
+            hoverColor="bg-orange-700"
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
@@ -212,8 +212,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <Link href="/Projects" passHref>
           <Button
             text="Vedi altro"
-            color="bg-blue-200 text-white"
-            hoverColor="hover:bg-blue-300"
+            color="bg-blue-400 text-white"
+            hoverColor="bg-blue-500"
           />
         </Link>
       </div>
@@ -230,13 +230,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               link={vercelLink}
               text="View on Vercel"
               color="bg-blue-600 text-white"
-              hoverColor="hover:bg-blue-700"
+              hoverColor="bg-blue-700"
             />
             <Button
               link={githubLink}
               text="View on GitHub"
               color="bg-green-600 text-white"
-              hoverColor="hover:bg-green-700"
+              hoverColor="bg-green-700"
             />
           </>
         )}

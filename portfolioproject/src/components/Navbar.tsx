@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   console.log("Active Path:", activePath);
 
   return (
-    <nav className="flex  w-full bg-gray-200 p-5 gap-4 border-b border-gray-800 fixed top-0 justify-around items-center z-40 md:flex-row">
+    <nav className="flex  w-full  p-2 gap-4 border-b bg-inherit  border-gray-800 fixed top-0 justify-around items-center z-40 md:flex-row">
       {navItems.map((item) => {
         const isActive = activePath === item.href;
 
@@ -20,13 +20,7 @@ const Navbar: React.FC = () => {
             className={`relative ${isActive ? "underline" : ""}`}
           >
             <Link href={item.href} passHref>
-              <Button
-                text={item.labelKey}
-                color="bg-gray-200 text-white"
-                hoverColor="hover:bg-gray-200"
-                loading={false}
-                disabled={false}
-              />
+              <Button text={item.labelKey} />
             </Link>
           </div>
         );

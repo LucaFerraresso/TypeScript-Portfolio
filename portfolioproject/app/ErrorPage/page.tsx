@@ -50,9 +50,6 @@ const ErrorPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <Link href="/">
-            <button className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-blue-700 hover:text-white transition-all duration-300 ease-in-out border border-black focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50">
-              Go Back Home
-            </button>
             <Button
               text="Go Back Home"
               color="bg-blue-600 text-white"

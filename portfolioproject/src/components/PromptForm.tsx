@@ -60,12 +60,12 @@ const PromptForm = () => {
 
   return (
     <div className="relative flex flex-col justify-center items-center z-50">
-      <div className="fixed r-2 t-2 ml-[1170px] mt-[20px] z-50 border-3">
+      <div className="fixed r-2 t-2 ml-[1170px] mt-[-25px] z-50 border-3">
         <Button
           text="Assistente Gemini"
           onClick={toggleForm}
           color="bg-green-500 text-white"
-          hoverColor="hover:bg-green-600"
+          hoverColor="bg-green-600"
           disabled={false}
           loading={false}
         />
@@ -79,7 +79,7 @@ const PromptForm = () => {
           <Button
             text="Pulisci"
             color="bg-red-400 text-white"
-            hoverColor="hover:bg-red-500"
+            hoverColor="bg-red-500"
             loading={false}
             disabled={false}
             onClick={ClearAll}
@@ -88,7 +88,7 @@ const PromptForm = () => {
             onClick={() => handleSubmit("prompt")}
             text="Risposta"
             color="bg-green-500 text-white"
-            hoverColor="hover:bg-green-600"
+            hoverColor="bg-green-600"
             disabled={loading || !prompt}
             loading={loading}
           />
@@ -96,7 +96,7 @@ const PromptForm = () => {
             onClick={() => handleSubmit("conversation")}
             text="Invia"
             color="bg-blue-400 text-white"
-            hoverColor="hover:bg-blue-500"
+            hoverColor="bg-blue-500"
             disabled={loading || !conversationInput}
             loading={loading}
           />

@@ -119,13 +119,13 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       <Button
                         text="Vedi su Vercel"
                         color="bg-blue-600 text-white"
-                        hoverColor="hover:bg-blue-700"
+                        hoverColor="bg-blue-700"
                         link={project.vercelLink}
                       />
                       <Button
                         text="Vedi su GitHub"
                         color="bg-green-600 text-white"
-                        hoverColor="hover:bg-green-700"
+                        hoverColor="bg-green-700"
                         link={project.githubLink}
                       />
                     </div>
@@ -140,7 +140,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                           ? "bg-gray-400 text-white"
                           : "bg-green-600 text-white"
                       }
-                      hoverColor="hover:bg-green-700"
+                      hoverColor="bg-green-700"
                       onClick={() => handleGenerateDescription(index, project)}
                       disabled={isGenerating[index]}
                     />

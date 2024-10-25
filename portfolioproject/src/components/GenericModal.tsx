@@ -22,14 +22,14 @@ const GenericModal: React.FC<GenericModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="bg-white p-4 rounded-lg z-50"
+        className="bg-white p-4 rounded-lg z-50 flex flex-col justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="fixed z-50">
+        <div className="fixed z-50 ">
           <Button
             onClick={onClose}
             color="bg-red-400 text-white"
-            hoverColor="hover:bg-red-500"
+            hoverColor="bg-red-500"
             text="X"
           />
         </div>

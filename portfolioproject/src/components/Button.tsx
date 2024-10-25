@@ -14,7 +14,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   text,
-  color = "bg-blue-500",
+  color = "000000",
   hoverColor = "bg-blue-600",
   onClick,
   loading = false,
@@ -37,8 +37,10 @@ const Button: React.FC<ButtonProps> = ({
     }, 2000);
   };
 
-  const buttonClasses = ` rouded-lg flex items-center justify-center py-2 px-4 text-gray-900 font-bold rounded transition-all duration-300 ease-in-out 
+  const buttonClasses = `border border-black rounded-lg rouded-lg flex items-center justify-center py-2 px-4 text-gray-900 font-bold rounded transition-all duration-300 ease-in-out 
     ${color} 
+    hover:${hoverColor}
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500
    
     transform ${isLoading ? "opacity-75" : " "} 
     ${disabled ? "cursor-not-allowed bg-gray-400" : ""}`;
@@ -80,6 +82,14 @@ const Button: React.FC<ButtonProps> = ({
             text
           )}
         </button>
+        <style jsx>{`
+          button {
+            background-color: ${color};
+          }
+          button:hover {
+            background-color: ${hoverColor};
+          }
+        `}</style>
       </a>
     );
   }
@@ -117,7 +127,15 @@ const Button: React.FC<ButtonProps> = ({
         </>
       ) : (
         text
-      )}
+      )}{" "}
+      <style jsx>{`
+        button {
+          background-color: ${color};
+        }
+        button:hover {
+          background-color: ${hoverColor};
+        }
+      `}</style>
     </button>
   );
 };
