@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
-import Button from "./Button";
+import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
-import WordTextEffect from "./WordTextEffect";
+import WordTextEffect from "../library/WordTextEffect";
+import { Gift } from "lucide-react";
 
 const PromptForm = () => {
   const [messages, setMessages] = useState<
@@ -61,7 +62,7 @@ const PromptForm = () => {
 
   return (
     <div className="relative flex flex-col justify-center items-center z-39">
-      <div className="sm:fixed sm:r-2 sm:t-2 sm:ml-[1120px]  z-39 sm:border-3">
+      <div className="sm:sticky sm:r-2 sm:t-2 sm:ml-[1120px]  z-39 sm:border-3">
         <Button
           text="Assistente Gemini"
           onClick={toggleForm}
@@ -69,6 +70,7 @@ const PromptForm = () => {
           hoverColor="var(--color-green-dark)" // Verde più scuro
           disabled={false}
           loading={false}
+          icon={<Gift color={"red"} size={45} />}
         />
       </div>
 

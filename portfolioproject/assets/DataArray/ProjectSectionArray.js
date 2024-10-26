@@ -1,10 +1,23 @@
-import { Home, PhoneCall, Settings, User } from "lucide-react";
+import {
+  // Home icon for the homepage
+  PhoneCall, // Phone icon for contact
+  // Settings icon for configurations
+  User, // User icon for account/profile
+  GitFork, // Git Fork icon for forking projects
+  // Eye icon for "View"
+  XCircle, // Close icon for closing dialogs
+  // Magic Wand icon for "Genera" (generate)
+  // Eye Off icon for "View More"
+  IceCream, // Ice Cream icon for "Icescream"
+  Github, // GitHub icon for GitHub links
+  // Mail icon for "Contatti" (contacts)
+} from "lucide-react";
 
 const projects = [
   {
     title: "C.R.U.D operations App",
     description:
-      "Ho implementato 4 metodi REST API. IL metodo GET mi permette di accedere a delle informazioni presenti in un database. Con il metodo PUT ,aggiungo un nuovo elemento al database. Con il metodo POST , modifico e aggiorno un elemento gia' esistente. Infine con il metofo DELETE , elimino l'elemento dal database.",
+      "Ho implementato 4 metodi REST API. IL metodo GET mi permette di accedere a delle informazioni presenti in un database. Con il metodo PUT ,aggiungo un nuovo elemento al database. Con il metodo POST , modifico e aggiorno un elemento gia' esistente. Infine con il metodo DELETE , elimino l'elemento dal database.",
     imageUrl: "/images/homepage/mongodb-app-preview.png",
     vercelLink: "https://mongodb-crud-operations.vercel.app/",
     githubLink:
@@ -24,7 +37,7 @@ const projects = [
       "VSCode",
     ],
     date: "02/09/2024-07/09/2024",
-    icon: <Home />, // Aggiunta dell'icona
+    icon: <GitFork />, // Icona per il fork del progetto
   },
   {
     title: "ToDo App",
@@ -36,7 +49,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
-    icon: <PhoneCall />, // Aggiunta dell'icona
+    icon: <PhoneCall />, // Icona per contatti
   },
   {
     title: "Ice-cream menu App",
@@ -48,7 +61,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
-    icon: <Settings />, // Aggiunta dell'icona
+    icon: <IceCream />, // Icona per il gelato
   },
   {
     title: "SicilyPulse App",
@@ -73,7 +86,7 @@ const projects = [
       "VSCode",
     ],
     date: "09/09/2024-22/09/2024",
-    icon: <User />, // Aggiunta dell'icona
+    icon: <User />, // Icona per il profilo utente
   },
   {
     title: "myPortfolio in React",
@@ -96,7 +109,7 @@ const projects = [
       "VSCode",
     ],
     date: "05/08/2024-30/08/2024",
-    icon: <Home />, // Aggiunta dell'icona
+    icon: <Github />, // Icona per GitHub
   },
   {
     title: "Prossimamente",
@@ -106,7 +119,7 @@ const projects = [
     githubLink: "coming soon",
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
-    icon: <Settings />, // Aggiunta dell'icona
+    icon: <XCircle />, // Icona per chiudere
   },
 ];
 

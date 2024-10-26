@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+//l'icone e' un componente
 interface ButtonProps {
   text: string;
   color?: string; // Colore di sfondo
@@ -11,8 +11,9 @@ interface ButtonProps {
   disabled?: boolean; // Stato disabilitato
   link?: string; // Link opzionale
   animation?: string; // Classe di animazione personalizzata
+  icon?: React.ReactNode; // Aggiunta dell'icona come prop
 }
-
+//l'icone e' un componente
 const Button: React.FC<ButtonProps> = ({
   text,
   color = "",
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   link,
   animation = "",
+  icon, // Aggiunta dell'icona come prop
 }) => {
   const [isLoading, setIsLoading] = useState(loading);
 
@@ -90,7 +92,10 @@ const Button: React.FC<ButtonProps> = ({
                 <span>Loading...</span>
               </>
             ) : (
-              text
+              <span>{text}</span>
+            )}{" "}
+            {icon && ( // Aggiunta dell'icona solo se presente
+              <span className="mr-2">{icon}</span>
             )}
           </button>
         </a>
@@ -134,7 +139,10 @@ const Button: React.FC<ButtonProps> = ({
               <span>Loading...</span>
             </>
           ) : (
-            text
+            <span>{text}</span>
+          )}{" "}
+          {icon && ( // Aggiunta dell'icona solo se presente
+            <span className="mr-2">{icon}</span>
           )}
         </button>
       )}

@@ -1,13 +1,17 @@
 "use client";
 import React, { Suspense, lazy } from "react";
 import type { Metadata } from "next";
-import Header from "@/src/components/Header";
-import SectionSeparator from "@/src/components/SectionSeparator";
-import PromptForm from "@/src/components/PromptForm";
+import Header from "@/src/components/atoms/Header";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
+import PromptForm from "@/src/components/molecules/PromptForm";
+import { AnimatedTabs } from "@/src/components/library/AnimatedTab";
+import AnimatedCard from "@/src/components/library/AnimatedCard";
 
-const HeroSection = lazy(() => import("@/src/components/HeroSection"));
-const TechSection = lazy(() => import("@/src/components/TechSection"));
-const ProjectSection = lazy(() => import("@/src/components/ProjectSection"));
+const HeroSection = lazy(() => import("@/src/components/sections/HeroSection"));
+const TechSection = lazy(() => import("@/src/components/sections/TechSection"));
+const ProjectSection = lazy(
+  () => import("@/src/components/sections/ProjectSection")
+);
 
 const metadata: Metadata = {
   title: "MyPortfolio",
@@ -23,6 +27,7 @@ export default function Home() {
       <Header metadata={metadata} />
       <div className="p-4">
         <Suspense fallback={<div>Loading...</div>}>
+          <SectionSeparator />
           <PromptForm />
           <SectionSeparator />
           <HeroSection />
@@ -30,6 +35,10 @@ export default function Home() {
           <TechSection />
           <SectionSeparator />
           <ProjectSection />
+          <SectionSeparator />
+          <AnimatedTabs />
+          <SectionSeparator />
+          <AnimatedCard />
           <SectionSeparator />
         </Suspense>
       </div>

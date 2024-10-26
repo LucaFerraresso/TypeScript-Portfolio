@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import ProjectCard from "./ProjectCard";
+
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import projects from "@/assets/DataArray/ProjectSectionArray";
+import ProjectCard from "../molecules/ProjectCard";
 
 const ProjectSection: React.FC = () => {
   return (

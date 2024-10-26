@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Metadata } from "next";
-import Header from "@/src/components/Header";
-import Button from "@/src/components/Button";
+import Header from "@/src/components/atoms/Header";
+import Button from "@/src/components/atoms/Button";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -52,8 +52,8 @@ const ErrorPage: React.FC = () => {
           <Link href="/">
             <Button
               text="Go Back Home"
-              color="bg-blue-600 text-white"
-              hoverColor="hover:bg-blue-700"
+              color="var(--color-orange)"
+              hoverColor="var(--color-hover-orange)"
               disabled={false}
               loading={false}
             />

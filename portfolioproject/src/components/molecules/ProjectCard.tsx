@@ -3,10 +3,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInVariants } from "@/animation/animation";
-import Skeleton from "./Skeleton";
+import Skeleton from "../atoms/Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
-import Button from "./Button";
-import WordTextEffect from "./WordTextEffect";
+import Button from "../atoms/Button";
+import WordTextEffect from "../library/WordTextEffect";
+import Icon from "../atoms/Icons";
+import { Github, Loader, LogIn, Upload } from "lucide-react";
 
 interface Project {
   title: string;
@@ -16,6 +18,7 @@ interface Project {
   technologies?: string[];
   date?: string;
   description?: string;
+  icon?: React.ReactNode;
 }
 
 interface ProjectCardProps {
@@ -41,6 +44,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     vercelLink = "#",
     technologies = [],
     date = "TBD",
+
+    icon = null,
   } = project;
 
   useEffect(() => {
@@ -121,6 +126,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         )}
       </Link>
+      <div className="flex justify-between items-center p-4">
+        {project.icon}
+      </div>
 
       <div className="p-4 flex flex-col flex-grow">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
@@ -155,6 +163,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
+            icon={<Loader color={"red"} size={45} />}
           />
         )}
 
@@ -193,12 +202,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {technologies.length > 4 && (
-          <button
+          <Button
             onClick={() => setIsExpanded((prev) => !prev)}
-            className="text-blue-600 hover:underline text-sm mt-2"
-          >
-            {isExpanded ? "...close" : "...view more"}
-          </button>
+            text={!isExpanded ? "View more" : "View less"}
+            color="#ffffff"
+            hoverColor="#ffffff"
+            icon={<Upload color={"red"} size={45} />}
+          />
         )}
       </div>
       <div className="flex justify-center space-x-4 p-4 w-full">
@@ -207,6 +217,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             text="Vedi altro"
             color="var(--color-blue-light)"
             hoverColor="var(--color-blue-dark)"
+            icon={<LogIn color={"red"} size={45} />}
           />
         </Link>
       </div>
@@ -224,12 +235,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               text="View on Vercel"
               color="var(--color-accent)"
               hoverColor="var(--color-accent-dark)"
+              icon={<Upload color={"red"} size={45} />}
             />
             <Button
               link={githubLink}
               text="View on GitHub"
               color="var(--color-green)"
               hoverColor="var(--color-green-dark)"
+              icon={<Github color={"red"} size={45} />}
             />
           </>
         )}

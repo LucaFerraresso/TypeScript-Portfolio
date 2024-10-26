@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import icons from "@/assets/DataArray/TechSectionArray";
-import TechIcon from "./TechIcon";
+
 import { fadeInVariants } from "@/animation/animation";
+import TechIcon from "../atoms/TechIcon";
 
 const TechSection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);

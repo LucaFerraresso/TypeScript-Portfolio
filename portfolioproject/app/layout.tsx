@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import dynamic from "next/dynamic";
-import Header from "@/src/components/Header";
+import Header from "@/src/components/atoms/Header";
 
-const Navbar = dynamic(() => import("@/src/components/Navbar"));
-const Footer = dynamic(() => import("@/src/components/Footer"));
+const Navbar = dynamic(() => import("@/src/components/sections/Navbar"));
+const Footer = dynamic(() => import("@/src/components/sections/Footer"));
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

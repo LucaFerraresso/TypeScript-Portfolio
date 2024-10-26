@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import Button from "./Button";
-import Skeleton from "./Skeleton";
+import Button from "../atoms/Button";
+import Skeleton from "../atoms/Skeleton";
 import GenericModal from "./GenericModal";
-import WordTextEffect from "./WordTextEffect";
+import WordTextEffect from "../library/WordTextEffect";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Image from "next/image";
+import { Github, Loader, Upload } from "lucide-react";
 
 interface Project {
   title: string;
@@ -157,12 +158,14 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                         color="var(--color-accent)"
                         hoverColor="var(--color-accent-dark)"
                         link={project.vercelLink}
+                        icon={<Upload color={"red"} size={45} />}
                       />
                       <Button
                         text="Vedi su GitHub"
                         color="var(--color-green)"
                         hoverColor="var(--color-green-dark)"
                         link={project.githubLink}
+                        icon={<Github color={"red"} size={45} />}
                       />
                     </div>
                     <Button
@@ -180,6 +183,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       onClick={() => handleGenerateDescription(index, project)}
                       disabled={isGenerating[index]}
                       loading={isLoading}
+                      icon={<Loader color={"red"} size={45} />}
                     />
                   </div>
                 </td>

@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import navItems from "@/assets/DataArray/NavbarArray";
-import Button from "./Button";
+import Button from "../atoms/Button";
 
 const Navbar: React.FC = () => {
   const activePath = usePathname();
@@ -16,10 +16,14 @@ const Navbar: React.FC = () => {
         return (
           <div
             key={item.href}
-            className={`relative ${isActive ? "underline" : ""}`}
+            className={`relative flex items-center ${
+              isActive ? "underline" : ""
+            }`}
           >
-            <Link href={item.href} passHref>
-              <Button text={item.labelKey} />
+            <Link href={item.href} className="flex items-center">
+              {/* Mostra l'icona accanto al testo */}
+
+              <Button text={item.label} icon={item.icon} />
             </Link>
           </div>
         );

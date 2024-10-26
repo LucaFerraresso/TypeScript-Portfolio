@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import type { Metadata } from "next";
-import Header from "@/src/components/Header";
+import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
 
 const TechStack: React.FC = () => {

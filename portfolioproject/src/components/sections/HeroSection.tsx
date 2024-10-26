@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { fadeInVariants } from "@/animation/animation";
-import Skeleton from "./Skeleton";
-import SocialIcon from "./SocialIcon";
-import WordTextEffect from "./WordTextEffect";
+import Skeleton from "../atoms/Skeleton";
+import SocialIcon from "../atoms/SocialIcon";
+import WordTextEffect from "../library/WordTextEffect";
 
 const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
 
