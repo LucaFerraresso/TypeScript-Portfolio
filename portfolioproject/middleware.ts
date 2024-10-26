@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Verifica se il percorso non è presente nella lista delle rotte esistenti o è una pagina di errore
-  if (pathname.startsWith("/coming%20soon")) {
+  if (pathname.startsWith("/ErrorPage")) {
     // Reindirizza sempre alla tua pagina di errore personalizzata
     return NextResponse.rewrite(new URL("/ErrorPage", request.url));
   }

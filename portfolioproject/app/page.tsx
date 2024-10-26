@@ -1,17 +1,19 @@
 "use client";
 import React, { Suspense, lazy } from "react";
 import type { Metadata } from "next";
-import Header from "@/src/components/atoms/Header";
-import SectionSeparator from "@/src/components/atoms/SectionSeparator";
-import PromptForm from "@/src/components/molecules/PromptForm";
-import { AnimatedTabs } from "@/src/components/library/AnimatedTab";
-import AnimatedCard from "@/src/components/library/AnimatedCard";
 
 const HeroSection = lazy(() => import("@/src/components/sections/HeroSection"));
-const TechSection = lazy(() => import("@/src/components/sections/TechSection"));
-const ProjectSection = lazy(
-  () => import("@/src/components/sections/ProjectSection")
+const PromptForm = lazy(() => import("@/src/components/molecules/PromptForm"));
+const InfiniteTechSection = lazy(
+  () => import("@/src/components/sections/InfiniteTechSection")
 );
+const AnimatedCard = lazy(
+  () => import("@/src/components/library/AnimatedCard")
+);
+const SectionSeparator = lazy(
+  () => import("@/src/components/atoms/SectionSeparator")
+);
+const Header = lazy(() => import("@/src/components/atoms/Header"));
 
 const metadata: Metadata = {
   title: "MyPortfolio",
@@ -32,11 +34,7 @@ export default function Home() {
           <SectionSeparator />
           <HeroSection />
           <SectionSeparator />
-          <TechSection />
-          <SectionSeparator />
-          <ProjectSection />
-          <SectionSeparator />
-          <AnimatedTabs />
+          <InfiniteTechSection />
           <SectionSeparator />
           <AnimatedCard />
           <SectionSeparator />

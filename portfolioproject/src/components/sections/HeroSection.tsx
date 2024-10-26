@@ -1,9 +1,6 @@
 "use client";
 import React, { useState, useEffect, memo } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "../atoms/Skeleton";
 import SocialIcon from "../atoms/SocialIcon";
 import WordTextEffect from "../library/WordTextEffect";
@@ -55,76 +52,61 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-        {/* Sezione Immagine */}
-        <motion.div
-          variants={fadeInVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex justify-center items-center"
-        >
-          {isLoading ? (
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center -mt-40 -mb-40 p-40">
+        {isLoading ? (
+          <>
             <Skeleton width="250px" height="250px" />
-          ) : (
-            <Image
-              src={imageUrl}
-              alt="Luca Ferraresso"
-              height={250}
-              width={250}
-              className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
-              loading="lazy"
-              priority={false} // Cambia a true se l'immagine è importante
-            />
-          )}
-        </motion.div>
+          </>
+        ) : (
+          <Image
+            src={imageUrl}
+            alt="Luca Ferraresso"
+            height={250}
+            width={250}
+            className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+            loading="lazy"
+            priority={false} // Cambia a true se l'immagine è importante
+          />
+        )}
 
         {/* Contenuto Testuale */}
         <div className="flex flex-col justify-center items-center text-center md:text-left">
           {isLoading ? (
-            <Skeleton width="100%" height="30px" className="mb-4" />
-          ) : (
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">
-              {/* Descrizione dinamica */}
-              <WordTextEffect text="Luca Ferraresso" />
-            </h2>
-          )}
+            <>
+              <Skeleton width="100%" height="30px" className="mb-4" />
+              <Skeleton width="100%" height="30px" className="mb-4" />
+              <Skeleton width="100%" height="60px" className="mb-6" />
 
-          {isLoading ? (
-            <Skeleton width="100%" height="30px" className="mb-4" />
+              <Skeleton width="30%" height="30px" className="mb-6" />
+              <Skeleton width="30%" height="30px" className="mb-6" />
+            </>
           ) : (
-            <h1 className="text-4xl font-extrabold text-blue-600 mb-4">
-              {/* Descrizione dinamica */}
-              <WordTextEffect text=" Web Developer" />
-            </h1>
-          )}
-          {isLoading ? (
-            <Skeleton width="100%" height="60px" className="mb-6" />
-          ) : (
-            <p className="text-base text-gray-600 mb-6">
-              {/* Descrizione dinamica */}
-              <WordTextEffect text={description} />
-            </p>
-          )}
-
-          {/* Icone per LinkedIn e GitHub */}
-          {!isLoading && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="flex space-x-4"
-            >
-              <SocialIcon
-                href="https://www.linkedin.com/in/luca-ferraresso/"
-                label="LinkedIn"
-                icon={<Linkedin size={30} color="blue" />}
-              />
-              <SocialIcon
-                href="https://github.com/LucaFerraresso/"
-                label="GitHub"
-                icon={<Github size={30} color="gray" />}
-              />
-            </motion.div>
+            <>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                {/* Descrizione dinamica */}
+                <WordTextEffect text="Luca Ferraresso" />
+              </h2>
+              <h1 className="text-4xl font-extrabold text-blue-600 mb-4">
+                {/* Descrizione dinamica */}
+                <WordTextEffect text=" Web Developer" />
+              </h1>
+              <p className="text-base text-gray-600 mb-6">
+                {/* Descrizione dinamica */}
+                <WordTextEffect text={description} />
+              </p>
+              <div className="flex flex-row justify-center items-center p-4">
+                <SocialIcon
+                  href="https://www.linkedin.com/in/luca-ferraresso/"
+                  label="LinkedIn"
+                  icon={<Linkedin size={30} color="blue" />}
+                />
+                <SocialIcon
+                  href="https://github.com/LucaFerraresso/"
+                  label="GitHub"
+                  icon={<Github size={30} color="gray" />}
+                />
+              </div>
+            </>
           )}
         </div>
       </div>

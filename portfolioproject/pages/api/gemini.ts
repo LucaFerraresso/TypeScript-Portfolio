@@ -27,13 +27,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const genAI = new GoogleGenerativeAI(apiKey);
     //modello
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    //request option
-    const requestOptions = {
-      temperature: 0.9,
-      topK: 1,
-      topP: 1,
-      maxOutputTokens: 2048,
-    };
+
     //generationConfig
     const generationConfig = {
       temperature: 0.9,
@@ -41,76 +35,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       topP: 1,
       maxOutputTokens: 2048,
     };
-    //safetySettings
-    const safetySettings = [
-      {
-        category: "HARM_CATEGORY_HARASSMENT",
-        threshold: "BLOCK_NONE",
-      },
-      {
-        category: "HARM_CATEGORY_HATE_SPEECH",
-        threshold: "BLOCK_NONE",
-      },
-      {
-        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        threshold: "BLOCK_NONE",
-      },
-      {
-        category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-        threshold: "BLOCK_NONE",
-      },
-    ];
+
     //configurazione attiva
     model.generationConfig = generationConfig;
-    //tools
-    const tools = [
-      {
-        functionDeclarations: [
-          {
-            name: "get_current_weather",
-            description: "Get the current weather",
-            parameters: {
-              type: "object",
-              properties: {
-                location: {
-                  type: "string",
-                  description: "The city and state, e.g. San Francisco, CA",
-                },
-                unit: { type: "string", enum: ["celsius", "fahrenheit"] },
-              },
-              required: ["location"],
-            },
-          },
-        ],
-      },
-    ];
-    //toolConfig
-    const toolConfig = {
-      functionCallingConfig: {
-        mode: "ANY",
-        allowedFunctionNames: ["get_current_weather"],
-      },
-    };
-    //system instruction
-    const systemInstruction = {
-      role: "system",
-      parts: [
-        {
-          text: "You are a helpful assistant. You will be given a task. You will respond with the appropriate response.",
-        },
-      ],
-    };
-    //user instruction
-    const userInstruction = {
-      role: "user",
-      parts: [{ text: prompt }],
-    };
-
-    //Cached content
-    const cachedContent = {
-      role: "model",
-      parts: [{ text: "Cached content" }],
-    };
     // Richiedi la generazione del contenuto
     const result = await model.generateContent(prompt);
     if (!result) {

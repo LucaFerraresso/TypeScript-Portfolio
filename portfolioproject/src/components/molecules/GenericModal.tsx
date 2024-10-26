@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../atoms/Button";
-import { X, XCircle } from "lucide-react";
+import { XCircle } from "lucide-react";
 
 interface GenericModalProps {
   isOpen: boolean;

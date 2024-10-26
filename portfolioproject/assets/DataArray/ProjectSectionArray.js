@@ -37,7 +37,7 @@ const projects = [
       "VSCode",
     ],
     date: "02/09/2024-07/09/2024",
-    icon: <GitFork />, // Icona per il fork del progetto
+    icon: <GitFork color="red" />, // Icona per il fork del progetto
   },
   {
     title: "ToDo App",
@@ -49,7 +49,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
-    icon: <PhoneCall />, // Icona per contatti
+    icon: <PhoneCall color="red" />, // Icona per contatti
   },
   {
     title: "Ice-cream menu App",
@@ -61,7 +61,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
-    icon: <IceCream />, // Icona per il gelato
+    icon: <IceCream color="red" />, // Icona per il gelato
   },
   {
     title: "SicilyPulse App",
@@ -86,7 +86,7 @@ const projects = [
       "VSCode",
     ],
     date: "09/09/2024-22/09/2024",
-    icon: <User />, // Icona per il profilo utente
+    icon: <User color="red" />, // Icona per il profilo utente
   },
   {
     title: "myPortfolio in React",
@@ -109,7 +109,7 @@ const projects = [
       "VSCode",
     ],
     date: "05/08/2024-30/08/2024",
-    icon: <Github />, // Icona per GitHub
+    icon: <Github color="red" />, // Icona per GitHub
   },
   {
     title: "Prossimamente",
@@ -119,7 +119,7 @@ const projects = [
     githubLink: "coming soon",
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
-    icon: <XCircle />, // Icona per chiudere
+    icon: <XCircle color="red" />, // Icona per chiudere
   },
 ];
 

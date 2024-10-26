@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import Button from "@/src/components/atoms/Button";
+import { HomeIcon } from "lucide-react";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -18,7 +19,7 @@ const ErrorPage: React.FC = () => {
   return (
     <>
       <Header metadata={metadata} />
-      <div className="flex flex-col justify-center items-center text-center">
+      <div className="flex flex-col justify-center items-center text-center p-20">
         <motion.h1
           className="text-8xl font-extrabold text-red-600 mb-6"
           initial={{ scale: 0.5, opacity: 0 }}
@@ -51,11 +52,12 @@ const ErrorPage: React.FC = () => {
         >
           <Link href="/">
             <Button
-              text="Go Back Home"
+              text=""
               color="var(--color-orange)"
               hoverColor="var(--color-hover-orange)"
               disabled={false}
               loading={false}
+              icon={<HomeIcon color={"red"} size={30} />}
             />
           </Link>
         </motion.div>

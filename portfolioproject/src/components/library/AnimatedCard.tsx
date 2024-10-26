@@ -17,47 +17,53 @@ const AnimatedCard = () => {
       >
         {projects.map((item, index) => (
           <div key={index} data-id={`card-${index}`}>
-            <div className="flex select-none flex-col space-y-1 p-4">
-              <h3 className="text-base font-medium text-zinc-800 dark:text-zinc-50">
-                {item.title}
-              </h3>
+            <div className="flex select-none flex-col space-y-1 p-4 items-center justify-between">
+              <div className="text-base font-medium text-zinc-800 dark:text-zinc-50">
+                <div className="flex flex-row justify-center items-center gap-4">
+                  {item.title}
+                  {item.icon}
+                </div>
+              </div>
+
               <Image
                 src={item.imageUrl}
                 alt={`${item.title} Project Image`}
                 width={400}
                 height={400}
                 loading="lazy"
-                priority={false} // Cambia a true se l'immagine è importante
+                priority={false}
               />
+
+              <div className="text-base text-zinc-500">
+                <div className=" dark:text-zinc-300">
+                  Project period: {item.date}
+                </div>
+              </div>
+              <div className="text-sm text-zinc-500">
+                <div className=" dark:text-zinc-300">
+                  TechStack: {item.technologies.join(", ")}
+                </div>
+              </div>
+
+              <Link href="/Projects" className="text-sm text-blue-500  ">
+                <div className="dark:text-blue-300">View More</div>
+              </Link>
 
               <Link
                 href={item.vercelLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-sm text-green-500  "
               >
-                <p className="text-sm text-red-500 dark:text-zinc-400">
-                  View Live on Vercel
-                </p>
+                <div className="dark:text-green-300">View Live on Vercel</div>
               </Link>
               <Link
                 href={item.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-sm text-blue-500  "
               >
-                <p className="text-sm text-blue-500 dark:text-zinc-400">
-                  View on GitHub
-                </p>
-              </Link>
-              <p className="text-base text-zinc-600 dark:text-zinc-400">
-                Project period: {item.date}
-              </p>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                TechStack: {item.technologies.join(", ")}
-              </p>
-              <Link href="/Projects">
-                <p className="text-sm text-blue-500 dark:text-zinc-400">
-                  View More
-                </p>
+                <div className="dark:text-blue-300">View on GitHub</div>
               </Link>
             </div>
           </div>

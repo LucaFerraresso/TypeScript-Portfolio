@@ -1,11 +1,15 @@
 import { useState } from "react";
-
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
 import WordTextEffect from "../library/WordTextEffect";
-import { ChevronDown, ChevronUp, Gift, Trash2 } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  MessageCircleMoreIcon,
+  Trash2,
+} from "lucide-react";
 
 const PromptForm = () => {
   const [messages, setMessages] = useState<
@@ -61,18 +65,16 @@ const PromptForm = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center z-39">
-      <div className="sm:sticky sm:r-2 sm:t-2 sm:ml-[1120px]  z-39 sm:border-3">
-        <Button
-          text="Assistente Gemini"
-          onClick={toggleForm}
-          color="var(--color-green)" // Colore verde
-          hoverColor="var(--color-green-dark)" // Verde più scuro
-          disabled={false}
-          loading={false}
-          icon={<Gift color={"black"} size={45} />}
-        />
-      </div>
+    <div className=" flex flex-col justify-center items-center z-39">
+      <Button
+        text="Gemini AI"
+        onClick={toggleForm}
+        color="var(--color-green)" // Colore verde
+        hoverColor="var(--color-green-dark)" // Verde più scuro
+        disabled={false}
+        loading={false}
+        icon={<MessageCircleMoreIcon color={"black"} size={25} />}
+      />
 
       <GenericModal isOpen={isOpen} onClose={toggleForm}>
         <h2 className="text-2xl text-green-500 font-bold text-center mb-4">

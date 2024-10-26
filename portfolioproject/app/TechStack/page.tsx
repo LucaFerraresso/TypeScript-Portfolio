@@ -4,6 +4,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
+import InfiniteTechSection from "@/src/components/sections/InfiniteTechSection";
 
 const TechStack: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -19,12 +20,13 @@ const TechStack: React.FC = () => {
     <>
       <Header metadata={metadata} />
       <motion.div
-        className="flex flex-col justify-center items-center"
+        className="flex flex-col justify-center items-center p-40"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
       >
         <h1 className="text-3xl font-bold">TechStack</h1>
+        <InfiniteTechSection />
       </motion.div>
     </>
   );

@@ -7,7 +7,6 @@ import Skeleton from "../atoms/Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "../atoms/Button";
 import WordTextEffect from "../library/WordTextEffect";
-import Icon from "../atoms/Icons";
 import { Github, Loader, LogIn, Upload } from "lucide-react";
 
 interface Project {
@@ -44,8 +43,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     vercelLink = "#",
     technologies = [],
     date = "TBD",
-
-    icon = null,
+    description = "TBD",
+    icon = <LogIn size={20} color="red" />,
   } = project;
 
   useEffect(() => {
@@ -126,6 +125,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         )}
       </Link>
+      <div className="flex justify-between items-center p-4">{icon}</div>
+      <p>{description}</p>
+      <p>{project.description}</p>
       <div className="flex justify-between items-center p-4">
         {project.icon}
       </div>

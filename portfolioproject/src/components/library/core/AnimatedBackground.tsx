@@ -63,7 +63,7 @@ export default function AnimatedBackground({
         "data-id": string;
         children: ReactNode;
         className?: string;
-        [key: string]: unknown; // Permette qualsiasi altra proprietà
+        [key: string]: unknown;
       }>,
       index
     ) => {
@@ -81,7 +81,7 @@ export default function AnimatedBackground({
       return cloneElement(
         child,
         {
-          key: index,
+          key: id || index, // Utilizza l'id se presente, altrimenti usa l'indice
           className: cn("relative inline-flex", child.props.className),
           "aria-selected": activeId === id,
           "data-checked": activeId === id ? "true" : "false",
@@ -95,12 +95,8 @@ export default function AnimatedBackground({
                 className={cn("absolute inset-0", className)}
                 transition={transition}
                 initial={{ opacity: defaultValue ? 1 : 0 }}
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               />
             )}
           </AnimatePresence>

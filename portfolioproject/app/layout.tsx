@@ -28,23 +28,25 @@ const baseMetadata: Metadata = {
   },
 };
 
+// Funzione per generare i metadata
+export const generateMetadata = (): Metadata => {
+  return baseMetadata;
+};
+
 export default function RootLayout({
   children,
-  metadata, // accetta i metadata come props
 }: {
   children: React.ReactNode;
-  metadata?: Metadata; // Permetti metadata personalizzati per ogni pagina
 }) {
-  const combinedMetadata = { ...baseMetadata, ...metadata }; // Combina i metadata
-
   return (
     <>
       <html lang="en">
-        <Header metadata={combinedMetadata} />
+        <Header metadata={generateMetadata()} />
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         >
           <Navbar />
+
           <main className="flex-grow mt-20 mb-20 px-4">{children}</main>
           <Footer />
         </body>

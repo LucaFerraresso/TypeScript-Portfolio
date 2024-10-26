@@ -36,11 +36,11 @@ const Button: React.FC<ButtonProps> = ({
     }
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 500);
   };
 
   const buttonStyles = {
-    backgroundColor: disabled ? "var(--color-gray-light)" : color,
+    backgroundColor: disabled ? "var(--color-gray-dark)" : color,
     cursor: disabled ? "not-allowed" : "pointer",
     transition:
       "background-color var(--transition-duration) var(--transition-ease)",
@@ -54,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={handleClick}
             disabled={disabled || isLoading}
             style={buttonStyles}
-            className={`border border-black rounded-lg flex items-center justify-center py-2 px-4 text-gray-900 font-bold 
+            className={`min-w-[140px] border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
               transition-transform duration-300 ease-in-out ${animation}
               focus:outline-none focus:ring focus:ring-opacity-50`}
             onMouseEnter={(e) => {
@@ -89,7 +89,7 @@ const Button: React.FC<ButtonProps> = ({
                     d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                   />
                 </svg>
-                <span>Loading...</span>
+                <span>...</span>
               </>
             ) : (
               <span>{text}</span>
@@ -104,7 +104,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={handleClick}
           disabled={disabled || isLoading}
           style={buttonStyles}
-          className={`border border-black rounded-lg flex items-center justify-center py-2 px-4 text-gray-900 font-bold 
+          className={`min-w-[140px] border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
             transition-transform duration-300 ease-in-out ${animation}
             focus:outline-none focus:ring focus:ring-opacity-50`}
           onMouseEnter={(e) => {
@@ -136,13 +136,15 @@ const Button: React.FC<ButtonProps> = ({
                   d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                 />
               </svg>
-              <span>Loading...</span>
+              <span>...</span>
             </>
           ) : (
             <span>{text}</span>
           )}{" "}
-          {icon && ( // Aggiunta dell'icona solo se presente
-            <span className="mr-2">{icon}</span>
+          {icon && (
+            <>
+              <span>{icon}</span>
+            </>
           )}
         </button>
       )}

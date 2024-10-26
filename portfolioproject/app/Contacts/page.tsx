@@ -19,7 +19,7 @@ const Contacts: React.FC = () => {
     <>
       <Header metadata={metadata} />
       <motion.div
-        className="flex flex-col justify-center items-center"
+        className="flex flex-col justify-center items-center p-40"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
