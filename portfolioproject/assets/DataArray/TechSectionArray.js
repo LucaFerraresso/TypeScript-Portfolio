@@ -6,27 +6,9 @@ import {
   BiLogoTypescript,
 } from "react-icons/bi";
 import { DiHtml5, DiSass } from "react-icons/di";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJsSquare,
-  FaSass,
-  FaGithub,
-  FaNode,
-} from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa6";
 import { LiaCss3Alt, LiaJsSquare, LiaNpm } from "react-icons/lia";
-import {
-  SiNextdotjs,
-  SiMongodb,
-  SiFirebase,
-  SiTailwindcss,
-  SiTypescript,
-  SiNpm,
-  SiVisualstudiocode,
-  SiPostman,
-  SiAsus,
-} from "react-icons/si";
+import { SiNextdotjs, SiVisualstudiocode, SiPostman } from "react-icons/si";
 
 const icons = [
   {
