@@ -38,6 +38,7 @@ const projects = [
     ],
     date: "02/09/2024-07/09/2024",
     icon: <GitFork color="red" />, // Icona per il fork del progetto
+    id: 1, // ID univoco per il progetto
   },
   {
     title: "ToDo App",
@@ -50,6 +51,7 @@ const projects = [
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
     icon: <PhoneCall color="red" />, // Icona per contatti
+    id: 2, // ID univoco per il progetto
   },
   {
     title: "Ice-cream menu App",
@@ -62,6 +64,7 @@ const projects = [
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
     icon: <IceCream color="red" />, // Icona per il gelato
+    id: 3, // ID univoco per il progetto
   },
   {
     title: "SicilyPulse App",
@@ -87,6 +90,7 @@ const projects = [
     ],
     date: "09/09/2024-22/09/2024",
     icon: <User color="red" />, // Icona per il profilo utente
+    id: 4, // ID univoco per il progetto
   },
   {
     title: "myPortfolio in React",
@@ -110,6 +114,7 @@ const projects = [
     ],
     date: "05/08/2024-30/08/2024",
     icon: <Github color="red" />, // Icona per GitHub
+    id: 5, // ID univoco per il progetto
   },
   {
     title: "Prossimamente",
@@ -120,6 +125,7 @@ const projects = [
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
     icon: <XCircle color="red" />, // Icona per chiudere
+    id: 6, // ID univoco per il progetto
   },
 ];
 

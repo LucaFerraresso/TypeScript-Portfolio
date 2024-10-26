@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center -mt-40 -mb-40 p-40">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 items-center -mt-40 -mb-40 p-40">
         {isLoading ? (
           <>
             <Skeleton width="250px" height="250px" />
@@ -61,8 +61,8 @@ const HeroSection: React.FC = () => {
           <Image
             src={imageUrl}
             alt="Luca Ferraresso"
-            height={250}
-            width={250}
+            width={200}
+            height={200}
             className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
             loading="lazy"
             priority={false} // Cambia a true se l'immagine è importante

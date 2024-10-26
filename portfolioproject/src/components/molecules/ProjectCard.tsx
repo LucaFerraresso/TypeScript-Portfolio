@@ -98,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-4 max-w-sm w-full h-full"
+      className="relative flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-4 max-w-sm w-full h-full"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
@@ -118,8 +118,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             src={imageUrl}
             alt={`${title} Project Image`}
             className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
-            width={400}
-            height={400}
+            width={200}
+            height={200}
             loading="lazy"
             priority={false} // Cambia a true se l'immagine è importante
           />

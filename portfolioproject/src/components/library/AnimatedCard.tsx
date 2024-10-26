@@ -28,8 +28,8 @@ const AnimatedCard = () => {
               <Image
                 src={item.imageUrl}
                 alt={`${item.title} Project Image`}
-                width={400}
-                height={400}
+                width={200}
+                height={200}
                 loading="lazy"
                 priority={false}
               />

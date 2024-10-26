@@ -6,7 +6,8 @@ import GenericModal from "./GenericModal";
 import WordTextEffect from "../library/WordTextEffect";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Image from "next/image";
-import { Github, Loader, Upload } from "lucide-react";
+import { EyeIcon, Github, Loader, Upload } from "lucide-react";
+import Link from "next/link";
 
 interface Project {
   title: string;
@@ -16,6 +17,7 @@ interface Project {
   technologies?: string[];
   date?: string;
   description?: string;
+  id?: number | any;
 }
 
 interface ProjectTableProps {
@@ -100,19 +102,15 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                     )
                   }
                 >
-                  <div className="flex justify-center">
+                  <div className="relative flex justify-center">
                     <Image
                       src={
                         project.imageUrl || "/images/homepage/coming-soon.jpg"
                       }
                       alt={project.title}
-                      height={250}
-                      width={250}
-                      className="rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+                      width={200}
+                      height={200}
                       loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                      placeholder="blur"
-                      blurDataURL="data:image/svg+xml;base64,...your_placeholder_data..."
                       priority={false}
                     />
                   </div>
@@ -167,6 +165,15 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                         link={project.githubLink}
                         icon={<Github color={"red"} size={15} />}
                       />
+                      <Link href={`Projects/${project.id}`}>
+                        {" "}
+                        <Button
+                          text="Vedi pagina dettaglio"
+                          color="var(--color-accent)"
+                          hoverColor="var(--color-accent-dark)"
+                          icon={<EyeIcon color={"red"} size={15} />}
+                        />
+                      </Link>
                     </div>
                     <Button
                       text={
