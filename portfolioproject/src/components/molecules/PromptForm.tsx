@@ -65,7 +65,7 @@ const PromptForm = () => {
   };
 
   return (
-    <div className=" flex flex-col justify-center items-center z-39">
+    <div className=" flex flex-col justify-center items-center z-41">
       <Button
         text="Gemini AI"
         onClick={toggleForm}

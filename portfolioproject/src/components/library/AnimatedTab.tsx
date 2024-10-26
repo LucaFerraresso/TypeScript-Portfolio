@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AnimatedBackground from "./core/AnimatedBackground";
 import projects from "@/assets/DataArray/ProjectSectionArray";
+import Image from "next/image";
 
 export function AnimatedTabs() {
   return (
@@ -25,6 +26,13 @@ export function AnimatedTabs() {
               >
                 {tab.icon}
               </button>
+              <Image
+                src={tab.imageUrl} // URL dell'immagine
+                alt={tab.title} // Testo alternativo
+                width={500} // Larghezza desiderata
+                height={300} // Altezza desiderata
+                className="object-contain" // Classe per gestire l'aspetto dell'immagine
+              />
               <div className="h-9 w-px bg-zinc-200" />
               <Link
                 href={tab.githubLink}

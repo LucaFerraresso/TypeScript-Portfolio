@@ -115,13 +115,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Skeleton width="100%" height="100%" />
         ) : (
           <Image
-            src={imageUrl}
-            alt={`${title} Project Image`}
-            className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
-            width={200}
-            height={200}
-            loading="lazy"
-            priority={false} // Cambia a true se l'immagine è importante
+            src={imageUrl} // URL dell'immagine
+            alt={`${title} Project Image`} // Testo alternativo
+            width={500} // Larghezza desiderata
+            height={300} // Altezza desiderata
+            className="object-contain cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg" // Classe per gestire l'aspetto dell'immagine
           />
         )}
       </Link>

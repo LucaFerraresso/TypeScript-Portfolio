@@ -43,7 +43,7 @@ export default function RootLayout({
       <html lang="en">
         <Header metadata={generateMetadata()} />
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-mono`}
         >
           <Navbar />
 

@@ -205,12 +205,11 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
         >
           {modalImage && (
             <Image
-              src={modalImage}
-              alt="Project Image"
-              width={600}
-              height={600}
-              loading="lazy"
-              priority={false}
+              src={modalImage} // URL dell'immagine
+              alt="Project Image" // Testo alternativo
+              width={500} // Larghezza desiderata
+              height={300} // Altezza desiderata
+              className="object-contain cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg" // Classe per gestire l'aspetto dell'immagine
             />
           )}
         </GenericModal>

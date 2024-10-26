@@ -59,13 +59,11 @@ const HeroSection: React.FC = () => {
           </>
         ) : (
           <Image
-            src={imageUrl}
-            alt="Luca Ferraresso"
-            width={200}
-            height={200}
-            className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
-            loading="lazy"
-            priority={false} // Cambia a true se l'immagine è importante
+            src={imageUrl} // URL dell'immagine
+            alt="Luca Ferraresso" // Testo alternativo
+            width={150} // Larghezza desiderata
+            height={150} // Altezza desiderata
+            className=" cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg" // Classe per gestire l'aspetto dell'immagine
           />
         )}
 
