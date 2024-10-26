@@ -1,7 +1,11 @@
+"use client";
 import React, { useState } from "react";
-import Button from "./Button"; // Assicurati di importare il tuo componente Button
-import Skeleton from "./Skeleton"; // Assicurati di importare il tuo componente Skeleton
+import Button from "./Button";
+import Skeleton from "./Skeleton";
 import GenericModal from "./GenericModal";
+import WordTextEffect from "./WordTextEffect";
+import icons from "@/assets/DataArray/TechSectionArray";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -24,7 +28,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
   const [generatedDescriptions, setGeneratedDescriptions] = useState<{
     [key: number]: string;
   }>({});
-  const [modalImage, setModalImage] = useState<string | null>(null); // Stato per la modale dell'immagine
+  const [modalImage, setModalImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGenerateDescription = async (index: number, project: Project) => {
@@ -33,11 +37,9 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
     try {
       const res = await fetch("/api/gemini", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `Crea una descrizione accattivante e dettagliata di 30 parole per il progetto "${
+          prompt: ` Crea una descrizione accattivante e dettagliata di 30 parole per il progetto "${
             project.title
           }". Spiega brevemente le sue funzionalità e invita i lettori a esplorarlo su Vercel: ${
             project.vercelLink
@@ -45,7 +47,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
             project.githubLink
           }. Tecnologie utilizzate: ${project.technologies?.join(
             ", "
-          )}. Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`,
+          )}. Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!,`,
         }),
       });
 
@@ -68,64 +70,98 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
   const closeModal = () => {
     setModalImage(null);
   };
+  //devo mettere una query che se lo schermo e' modile, devo mostrare tutto in colonna
 
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300">
+        <table className="min-w-full bg-white border border-gray-300 mx-auto text-center">
           <thead>
             <tr className="bg-gray-100">
-              <th className="py-3 px-4 border-b">Immagine</th>
-              <th className="py-3 px-4 border-b">Titolo</th>
-              <th className="py-3 px-4 border-b">Data</th>
-              <th className="py-3 px-4 border-b">Tecnologie</th>
-              <th className="py-3 px-4 border-b">Descrizione</th>
-              <th className="py-3 px-4 border-b">Azione</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Immagine</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Titolo</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Data</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Tecnologie</th>
+              <th className="py-3 px-2 sm:px-4 border-b max-w-[300px]">
+                Descrizione
+              </th>
+              <th className="py-3 px-2 sm:px-4 border-b">Azione</th>
             </tr>
           </thead>
           <tbody>
             {projects.map((project, index) => (
               <tr key={index} className="hover:bg-gray-50">
                 <td
-                  className="py-3 px-4 border-b cursor-pointer"
+                  className="py-3 px-2 sm:px-4 border-b cursor-pointer"
                   onClick={() =>
                     handleImageClick(
                       project.imageUrl || "/images/homepage/coming-soon.jpg"
                     )
                   }
                 >
-                  <img
-                    src={project.imageUrl || "/images/homepage/coming-soon.jpg"}
-                    alt={project.title}
-                    className="h-16 w-16 object-cover rounded"
-                  />
+                  <div className="flex justify-center">
+                    <Image
+                      src={
+                        project.imageUrl || "/images/homepage/coming-soon.jpg"
+                      }
+                      alt={project.title}
+                      height={250}
+                      width={250}
+                      className="rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,...your_placeholder_data..."
+                      priority={false}
+                    />
+                  </div>
                 </td>
-                <td className="py-3 px-4 border-b">{project.title}</td>
-                <td className="py-3 px-4 border-b">{project.date || "TBD"}</td>
-                <td className="py-3 px-4 border-b">
-                  {project.technologies?.join(", ") || "N/A"}
+                <td className="py-3 px-2 sm:px-4 border-b">{project.title}</td>
+                <td className="py-3 px-2 sm:px-4 border-b">
+                  {project.date || "TBD"}
                 </td>
-                <td className="py-3 px-4 border-b">
+                <td className="py-3 px-2 sm:px-4 border-b">
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies?.map((tech) => {
+                      const techIcon = icons.find(
+                        (icon) => icon.title === tech
+                      );
+                      return (
+                        techIcon && (
+                          <div key={tech} className="flex items-center">
+                            {techIcon.component}
+                            <span className="ml-1">{tech}</span>
+                          </div>
+                        )
+                      );
+                    })}
+                  </div>
+                </td>
+                <td className="py-3 px-2 sm:px-4 border-b max-w-[300px]">
                   {isGenerating[index] ? (
                     <Skeleton width="100%" height="16px" />
                   ) : (
-                    generatedDescriptions[index] ||
-                    "Nessuna descrizione generata."
+                    <WordTextEffect
+                      text={
+                        generatedDescriptions[index] ||
+                        "Nessuna descrizione generata."
+                      }
+                    />
                   )}
                 </td>
-                <td className="py-3 px-4 border-b">
+                <td className="py-3 px-2 sm:px-4 border-b">
                   <div className="flex flex-col space-y-2">
                     <div className="flex space-x-2">
                       <Button
                         text="Vedi su Vercel"
-                        color="bg-blue-600 text-white"
-                        hoverColor="bg-blue-700"
+                        color="var(--color-accent)"
+                        hoverColor="var(--color-accent-dark)"
                         link={project.vercelLink}
                       />
                       <Button
                         text="Vedi su GitHub"
-                        color="bg-green-600 text-white"
-                        hoverColor="bg-green-700"
+                        color="var(--color-green)"
+                        hoverColor="var(--color-green-dark)"
                         link={project.githubLink}
                       />
                     </div>
@@ -137,10 +173,10 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       }
                       color={
                         isGenerating[index]
-                          ? "bg-gray-400 text-white"
-                          : "bg-green-600 text-white"
+                          ? "var(--color-orange)"
+                          : "var(--color-orange)"
                       }
-                      hoverColor="bg-green-700"
+                      hoverColor="var(--color-orange-dark)"
                       onClick={() => handleGenerateDescription(index, project)}
                       disabled={isGenerating[index]}
                       loading={isLoading}
@@ -151,23 +187,22 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
             ))}
           </tbody>
         </table>
-        <div className="overflow-x-auto">
-          <GenericModal
-            isOpen={!!modalImage}
-            onClose={closeModal}
-            title="image preview"
-          >
-            {modalImage && (
-              <>
-                <img
-                  src={modalImage}
-                  alt="Progetto"
-                  className="max-w-full h-auto"
-                />
-              </>
-            )}
-          </GenericModal>
-        </div>
+        <GenericModal
+          isOpen={!!modalImage}
+          onClose={closeModal}
+          title="Image Preview"
+        >
+          {modalImage && (
+            <Image
+              src={modalImage}
+              alt="Project Image"
+              width={600}
+              height={600}
+              loading="lazy"
+              priority={false}
+            />
+          )}
+        </GenericModal>
       </div>
     </>
   );

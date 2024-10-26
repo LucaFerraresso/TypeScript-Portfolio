@@ -6,6 +6,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "./Skeleton";
 import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "./Button";
+import WordTextEffect from "./WordTextEffect";
 
 interface Project {
   title: string;
@@ -40,7 +41,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     vercelLink = "#",
     technologies = [],
     date = "TBD",
-    description = "Details will be available soon.",
   } = project;
 
   useEffect(() => {
@@ -91,14 +91,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       setIsGenerating(false);
     }
   };
-  const [modalImage, setModalImage] = useState<string | null>(null); // Stato per la modale dell'immagine
-  const handleImageClick = (imageUrl: string) => {
-    setModalImage(imageUrl);
-  };
-
-  const closeModal = () => {
-    setModalImage(null);
-  };
 
   return (
     <motion.div
@@ -121,11 +113,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Image
             src={imageUrl}
             alt={`${title} Project Image`}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
-            priority
-            onLoadingComplete={() => setIsLoading(false)}
+            className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+            width={400}
+            height={400}
+            loading="lazy"
+            priority={false} // Cambia a true se l'immagine è importante
           />
         )}
       </Link>
@@ -158,8 +150,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {!isFirst && !generatedDescription && (
           <Button
             text="Genera Descrizione"
-            color="bg-orange-600 text-white"
-            hoverColor="bg-orange-700"
+            color="var(--color-orange)"
+            hoverColor="var(--color-orange-dark)"
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
@@ -167,7 +159,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
 
         {generatedDescription && (
-          <div className="mt-2 text-gray-600">{generatedDescription}</div>
+          <div className="mt-2 text-gray-600 max-w-[300px]">
+            <WordTextEffect text={generatedDescription} />
+          </div>
         )}
 
         <h3 className="text-lg font-semibold text-gray-800 mt-4">
@@ -211,8 +205,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <Link href="/Projects" passHref>
           <Button
             text="Vedi altro"
-            color="bg-blue-400 text-white"
-            hoverColor="bg-blue-500"
+            color="var(--color-blue-light)"
+            hoverColor="var(--color-blue-dark)"
           />
         </Link>
       </div>
@@ -228,14 +222,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <Button
               link={vercelLink}
               text="View on Vercel"
-              color="bg-blue-600 text-white"
-              hoverColor="bg-blue-700"
+              color="var(--color-accent)"
+              hoverColor="var(--color-accent-dark)"
             />
             <Button
               link={githubLink}
               text="View on GitHub"
-              color="bg-green-600 text-white"
-              hoverColor="bg-green-700"
+              color="var(--color-green)"
+              hoverColor="var(--color-green-dark)"
             />
           </>
         )}

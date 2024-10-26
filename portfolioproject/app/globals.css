@@ -15,6 +15,36 @@
   --color-text: #374151; /* Gray-700 */
   --color-hover: #4b5563; /* Gray-600 */
   --color-light: #e5e7eb; /* Gray-200 */
+
+  /* Nuovi colori */
+  --color-orange: #ff9800; /* Orange */
+  --color-orange-dark: #fb8c00; /* Dark Orange */
+  --color-blue-light: #64b5f6; /* Light Blue */
+  --color-blue-dark: #1976d2; /* Dark Blue */
+  --color-green: #4caf50; /* Green */
+  --color-green-dark: #388e3c; /* Dark Green */
+
+  --color-red: #f44336; /* Red */
+  --color-red-dark: #d32f2f; /* Dark Red */
+  --color-purple: #9c27b0; /* Purple */
+  --color-purple-dark: #7b1fa2; /* Dark Purple */
+  --color-yellow: #ffeb3b; /* Yellow */
+  --color-yellow-dark: #fbc02d; /* Dark Yellow */
+  --color-teal: #009688; /* Teal */
+  --color-teal-dark: #00796b; /* Dark Teal */
+
+  --color-gray-light: #f5f5f5; /* Light Gray */
+  --color-gray-dark: #616161; /* Dark Gray */
+
+  /* Hover e Focus */
+  --color-hover-orange: #fb8c00; /* Dark Orange */
+  --color-hover-blue: #1976d2; /* Dark Blue */
+  --color-hover-green: #388e3c; /* Dark Green */
+  --color-hover-red: #d32f2f; /* Dark Red */
+  --color-hover-purple: #7b1fa2; /* Dark Purple */
+  --color-hover-yellow: #fbc02d; /* Dark Yellow */
+  --color-hover-teal: #00796b; /* Dark Teal */
+
   --transition-duration: 0.3s;
   --transition-ease: ease-in-out;
 }
@@ -31,6 +61,15 @@ body {
 
 .hover-underline-animation:hover::after {
   background: var(--color-accent-dark);
+}
+
+/* Nuove animazioni */
+.scale-110 {
+  transform: scale(1.1);
+}
+
+.scale-95 {
+  transform: scale(0.95);
 }
 
 /* Reset globale moderno */

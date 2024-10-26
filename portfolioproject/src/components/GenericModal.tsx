@@ -18,18 +18,18 @@ const GenericModal: React.FC<GenericModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80 "
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80"
       onClick={onClose}
     >
       <div
         className="bg-white p-4 rounded-lg z-50 flex flex-col justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="fixed z-50 mt-[-490px]  ">
+        <div className="fixed z-50 mt-[-490px]">
           <Button
             onClick={onClose}
-            color="bg-red-400 text-white"
-            hoverColor="bg-red-500"
+            color="var(--color-red)" // Colore rosso
+            hoverColor="var(--color-red-dark)" // Rosso scuro
             text="X"
           />
         </div>

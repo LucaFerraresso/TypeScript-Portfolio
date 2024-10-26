@@ -1,8 +1,10 @@
+import { Home, PhoneCall, Settings, User } from "lucide-react";
+
 const projects = [
   {
     title: "C.R.U.D operations App",
     description:
-      "Ho implementato 4 metodi REST API. IL metodo GET mi permette di accedere a delle informazioni presenti in un database. Con il metodo PUT ,aggiungo un nuovo elemento al database. Con il metodo POST , modifico e aggiorno un elemento gia' esistente. Infine con il metofo DELETE , elimino l'elemento dal database. ",
+      "Ho implementato 4 metodi REST API. IL metodo GET mi permette di accedere a delle informazioni presenti in un database. Con il metodo PUT ,aggiungo un nuovo elemento al database. Con il metodo POST , modifico e aggiorno un elemento gia' esistente. Infine con il metofo DELETE , elimino l'elemento dal database.",
     imageUrl: "/images/homepage/mongodb-app-preview.png",
     vercelLink: "https://mongodb-crud-operations.vercel.app/",
     githubLink:
@@ -22,33 +24,36 @@ const projects = [
       "VSCode",
     ],
     date: "02/09/2024-07/09/2024",
+    icon: <Home />, // Aggiunta dell'icona
   },
   {
     title: "ToDo App",
     description:
-      "Una todo app sviluppata usando solo JavaScript. Attraverso una chiamata get all'api , renderizzo 200 todo SUDDIVIDIBILI per titolo, categoria, id ecc ecc ",
+      "Una todo app sviluppata usando solo JavaScript. Attraverso una chiamata get all'api , renderizzo 200 todo SUDDIVIDIBILI per titolo, categoria, id ecc ecc.",
     imageUrl: "/images/homepage/todoapp-preview1.png",
     vercelLink: "https://todoapp-bice-two.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
+    icon: <PhoneCall />, // Aggiunta dell'icona
   },
   {
     title: "Ice-cream menu App",
     description:
-      "La mia prima app ,sviluppata con JavaScript. Attraverso delle funzioni, renderizzo i miei primi componenti. l'app riassume le funzioni di un menu, dando all'utente la possibilita' di scegliere tra piu' combinazioni.",
+      "La mia prima app, sviluppata con JavaScript. Attraverso delle funzioni, renderizzo i miei primi componenti. L'app riassume le funzioni di un menu, dando all'utente la possibilità di scegliere tra più combinazioni.",
     imageUrl: "/images/homepage/ice-cream-menu-preview1.png",
     vercelLink: "https://icescream-menu-app.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
+    icon: <Settings />, // Aggiunta dell'icona
   },
   {
     title: "SicilyPulse App",
     description:
-      "SicilyPulse App, il FinalProject tanto atteso. Questo progetto riassume piu' di 6 mesi di studio, tutti ben condensati in questo originalissimo gestionale di eventi. SicilyPulse permette di rimanere sempre aggiornati sugli eventi presenti e non. L'app e' pensata per gestire TUTTI gli eventi presenti nel territorio siciliano. Attraverso le categoria, l'utente puo' selezionare eventi di natura culturale, eventi in cucina ed eventi al'aria aperta. ",
+      "SicilyPulse App, il FinalProject tanto atteso. Questo progetto riassume più di 6 mesi di studio, tutti ben condensati in questo originalissimo gestionale di eventi. SicilyPulse permette di rimanere sempre aggiornati sugli eventi presenti e non. L'app è pensata per gestire TUTTI gli eventi presenti nel territorio siciliano. Attraverso le categorie, l'utente può selezionare eventi di natura culturale, eventi in cucina ed eventi all'aria aperta.",
     imageUrl: "/images/homepage/sicily-pulse-app.png",
     vercelLink: "https://edgemony-final-project.vercel.app/",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
@@ -68,11 +73,12 @@ const projects = [
       "VSCode",
     ],
     date: "09/09/2024-22/09/2024",
+    icon: <User />, // Aggiunta dell'icona
   },
   {
     title: "myPortfolio in React",
     description:
-      "Il mio primo portfolio sviluppato interamente su Vuejs, usando Javascrit e la libreria React. Utilissimo per capire il routing tra le diverse pagine.",
+      "Il mio primo portfolio sviluppato interamente su Vuejs, usando JavaScript e la libreria React. Utilissimo per capire il routing tra le diverse pagine.",
     imageUrl: "/images/homepage/portfolio-preview.png",
     vercelLink: "https://react-portfolio-coral-five.vercel.app/homepage",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
@@ -90,15 +96,17 @@ const projects = [
       "VSCode",
     ],
     date: "05/08/2024-30/08/2024",
+    icon: <Home />, // Aggiunta dell'icona
   },
   {
     title: "Prossimamente",
-    description: "Aggiungero' card man mano che i miei progetti aumentano.",
+    description: "Aggiungerò card man mano che i miei progetti aumentano.",
     imageUrl: "/images/homepage/coming-soon.jpg",
     vercelLink: "coming soon",
     githubLink: "coming soon",
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
+    icon: <Settings />, // Aggiunta dell'icona
   },
 ];
 

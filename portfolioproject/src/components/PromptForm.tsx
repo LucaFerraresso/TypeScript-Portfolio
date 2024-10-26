@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Skeleton from "./Skeleton";
+
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import Button from "./Button";
 import GenericModal from "./GenericModal";
+import WordTextEffect from "./WordTextEffect";
 
 const PromptForm = () => {
   const [messages, setMessages] = useState<
@@ -43,6 +44,7 @@ const PromptForm = () => {
       ]);
     } finally {
       setLoading(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       type === "prompt" ? setPrompt("") : setConversationInput(""); // Reset accordingly
     }
   };
@@ -59,12 +61,12 @@ const PromptForm = () => {
 
   return (
     <div className="relative flex flex-col justify-center items-center z-39">
-      <div className="sm:fixed sm:r-2 sm:t-2 sm:ml-[1170px] sm:mt-[-25px] z-39 sm:border-3">
+      <div className="sm:fixed sm:r-2 sm:t-2 sm:ml-[1120px]  z-39 sm:border-3">
         <Button
           text="Assistente Gemini"
           onClick={toggleForm}
-          color="bg-green-500 text-white"
-          hoverColor="bg-green-600"
+          color="var(--color-green)" // Colore verde
+          hoverColor="var(--color-green-dark)" // Verde più scuro
           disabled={false}
           loading={false}
         />
@@ -77,8 +79,8 @@ const PromptForm = () => {
         <div className="flex flex-row justify-around items-center text-center p-2 border border-black">
           <Button
             text="Pulisci"
-            color="bg-red-400 text-white"
-            hoverColor="bg-red-500"
+            color="var(--color-red)" // Rosso
+            hoverColor="var(--color-red-dark)" // Rosso scuro
             loading={false}
             disabled={false}
             onClick={ClearAll}
@@ -86,16 +88,16 @@ const PromptForm = () => {
           <Button
             onClick={() => handleSubmit("prompt")}
             text="Risposta"
-            color="bg-green-500 text-white"
-            hoverColor="bg-green-600"
+            color="var(--color-green)" // Verde
+            hoverColor="var(--color-green-dark)" // Verde più scuro
             disabled={loading || !prompt}
             loading={loading}
           />
           <Button
             onClick={() => handleSubmit("conversation")}
             text="Invia"
-            color="bg-blue-400 text-white"
-            hoverColor="bg-blue-500"
+            color="var(--color-blue-light)" // Blu chiaro
+            hoverColor="var(--color-blue-dark)" // Blu scuro
             disabled={loading || !conversationInput}
             loading={loading}
           />
@@ -150,7 +152,7 @@ const PromptForm = () => {
           >
             <div className="border border-gray-900 rounded-lg p-4 bg-gray-200 flex flex-col w-full h-[400px]">
               <h3 className="text-lg font-medium">Conversazione:</h3>
-              <div className="flex flex-col h-full w-full overflow-auto">
+              <div className="flex flex-col-reverse h-full w-full overflow-auto">
                 {messages.map((msg, index) => (
                   <div
                     key={index}
@@ -165,7 +167,9 @@ const PromptForm = () => {
                     ></span>
                     <strong>{msg.type === "user" ? "Tu: " : "Gemini: "}</strong>
                     {loading && index === messages.length - 1 ? (
-                      <Skeleton />
+                      <div>{prompt}</div>
+                    ) : msg.type === "api" ? (
+                      <WordTextEffect text={msg.text} />
                     ) : (
                       msg.text
                     )}

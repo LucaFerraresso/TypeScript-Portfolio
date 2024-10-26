@@ -7,10 +7,9 @@ import Button from "./Button";
 
 const Navbar: React.FC = () => {
   const activePath = usePathname();
-  console.log("Active Path:", activePath);
 
   return (
-    <nav className="flex flex-wrap  w-full  p-2 gap-4 border-b bg-inherit  border-gray-800 fixed top-0 justify-around items-center z-40 md:flex-row">
+    <nav className="flex flex-wrap w-full p-4 gap-4 border-b bg-white border-gray-300 fixed top-0 justify-around items-center z-40 md:flex-row">
       {navItems.map((item) => {
         const isActive = activePath === item.href;
 
