@@ -158,14 +158,14 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                         color="var(--color-accent)"
                         hoverColor="var(--color-accent-dark)"
                         link={project.vercelLink}
-                        icon={<Upload color={"red"} size={45} />}
+                        icon={<Upload color={"red"} size={15} />}
                       />
                       <Button
                         text="Vedi su GitHub"
                         color="var(--color-green)"
                         hoverColor="var(--color-green-dark)"
                         link={project.githubLink}
-                        icon={<Github color={"red"} size={45} />}
+                        icon={<Github color={"red"} size={15} />}
                       />
                     </div>
                     <Button
@@ -183,7 +183,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       onClick={() => handleGenerateDescription(index, project)}
                       disabled={isGenerating[index]}
                       loading={isLoading}
-                      icon={<Loader color={"red"} size={45} />}
+                      icon={<Loader color={"red"} size={15} />}
                     />
                   </div>
                 </td>

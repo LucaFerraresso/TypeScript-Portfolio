@@ -1,3 +1,11 @@
+import { Github } from "lucide-react";
+import {
+  BiLogoFirebase,
+  BiLogoMongodb,
+  BiLogoTailwindCss,
+  BiLogoTypescript,
+} from "react-icons/bi";
+import { DiHtml5, DiSass } from "react-icons/di";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -6,6 +14,8 @@ import {
   FaGithub,
   FaNode,
 } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa6";
+import { LiaCss3Alt, LiaJsSquare, LiaNpm } from "react-icons/lia";
 import {
   SiNextdotjs,
   SiMongodb,
@@ -15,20 +25,21 @@ import {
   SiNpm,
   SiVisualstudiocode,
   SiPostman,
+  SiAsus,
 } from "react-icons/si";
 
 const icons = [
   {
-    component: <FaHtml5 color="green" />,
+    component: <DiHtml5 color="green" />,
     title: "HTML5",
   },
-  { component: <FaCss3Alt color="red" />, title: "CSS3" },
+  { component: <LiaCss3Alt color="red" />, title: "CSS3" },
   {
-    component: <FaJsSquare color="yellow" />,
+    component: <LiaJsSquare color="yellow" />,
     title: "JavaScript",
   },
   {
-    component: <SiTypescript color="blue" />,
+    component: <BiLogoTypescript color="blue" />,
     title: "TypeScript",
   },
   {
@@ -36,24 +47,24 @@ const icons = [
     title: "Next.js",
   },
   {
-    component: <SiMongodb color="orange" />,
+    component: <BiLogoMongodb color="orange" />,
     title: "MongoDB",
   },
   {
-    component: <SiFirebase color="red" />,
+    component: <BiLogoFirebase color="red" />,
     title: "FireBase",
   },
   {
-    component: <SiTailwindcss color="blue" />,
+    component: <BiLogoTailwindCss color="blue" />,
     title: "Tailwind CSS",
   },
-  { component: <FaSass color="red" />, title: "Sass" },
-  { component: <FaGithub color="black" />, title: "GitHub" },
+  { component: <DiSass color="red" />, title: "Sass" },
+  { component: <Github color="black" />, title: "GitHub" },
   {
-    component: <FaNode color="green" />,
+    component: <FaNodeJs color="green" />,
     title: "Node.js",
   },
-  { component: <SiNpm color="red" />, title: "npm" },
+  { component: <LiaNpm color="red" />, title: "npm" },
   {
     component: <SiVisualstudiocode color="blue" />,
     title: "VSCode",

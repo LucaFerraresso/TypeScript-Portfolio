@@ -163,7 +163,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
-            icon={<Loader color={"red"} size={45} />}
+            icon={<Loader color={"red"} size={15} />}
           />
         )}
 
@@ -207,7 +207,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             text={!isExpanded ? "View more" : "View less"}
             color="#ffffff"
             hoverColor="#ffffff"
-            icon={<Upload color={"red"} size={45} />}
+            icon={<Upload color={"red"} size={15} />}
           />
         )}
       </div>
@@ -217,7 +217,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             text="Vedi altro"
             color="var(--color-blue-light)"
             hoverColor="var(--color-blue-dark)"
-            icon={<LogIn color={"red"} size={45} />}
+            icon={<LogIn color={"red"} size={15} />}
           />
         </Link>
       </div>
@@ -235,14 +235,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               text="View on Vercel"
               color="var(--color-accent)"
               hoverColor="var(--color-accent-dark)"
-              icon={<Upload color={"red"} size={45} />}
+              icon={<Upload color={"red"} size={15} />}
             />
             <Button
               link={githubLink}
               text="View on GitHub"
               color="var(--color-green)"
               hoverColor="var(--color-green-dark)"
-              icon={<Github color={"red"} size={45} />}
+              icon={<Github color={"red"} size={15} />}
             />
           </>
         )}

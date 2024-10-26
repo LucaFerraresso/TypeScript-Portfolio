@@ -5,7 +5,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
 import WordTextEffect from "../library/WordTextEffect";
-import { Gift } from "lucide-react";
+import { ChevronDown, ChevronUp, Gift, Trash2 } from "lucide-react";
 
 const PromptForm = () => {
   const [messages, setMessages] = useState<
@@ -70,7 +70,7 @@ const PromptForm = () => {
           hoverColor="var(--color-green-dark)" // Verde più scuro
           disabled={false}
           loading={false}
-          icon={<Gift color={"red"} size={45} />}
+          icon={<Gift color={"black"} size={45} />}
         />
       </div>
 
@@ -86,6 +86,7 @@ const PromptForm = () => {
             loading={false}
             disabled={false}
             onClick={ClearAll}
+            icon={<Trash2 color={"black"} size={15} />}
           />
           <Button
             onClick={() => handleSubmit("prompt")}
@@ -94,6 +95,7 @@ const PromptForm = () => {
             hoverColor="var(--color-green-dark)" // Verde più scuro
             disabled={loading || !prompt}
             loading={loading}
+            icon={<ChevronDown color={"red"} size={15} />}
           />
           <Button
             onClick={() => handleSubmit("conversation")}
@@ -102,6 +104,7 @@ const PromptForm = () => {
             hoverColor="var(--color-blue-dark)" // Blu scuro
             disabled={loading || !conversationInput}
             loading={loading}
+            icon={<ChevronUp color={"red"} size={15} />}
           />
         </div>
 

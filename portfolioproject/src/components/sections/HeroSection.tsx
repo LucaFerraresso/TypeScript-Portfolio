@@ -7,6 +7,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "../atoms/Skeleton";
 import SocialIcon from "../atoms/SocialIcon";
 import WordTextEffect from "../library/WordTextEffect";
+import { Github, Linkedin } from "lucide-react";
 
 const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
 
@@ -116,12 +117,12 @@ const HeroSection: React.FC = () => {
               <SocialIcon
                 href="https://www.linkedin.com/in/luca-ferraresso/"
                 label="LinkedIn"
-                icon={<FaLinkedin size={30} className="text-blue-600" />}
+                icon={<Linkedin size={30} color="blue" />}
               />
               <SocialIcon
                 href="https://github.com/LucaFerraresso/"
                 label="GitHub"
-                icon={<FaGithub size={30} className="text-gray-800" />}
+                icon={<Github size={30} color="gray" />}
               />
             </motion.div>
           )}
