@@ -36,4 +36,17 @@ email gemini:
 portfolio@gen-lang-client-0553568513.iam.gserviceaccount.com
 portfolio-nextjs@gen-lang-client-0553568513.iam.gserviceaccount.com
 ////////////////////////////////////////////////////////////////////////////////
+//card animata 
+ <Button
+              text="Descrizione"
+              color="var(--color-orange)"
+              hoverColor="var(--color-orange-dark)"
+              onClick={handleGenerateDescription}
+              icon={<Loader color={"red"} size={15} />}
+            />
 
+            {generatedDescription && (
+              <div className="mt-2 text-gray-600 max-w-[300px]">
+                <WordTextEffect text={generatedDescription} />
+              </div>
+            )}

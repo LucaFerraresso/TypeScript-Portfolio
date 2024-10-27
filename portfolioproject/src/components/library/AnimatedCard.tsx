@@ -37,7 +37,7 @@ const AnimatedCard = () => {
   };
 
   return (
-    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 rounded-lg border border-lg border-zinc-800">
+    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 rounded-lg border border-lg border-zinc-800">
       <AnimatedBackground
         className=" bg-zinc-100 dark:bg-zinc-800 rounded-lg"
         transition={{
@@ -71,52 +71,38 @@ const AnimatedCard = () => {
                 <p>Project period: {item.date}</p>
                 <p>TechStack: {item.technologies.join(", ")}</p>
               </div>
+              <div className="flex flex-wrap gap-2 font-bold ">
+                <Link
+                  href={`/Projects/${item.id}`}
+                  className=" text-zync-600  hover:underline border rounded-lg border-zync-600"
+                >
+                  <p>View detail</p>
+                </Link>
+                <Link
+                  href="/Projects"
+                  className=" text-zync-600  hover:underline border rounded-lg border-zync-600"
+                >
+                  <p>Projects Page</p>
+                </Link>
 
-              <Link
-                href={`/Projects/${item.id}`}
-                className=" text-blue-500  hover:underline"
-              >
-                <p className="dark:text-blue-300">View detail</p>
-              </Link>
-              <Link
-                href="/Projects"
-                className=" text-blue-500 hover:underline  "
-              >
-                <p className="dark:text-blue-300">Projects Page</p>
-              </Link>
-
-              <Link
-                href={item.vercelLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" text-green-500  hover:underline"
-              >
-                <p className="dark:text-green-300">View Live on Vercel</p>
-              </Link>
-              <Link
-                href={item.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" text-blue-500 hover:underline "
-              >
-                <p className="dark:text-blue-300">View on GitHub</p>
-              </Link>
-            </div>
-            <Button
-              text="Genera Descrizione"
-              color="var(--color-orange)"
-              hoverColor="var(--color-orange-dark)"
-              disabled={isGenerating}
-              loading={isGenerating}
-              onClick={handleGenerateDescription}
-              icon={<Loader color={"red"} size={15} />}
-            />
-
-            {generatedDescription && (
-              <div className="mt-2 text-gray-600 max-w-[300px]">
-                <WordTextEffect text={generatedDescription} />
+                <Link
+                  href={item.vercelLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" text-zync-600  hover:underline border rounded-lg border-zync-600"
+                >
+                  <p>View Live on Vercel</p>
+                </Link>
+                <Link
+                  href={item.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" text-zync-600  hover:underline border rounded-lg border-zync-600"
+                >
+                  <p>View on GitHub</p>
+                </Link>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </AnimatedBackground>
