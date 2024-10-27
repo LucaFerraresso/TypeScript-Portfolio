@@ -65,7 +65,7 @@ const PromptForm = () => {
   };
 
   return (
-    <div className=" flex flex-col justify-center items-center z-41">
+    <div className=" flex flex-col justify-center items-center z-41 ">
       <Button
         text="Gemini AI"
         onClick={toggleForm}
@@ -80,7 +80,7 @@ const PromptForm = () => {
         <h2 className="text-2xl text-green-500 font-bold text-center mb-4">
           Assistente Gemini
         </h2>
-        <div className="flex flex-row justify-around items-center text-center p-2 border border-black">
+        <div className="flex flex-row justify-around items-center text-center p-2 border border-black  ">
           <Button
             text="Pulisci"
             color="var(--color-red)" // Rosso

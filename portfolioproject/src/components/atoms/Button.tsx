@@ -54,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={handleClick}
             disabled={disabled || isLoading}
             style={buttonStyles}
-            className={`min-w-[140px] border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
+            className={`min-w-[140px]  border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
               transition-transform duration-300 ease-in-out ${animation}
               focus:outline-none focus:ring focus:ring-opacity-50`}
             onMouseEnter={(e) => {
@@ -67,7 +67,7 @@ const Button: React.FC<ButtonProps> = ({
               if (!disabled) e.currentTarget.style.transform = "scale(0.95)";
             }}
           >
-            {isLoading ? (
+            {isLoading || disabled ? (
               <>
                 <svg
                   className="animate-spin -ml-1 mr-3 h-5 w-5"
@@ -104,7 +104,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={handleClick}
           disabled={disabled || isLoading}
           style={buttonStyles}
-          className={`min-w-[140px] border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
+          className={`min-w-[140px]  border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
             transition-transform duration-300 ease-in-out ${animation}
             focus:outline-none focus:ring focus:ring-opacity-50`}
           onMouseEnter={(e) => {

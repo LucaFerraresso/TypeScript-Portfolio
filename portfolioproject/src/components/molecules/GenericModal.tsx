@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "../atoms/Button";
-import { XCircle } from "lucide-react";
 
 interface GenericModalProps {
   isOpen: boolean;
@@ -26,18 +24,9 @@ const GenericModal: React.FC<GenericModalProps> = ({
         className="bg-white p-4 rounded-lg z-50 flex flex-col justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="fixed z-50 mt-[-490px]">
-          <Button
-            onClick={onClose}
-            color="var(--color-red)" // Colore rosso
-            hoverColor="var(--color-red-dark)" // Rosso scuro
-            text="chiudi"
-            icon={<XCircle color={"Black"} size={15} />}
-          />
-        </div>
         {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
 
-        <div className="p-2">{children}</div>
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );

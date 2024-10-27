@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import SectionSeparator from "@/src/components/atoms/SectionSeparator";

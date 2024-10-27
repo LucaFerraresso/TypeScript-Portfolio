@@ -2,40 +2,8 @@ import projects from "@/assets/DataArray/ProjectSectionArray";
 import AnimatedBackground from "./core/AnimatedBackground";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import WordTextEffect from "./WordTextEffect";
-import { Loader } from "lucide-react";
-import Button from "../atoms/Button";
-import { title } from "process";
-import { useEffect } from "react";
 
 const AnimatedCard = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [generatedDescription, setGeneratedDescription] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-
-  const handleGenerateDescription = async () => {
-    setIsGenerating(true);
-    try {
-      const res = await fetch("/api/gemini", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: `Crea una descrizione accattivante di 30 parole per "${title}".`,
-        }),
-      });
-
-      if (!res.ok) throw new Error("Errore nella richiesta");
-      const data = await res.json();
-      setGeneratedDescription(data.output);
-    } catch (error) {
-      console.error("Error fetching description:", error);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
   return (
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 rounded-lg border border-lg border-zinc-800">
       <AnimatedBackground

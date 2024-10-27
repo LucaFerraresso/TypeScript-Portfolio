@@ -18,8 +18,10 @@ const Projects: React.FC = () => {
   return (
     <>
       <Header metadata={metadata} />
-
-      <ProjectTable projects={projects} />
+      <div className="p-6 ">
+        <h1 className="text-2xl font-bold mb-4 p-6">Projects</h1>
+        <ProjectTable projects={projects} />
+      </div>
     </>
   );
 };
