@@ -4,12 +4,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
 import WordTextEffect from "../library/WordTextEffect";
-import {
-  ChevronDown,
-  ChevronUp,
-  MessageCircleMoreIcon,
-  Trash2,
-} from "lucide-react";
+import { ChevronDown, ChevronUp, StarIcon, Trash2Icon } from "lucide-react";
 
 type MessageType = "user" | "api";
 
@@ -80,11 +75,9 @@ const PromptForm = () => {
   return (
     <div className="flex flex-col justify-center items-center z-41">
       <Button
-        text="Gemini AI"
+        text="Gemini"
         onClick={toggleForm}
-        color="var(--color-green)"
-        hoverColor="var(--color-green-dark)"
-        icon={<MessageCircleMoreIcon color={"black"} size={25} />}
+        icon={<StarIcon color="yellow" size={25} />}
       />
 
       <GenericModal isOpen={isOpen} onClose={toggleForm}>
@@ -97,7 +90,7 @@ const PromptForm = () => {
             color="var(--color-red)"
             hoverColor="var(--color-red-dark)"
             onClick={clearAll}
-            icon={<Trash2 color={"black"} size={15} />}
+            icon={<Trash2Icon color={"black"} size={25} />}
           />
           <Button
             onClick={() => {
@@ -117,9 +110,9 @@ const PromptForm = () => {
             loading={loading}
             icon={
               isPromptMode ? (
-                <ChevronDown color={"red"} size={15} />
+                <ChevronDown color={"black"} size={25} />
               ) : (
-                <ChevronUp color={"red"} size={15} />
+                <ChevronUp color={"black"} size={25} />
               )
             }
           />

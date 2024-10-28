@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
 import Image from "next/image";
-import { CarIcon, Github, Loader, Upload } from "lucide-react";
+import { BookOpenIcon, GithubIcon, InfoIcon, TriangleIcon } from "lucide-react";
 import Link from "next/link";
 
 interface Project {
@@ -39,8 +39,8 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
     try {
       // Creare un prompt come stringa
       const prompt = `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". 
-        elenca in paragrafi le sue funzionalità dopo che lo hai analizzato visitando il link su Vercel: ${project.vercelLink} 
-        e su GitHub: ${project.githubLink}. massimo 100 parole. 
+        elenca e suddividi in paragrafi le sue funzionalità dopo che lo hai visitando al link di Vercel: ${project.vercelLink} 
+        e su GitHub: ${project.githubLink}. importante parlare dello scopo e delle tecnologie. massimo 200 parole. nessun carattere speciale.
         Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`;
 
       // Creare un buffer dal prompt
@@ -119,33 +119,33 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                   color="var(--color-accent)"
                   hoverColor="var(--color-accent-dark)"
                   link={project.vercelLink}
-                  icon={<Upload color={"red"} size={15} />}
+                  icon={<TriangleIcon color={"black"} size={25} />}
                 />
                 <Button
                   text="GitHub"
                   color="var(--color-green)"
                   hoverColor="var(--color-green-dark)"
                   link={project.githubLink}
-                  icon={<Github color={"red"} size={15} />}
+                  icon={<GithubIcon color={"black"} size={25} />}
                 />
               </td>
               <td className="flex flex-col justify-around items-center text-center gap-4 ">
                 <Link href={`Projects/${project.id}`}>
                   <Button
-                    text="/id"
+                    text="page/id"
                     color="var(--color-orange)"
                     hoverColor="var(--color-orange-dark)"
-                    icon={<CarIcon color={"red"} size={15} />}
+                    icon={<InfoIcon color={"black"} size={25} />}
                   />
                 </Link>
                 <Button
-                  text={isGenerating[index] ? " Loading... " : "view more"}
+                  text={isGenerating[index] ? " Loading... " : "info"}
                   color="var(--color-orange)"
                   hoverColor="var(--color-orange-dark)"
                   onClick={() => handleGenerateDescription(index, project)}
                   disabled={isGenerating[index]}
                   loading={isLoading}
-                  icon={<Loader color={"red"} size={15} />}
+                  icon={<BookOpenIcon color={"black"} size={25} />}
                 />
               </td>
             </div>
@@ -160,13 +160,15 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
         title="Image Preview"
       >
         {modalImage && (
-          <Image
-            src={modalImage}
-            alt="Project Image"
-            width={500}
-            height={300}
-            className="object-contain"
-          />
+          <>
+            <Image
+              src={modalImage}
+              alt="Project Image"
+              width={500}
+              height={300}
+              className="object-contain"
+            />
+          </>
         )}
       </GenericModal>
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect, memo } from "react";
 
 import WordTextEffect from "../library/WordTextEffect";
 import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection: React.FC = () => {
   const [description, setDescription] = useState("");
@@ -52,24 +53,43 @@ const HeroSection: React.FC = () => {
 
         {/* Contenuto Testuale */}
         <div className="flex flex-col justify-center items-center text-center md:text-left">
-          <p className="text-base text-gray-600 mb-6">
+          <h1 className="text-base text-gray-600 mb-6">
             {/* Descrizione dinamica */}
             <WordTextEffect text={description} />
             {/* Icone Social */}
             <div className="flex justify-center items-center space-x-4 mt-4">
-              <Github
-                size={20}
-                href="https://github.com/LucaFerraresso"
-                color="black"
-              />
-
-              <Linkedin
-                size={20}
-                href="https://www.linkedin.com/in/luca-ferraresso/"
-                color="blue"
-              />
+              <div>
+                <ul>
+                  <li>
+                    <Github color="black" size={25} />
+                  </li>
+                  <li>
+                    <Linkedin color="blue" size={25} />
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>
+                    <Link
+                      href="https://github.com/LucaFerraresso"
+                      className="hover:underline"
+                    >
+                      Github
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.linkedin.com/in/luca-ferraresso/"
+                      className="hover:underline"
+                    >
+                      Linkedin
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </p>
+          </h1>
         </div>
       </div>
     </>

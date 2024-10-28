@@ -12,47 +12,47 @@ import { SiNextdotjs, SiVisualstudiocode, SiPostman } from "react-icons/si";
 
 const icons = [
   {
-    component: <DiHtml5 color="green" />,
+    component: <DiHtml5 color="green" size={25} />,
     title: "HTML5",
   },
-  { component: <LiaCss3Alt color="red" />, title: "CSS3" },
+  { component: <LiaCss3Alt color="red" size={25} />, title: "CSS3" },
   {
-    component: <LiaJsSquare color="yellow" />,
+    component: <LiaJsSquare color="yellow" size={25} />,
     title: "JavaScript",
   },
   {
-    component: <BiLogoTypescript color="blue" />,
+    component: <BiLogoTypescript color="blue" size={25} />,
     title: "TypeScript",
   },
   {
-    component: <SiNextdotjs color="black" />,
+    component: <SiNextdotjs color="black" size={25} />,
     title: "Next.js",
   },
   {
-    component: <BiLogoMongodb color="orange" />,
+    component: <BiLogoMongodb color="orange" size={25} />,
     title: "MongoDB",
   },
   {
-    component: <BiLogoFirebase color="red" />,
+    component: <BiLogoFirebase color="red" size={25} />,
     title: "FireBase",
   },
   {
-    component: <BiLogoTailwindCss color="blue" />,
+    component: <BiLogoTailwindCss color="blue" size={25} />,
     title: "Tailwind CSS",
   },
-  { component: <DiSass color="red" />, title: "Sass" },
-  { component: <Github color="black" />, title: "GitHub" },
+  { component: <DiSass color="red" size={25} />, title: "Sass" },
+  { component: <Github color="black" size={25} />, title: "GitHub" },
   {
-    component: <FaNodeJs color="green" />,
+    component: <FaNodeJs color="green" size={25} />,
     title: "Node.js",
   },
-  { component: <LiaNpm color="red" />, title: "npm" },
+  { component: <LiaNpm color="red" size={25} />, title: "npm" },
   {
-    component: <SiVisualstudiocode color="blue" />,
+    component: <SiVisualstudiocode color="blue" size={25} />,
     title: "VSCode",
   },
   {
-    component: <SiPostman color="orange" />,
+    component: <SiPostman color="orange" size={25} />,
     title: "API/REST API",
   },
 ];

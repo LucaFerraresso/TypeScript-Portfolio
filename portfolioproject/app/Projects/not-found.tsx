@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import Button from "@/src/components/atoms/Button";
-import { SquareCheckIcon } from "lucide-react";
+import { TerminalIcon } from "lucide-react";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -57,7 +57,7 @@ const ErrorPage: React.FC = () => {
               hoverColor="var(--color-hover-orange)"
               disabled={false}
               loading={false}
-              icon={<SquareCheckIcon color={"red"} size={30} />}
+              icon={<TerminalIcon color={"black"} size={30} />}
             />
           </Link>
         </motion.div>

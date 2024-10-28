@@ -5,6 +5,7 @@ import projects from "@/assets/DataArray/ProjectSectionArray";
 import Link from "next/link";
 import Image from "next/image";
 import icons from "@/assets/DataArray/TechSectionArray";
+import { GithubIcon, HomeIcon, TerminalIcon, TriangleIcon } from "lucide-react";
 
 const ProjectDetail: React.FC = () => {
   const params = useParams() as { id?: string };
@@ -27,7 +28,7 @@ const ProjectDetail: React.FC = () => {
   }
 
   return (
-    <div className="p-4 max-w-3xl mx-auto flex flex-col items-center">
+    <div className="p-6 md:p-10 lg:p-16 flex flex-col items-center text-center justify-center gap-6">
       <Image
         src={project.imageUrl}
         alt={`${project.title} Project Image`}
@@ -35,14 +36,19 @@ const ProjectDetail: React.FC = () => {
         height={400}
         loading="lazy"
         priority={false}
-        className="rounded-lg shadow-lg"
+        className="rounded-lg shadow-lg mb-4 max-w-full h-auto"
       />
-      <h1 className="text-3xl font-bold mt-4">{project.title}</h1>
-      <p className="text-gray-700 mt-2">{project.description}</p>
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+        {project.title}
+      </h1>
+      <p className="text-gray-700 text-base md:text-lg">
+        {project.description}
+      </p>
+      <p className="text-gray-500 text-sm md:text-base">Data: {project.date}</p>
 
-      <div className="mt-4 mb-4 border border-gray-300 rounded-lg p-4">
+      <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
         <h2 className="text-xl font-semibold mb-2">Tecnologie Utilizzate:</h2>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 items-center justify-center">
           {project.technologies?.map((tech) => {
             const techIcon = icons.find((icon) => icon.title === tech);
             return (
@@ -60,11 +66,10 @@ const ProjectDetail: React.FC = () => {
         </div>
       </div>
 
-      <p className="text-gray-500">Data: {project.date}</p>
-
-      <div className="mt-4">
-        <h2 className="text-lg font-semibold">Link Utili:</h2>
-        <p>
+      <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
+        <h2 className="text-xl font-semibold">Link Utili:</h2>
+        <div className="flex items-center gap-2">
+          <TriangleIcon color="black" size={20} />
           <a
             href={project.vercelLink}
             target="_blank"
@@ -73,8 +78,9 @@ const ProjectDetail: React.FC = () => {
           >
             Vercel Link
           </a>
-        </p>
-        <p>
+        </div>
+        <div className="flex items-center gap-2">
+          <GithubIcon color="black" size={20} />
           <a
             href={project.githubLink}
             target="_blank"
@@ -83,16 +89,19 @@ const ProjectDetail: React.FC = () => {
           >
             GitHub Link
           </a>
-        </p>
-      </div>
-
-      <div className="mt-4 flex space-x-4">
-        <Link href="/" className="text-blue-600 hover:underline">
-          Home
-        </Link>
-        <Link href="/Projects" className="text-blue-600 hover:underline">
-          Projects
-        </Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <HomeIcon color="black" size={20} />
+          <Link href="/" className="text-blue-600 hover:underline">
+            Home
+          </Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <TerminalIcon color="black" size={20} />
+          <Link href="/Projects" className="text-blue-600 hover:underline">
+            Projects
+          </Link>
+        </div>
       </div>
     </div>
   );

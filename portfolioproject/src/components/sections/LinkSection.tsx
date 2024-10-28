@@ -1,8 +1,8 @@
 import {
-  GitBranch,
-  GitPullRequestIcon,
-  InfoIcon,
-  TextCursorIcon,
+  CodeIcon,
+  LibraryBigIcon,
+  MailIcon,
+  TerminalIcon,
   User,
   XCircle,
 } from "lucide-react";
@@ -15,19 +15,19 @@ const LinkSection = () => {
         <div>
           <ul>
             <li>
-              <GitBranch color="blue" />
+              <TerminalIcon color="blue" />
             </li>
             <li>
-              <TextCursorIcon color="gray" />
+              <CodeIcon color="black" />
             </li>
             <li>
-              <InfoIcon color="green" />
+              <User color="green" />
             </li>
             <li>
-              <User color="purple" />
+              <MailIcon color="purple" />
             </li>
             <li>
-              <GitPullRequestIcon color="orange" />
+              <LibraryBigIcon color="orange" />
             </li>
             <li>
               <XCircle color="red" />
@@ -57,7 +57,7 @@ const LinkSection = () => {
               </Link>
             </li>
             <li>
-              <Link href="/Library icons" className="hover:underline">
+              <Link href="/Library" className="hover:underline">
                 Library
               </Link>
             </li>
