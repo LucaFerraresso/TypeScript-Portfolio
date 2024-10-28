@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
 import { useParams } from "next/navigation";
 import projects from "@/assets/DataArray/ProjectSectionArray";
 import Link from "next/link";
 import Image from "next/image";
 import icons from "@/assets/DataArray/TechSectionArray";
 import { GithubIcon, HomeIcon, TerminalIcon, TriangleIcon } from "lucide-react";
+import { fadeInVariants } from "@/animation/animation";
+import { motion } from "framer-motion";
 
 const ProjectDetail: React.FC = () => {
   const params = useParams() as { id?: string };
@@ -28,82 +29,91 @@ const ProjectDetail: React.FC = () => {
   }
 
   return (
-    <div className="p-6 md:p-10 lg:p-16 flex flex-col items-center text-center justify-center gap-6">
-      <Image
-        src={project.imageUrl}
-        alt={`${project.title} Project Image`}
-        width={400}
-        height={400}
-        loading="lazy"
-        priority={false}
-        className="rounded-lg shadow-lg mb-4 max-w-full h-auto"
-      />
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-        {project.title}
-      </h1>
-      <p className="text-gray-700 text-base md:text-lg">
-        {project.description}
-      </p>
-      <p className="text-gray-500 text-sm md:text-base">Data: {project.date}</p>
+    <motion.div
+      className="flex flex-col justify-center items-center p-20 -mt-20 -mb-20"
+      variants={fadeInVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="p-6 md:p-10 lg:p-16 flex flex-col items-center text-center justify-center gap-6">
+        <Image
+          src={project.imageUrl}
+          alt={`${project.title} Project Image`}
+          width={400}
+          height={400}
+          loading="lazy"
+          priority={false}
+          className="rounded-lg shadow-lg mb-4 max-w-full h-auto"
+        />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+          {project.title}
+        </h1>
+        <p className="text-gray-700 text-base md:text-lg">
+          {project.description}
+        </p>
+        <p className="text-gray-500 text-sm md:text-base">
+          Data: {project.date}
+        </p>
 
-      <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
-        <h2 className="text-xl font-semibold mb-2">Tecnologie Utilizzate:</h2>
-        <div className="flex flex-wrap gap-2 items-center justify-center">
-          {project.technologies?.map((tech) => {
-            const techIcon = icons.find((icon) => icon.title === tech);
-            return (
-              techIcon && (
-                <div
-                  key={tech}
-                  className="flex items-center bg-gray-200 rounded px-2 py-1"
-                >
-                  {techIcon.component}
-                  <span className="ml-1 font-medium">{tech}</span>
-                </div>
-              )
-            );
-          })}
+        <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
+          <h2 className="text-xl font-semibold mb-2">Tecnologie Utilizzate:</h2>
+          <div className="flex flex-wrap gap-2 items-center justify-center">
+            {project.technologies?.map((tech) => {
+              const techIcon = icons.find((icon) => icon.title === tech);
+              return (
+                techIcon && (
+                  <div
+                    key={tech}
+                    className="flex items-center bg-gray-200 rounded px-2 py-1"
+                  >
+                    {techIcon.component}
+                    <span className="ml-1 font-medium">{tech}</span>
+                  </div>
+                )
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
+          <h2 className="text-xl font-semibold">Link Utili:</h2>
+          <div className="flex items-center gap-2">
+            <TriangleIcon color="black" size={20} />
+            <a
+              href={project.vercelLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Vercel Link
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <GithubIcon color="black" size={20} />
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              GitHub Link
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <HomeIcon color="black" size={20} />
+            <Link href="/" className="text-blue-600 hover:underline">
+              Home
+            </Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <TerminalIcon color="black" size={20} />
+            <Link href="/Projects" className="text-blue-600 hover:underline">
+              Projects
+            </Link>
+          </div>
         </div>
       </div>
-
-      <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
-        <h2 className="text-xl font-semibold">Link Utili:</h2>
-        <div className="flex items-center gap-2">
-          <TriangleIcon color="black" size={20} />
-          <a
-            href={project.vercelLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            Vercel Link
-          </a>
-        </div>
-        <div className="flex items-center gap-2">
-          <GithubIcon color="black" size={20} />
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            GitHub Link
-          </a>
-        </div>
-        <div className="flex items-center gap-2">
-          <HomeIcon color="black" size={20} />
-          <Link href="/" className="text-blue-600 hover:underline">
-            Home
-          </Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <TerminalIcon color="black" size={20} />
-          <Link href="/Projects" className="text-blue-600 hover:underline">
-            Projects
-          </Link>
-        </div>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 

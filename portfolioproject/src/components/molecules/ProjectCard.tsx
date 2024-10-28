@@ -1,13 +1,12 @@
 import React, { memo, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "../atoms/Skeleton";
-import icons from "@/assets/DataArray/TechSectionArray";
 import Button from "../atoms/Button";
 import WordTextEffect from "../library/WordTextEffect";
-import { Github, Loader, LogIn, Upload } from "lucide-react";
+import { GithubIcon, InfoIcon, LogIn, TriangleIcon } from "lucide-react";
 
 interface Project {
   title: string;
@@ -18,6 +17,7 @@ interface Project {
   date?: string;
   description?: string;
   icon?: React.ReactNode;
+  id?: number;
 }
 
 interface ProjectCardProps {
@@ -32,18 +32,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   isFirst,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [generatedDescription, setGeneratedDescription] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [vercelLink, setVercelLink] = useState("");
 
   const {
     title,
     imageUrl = "/images/homepage/coming-soon.jpg",
     githubLink = "#",
-    vercelLink = "#",
-    technologies = [],
     date = "TBD",
-    description = "TBD",
     icon = <LogIn size={20} color="red" />,
   } = project;
 
@@ -51,11 +49,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     const fetchGeneratedDescription = async () => {
       if (isFirst) {
         try {
+          const prompt = `Genera una descrizione dettagliata di 30 parole per il progetto ${title}.`;
+          const promptBuffer = Buffer.from(prompt, "utf-8");
+
           const res = await fetch("/api/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              prompt: `Genera una descrizione dettagliata di 30 parole per il progetto ${title}.`,
+              prompt: promptBuffer.toString("utf-8"),
             }),
           });
 
@@ -73,16 +74,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     };
 
     fetchGeneratedDescription();
-  }, [title, vercelLink, githubLink, technologies, isFirst]);
+  }, [title, isFirst]);
 
   const handleGenerateDescription = async () => {
     setIsGenerating(true);
     try {
+      const prompt = `Genera una descrizione dettagliata di 30 parole per il progetto ${title}.`;
+      const promptBuffer = Buffer.from(prompt, "utf-8");
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `Crea una descrizione accattivante di 30 parole per "${title}".`,
+          prompt: promptBuffer.toString("utf-8"),
         }),
       });
 
@@ -96,60 +99,100 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     }
   };
 
+  const handleImageClick = () => {
+    if (!showConfirm) {
+      // Mostra il messaggio di conferma se non già mostrato
+      setShowConfirm(true);
+      if (project.vercelLink) {
+        setVercelLink(project.vercelLink);
+      }
+    }
+  };
+
+  const handleConfirmYes = () => {
+    window.open(vercelLink, "_blank");
+    setShowConfirm(false); // Chiude il messaggio di conferma
+  };
+
+  const handleConfirmNo = () => {
+    setShowConfirm(false); // Chiude il messaggio di conferma
+  };
+
   return (
     <motion.div
-      className="relative flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-4 max-w-sm w-full h-full"
+      className="relative flex flex-col rounded-lg border border-gray-300 bg-white shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg mb-4 w-full h-auto"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
       transition={{ delay: animationDelay, duration: 1.5, ease: "easeInOut" }}
       whileTap={{ scale: 0.98 }}
     >
-      <Link
-        href={vercelLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative w-full h-48 overflow-hidden"
+      <div
+        className="relative w-full h-48 overflow-hidden cursor-pointer"
+        onClick={handleImageClick}
       >
         {isLoading ? (
           <Skeleton width="100%" height="100%" />
         ) : (
           <Image
-            src={imageUrl} // URL dell'immagine
-            alt={`${title} Project Image`} // Testo alternativo
-            width={500} // Larghezza desiderata
-            height={300} // Altezza desiderata
-            className="object-contain cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg" // Classe per gestire l'aspetto dell'immagine
+            src={imageUrl}
+            alt={`${title} Project Image`}
+            width={600}
+            height={300}
+            className="object-cover"
+            priority
           />
         )}
-      </Link>
-      <div className="flex justify-between items-center p-4">{icon}</div>
-      <p>{description}</p>
-      <p>{project.description}</p>
-      <div className="flex justify-between items-center p-4">
-        {project.icon}
+        {showConfirm && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-700 bg-opacity-75 text-white">
+            <p>Vuoi essere rimandato al {vercelLink}?</p>
+
+            <div className="flex justify-center gap-4 items-center text-center">
+              <button
+                onClick={handleConfirmYes}
+                className="bg-blue-500 px-2 py-1 rounded border border-black"
+              >
+                Sì
+              </button>
+              <button
+                onClick={handleConfirmNo}
+                className="bg-red-500 px-2 py-1 rounded border border-black"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="p-4 flex flex-col flex-grow">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+      <div className="flex justify-between items-center p-4 border-b border-gray-300">
+        <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
           {isLoading ? <Skeleton width="70%" height="24px" /> : title}
         </h2>
-        <div className="bg-blue-100 text-blue-800 rounded p-2 mb-2">
-          <span className="text-sm italic">
+        {icon}
+      </div>
+
+      <div className="flex flex-col justify-center items-center text-center">
+        <div className="bg-blue-100 text-blue-800 rounded p-1 mb-2">
+          <span className="text-xs italic">
             Durata progetto:{" "}
             {isLoading ? <Skeleton width="50%" height="16px" /> : date}
           </span>
         </div>
 
         <div
-          className={`text-sm text-gray-700 font-semibold mb-2 ${
-            isLoading ? "" : isExpanded ? "" : "line-clamp-2"
+          className={`text-sm text-gray-700 mb-2 overflow-auto h-[80px] ${
+            isLoading ? "" : "line-clamp-2"
           }`}
         >
           {isLoading ? (
             <Skeleton width="100%" height="16px" />
-          ) : isFirst ? (
-            generatedDescription || "descrizione"
+          ) : isGenerating ? (
+            "Loading..."
+          ) : generatedDescription ? (
+            <div className="mt-2 text-gray-600">
+              <WordTextEffect text={generatedDescription} />
+            </div>
           ) : (
             "Details will be available soon."
           )}
@@ -157,72 +200,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {!isFirst && !generatedDescription && (
           <Button
-            text="Genera Descrizione"
+            text="Info"
             color="var(--color-orange)"
             hoverColor="var(--color-orange-dark)"
             disabled={isGenerating}
             loading={isGenerating}
             onClick={handleGenerateDescription}
-            icon={<Loader color={"red"} size={15} />}
-          />
-        )}
-
-        {generatedDescription && (
-          <div className="mt-2 text-gray-600 max-w-[300px]">
-            <WordTextEffect text={generatedDescription} />
-          </div>
-        )}
-
-        <h3 className="text-lg font-semibold text-gray-800 mt-4">
-          Tecnologie:
-        </h3>
-        <div className="flex flex-wrap mt-2 items-center justify-center">
-          {isLoading ? (
-            <Skeleton width="60%" height="16px" />
-          ) : technologies.length > 0 ? (
-            technologies
-              .slice(0, isExpanded ? technologies.length : 4)
-              .map((tech, index) => {
-                const icon = icons.find(
-                  (icon) => icon.title.toLowerCase() === tech.toLowerCase()
-                );
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center border-2 text-white rounded-full px-3 py-1 text-sm mr-2 mb-2 transition-transform transform hover:scale-105"
-                  >
-                    {icon ? icon.component : null}
-                    <span className="ml-1 text-black">{tech}</span>
-                  </div>
-                );
-              })
-          ) : (
-            "Coming soon..."
-          )}
-        </div>
-
-        {technologies.length > 4 && (
-          <Button
-            onClick={() => setIsExpanded((prev) => !prev)}
-            text={!isExpanded ? "View more" : "View less"}
-            color="#ffffff"
-            hoverColor="#ffffff"
-            icon={<Upload color={"red"} size={15} />}
+            icon={<InfoIcon color={"black"} size={25} />}
           />
         )}
       </div>
-      <div className="flex justify-center space-x-4 p-4 w-full">
-        <Link href="/Projects" passHref>
-          <Button
-            text="Vedi altro"
-            color="var(--color-blue-light)"
-            hoverColor="var(--color-blue-dark)"
-            icon={<LogIn color={"red"} size={15} />}
-          />
-        </Link>
-      </div>
 
-      <div className="flex justify-center space-x-4 p-4">
+      <div className="flex flex-col items-center p-4 space-y-2">
         {isLoading ? (
           <>
             <Skeleton width="80px" height="32px" className="rounded-md" />
@@ -232,17 +221,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <>
             <Button
               link={vercelLink}
-              text="View on Vercel"
+              text="Vercel"
               color="var(--color-accent)"
               hoverColor="var(--color-accent-dark)"
-              icon={<Upload color={"red"} size={15} />}
+              icon={<TriangleIcon color={"black"} size={25} />}
             />
             <Button
               link={githubLink}
-              text="View on GitHub"
+              text="GitHub"
               color="var(--color-green)"
               hoverColor="var(--color-green-dark)"
-              icon={<Github color={"red"} size={15} />}
+              icon={<GithubIcon color={"black"} size={25} />}
             />
           </>
         )}

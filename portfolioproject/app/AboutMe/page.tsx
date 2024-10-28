@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
 import WordTextEffect from "@/src/components/library/WordTextEffect";
+import Image from "next/image";
 
 const AboutMe: React.FC = () => {
-  // Definisci i metadata specifici per la pagina
   const metadata: Metadata = {
     title: "AboutMe",
     description: "AboutMe",
@@ -15,17 +15,26 @@ const AboutMe: React.FC = () => {
       icon: "/svg/logoAbout.svg",
     },
   };
+  const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
 
   return (
     <>
       <Header metadata={metadata} />
       <motion.div
-        className="flex flex-col justify-center items-center p-40"
+        className=" gap-4 flex flex-col justify-center items-center p-12 -mt-12  md:p-20 lg:p-40 text-center md:-mt-20  lg:-mt-40"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
       >
-        <h1 className="text-3xl font-bold">About me</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">About Me</h1>
+        <Image
+          src={imageUrl}
+          alt="Luca Ferraresso"
+          width={150}
+          height={150}
+          className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+          style={{ width: "auto", height: "auto" }}
+        />
         <WordTextEffect text="I am a passionate developer with a strong focus on front-end development. I have experience in creating responsive and user-friendly web applications using modern technologies such as React, TypeScript, and Redux. I am constantly learning and staying up-to-date with the latest industry trends and best practices. I am also a team player and enjoy collaborating with others to achieve common goals." />
       </motion.div>
     </>

@@ -1,98 +1,76 @@
 "use client";
 import React, { useState, useEffect, memo } from "react";
-
 import WordTextEffect from "../library/WordTextEffect";
-import { Github, Linkedin } from "lucide-react";
-import Link from "next/link";
+import { GithubIcon, LinkedinIcon } from "lucide-react";
+import Skeleton from "../atoms/Skeleton"; // Assicurati di importare il tuo componente Skeleton
 
 const HeroSection: React.FC = () => {
-  const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
 
+  //facciamo un set interval si due secondi
   useEffect(() => {
-    const fetchDescription = async () => {
-      const prompt =
-        "Scrivi una descrizione concisa per un ragazzo di nome Luca Ferraresso, che ha recentemente completato un bootcamp intensivo in sviluppo front-end, con basi di back-end. Utilizza 80 parole per delineare le sue competenze tecniche, le tecnologie utilizzate e il suo obiettivo di trovare una posizione come sviluppatore web. La descrizione deve essere chiara e professionale, senza toni emotivi o esagerati.";
-
-      try {
-        // Creare un buffer dal prompt
-        const promptBuffer = Buffer.from(prompt, "utf-8");
-
-        const res = await fetch("/api/gemini", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: promptBuffer.toString("utf-8") }),
-        });
-
-        if (!res.ok) {
-          throw new Error("Errore nella richiesta");
-        }
-
-        const data = await res.json();
-        setDescription(data.output);
-
-        console.log(data.output);
-      } catch (error) {
-        console.error("Error:", error);
-        setDescription("There was an error with the API.");
-      }
-    };
-    fetchDescription();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      <div className="relative grid grid-cols-1 items-center -mt-20 -mb-20 p-20">
-        <>
-          <div className="grid grid-cols-1 p-4 justify-center items-center gap-8">
-            {" "}
-            <WordTextEffect text="Luca Ferraresso, Junior Web developer" />
-          </div>
-        </>
+    <div className="relative flex flex-col items-center p-6 md:p-10 lg:p-20 bg-gray-50">
+      <div className="flex flex-col items-center w-full max-w-2xl text-center ">
+        {/* Testo e icone */}
+        <div className="flex flex-col justify-center">
+          {isLoading ? (
+            <>
+              <Skeleton width="250px" height="24px" className="mb-2" />
+              <Skeleton width="100%" height="16px" className="mb-4" />
+            </>
+          ) : (
+            <>
+              <WordTextEffect text="Luca Ferraresso, Junior Web Developer" />
+              <div className="text-base text-gray-600 mt-4 mb-6">
+                <WordTextEffect
+                  text={
+                    "Luca Ferraresso è un aspirante sviluppatore web con una solida formazione in sviluppo front-end, recentemente completata con un bootcamp intensivo. Luca padroneggia HTML, CSS, JavaScript, React e ha una conoscenza base di linguaggi back-end come Node.js e Python. Il suo percorso formativo gli ha permesso di sviluppare capacità di problem-solving, teamwork e di lavorare in modo indipendente su progetti web complessi. Luca è attualmente alla ricerca di un'opportunità come sviluppatore web per mettere in pratica le sue competenze e crescere professionalmente in un contesto stimolante."
+                  }
+                />
+              </div>
+            </>
+          )}
 
-        {/* Contenuto Testuale */}
-        <div className="flex flex-col justify-center items-center text-center md:text-left">
-          <h1 className="text-base text-gray-600 mb-6">
-            {/* Descrizione dinamica */}
-            <WordTextEffect text={description} />
-            {/* Icone Social */}
-            <div className="flex justify-center items-center space-x-4 mt-4">
-              <div>
-                <ul>
-                  <li>
-                    <Github color="black" size={25} />
-                  </li>
-                  <li>
-                    <Linkedin color="blue" size={25} />
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul>
-                  <li>
-                    <Link
-                      href="https://github.com/LucaFerraresso"
-                      className="hover:underline"
-                    >
-                      Github
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://www.linkedin.com/in/luca-ferraresso/"
-                      className="hover:underline"
-                    >
-                      Linkedin
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </h1>
+          {/* Icone Social */}
+          <div className="flex justify-center items-center space-x-6 mt-4 border rounded-lg p-2">
+            {isLoading ? (
+              <>
+                <Skeleton width="40px" height="40px" className="rounded-full" />
+                <Skeleton width="40px" height="40px" className="rounded-full" />
+              </>
+            ) : (
+              <>
+                <GithubIcon color="black" size={24} />
+                <a
+                  href="https://github.com/LucaFerraresso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" hover:underline"
+                >
+                  GitHub
+                </a>
+                <LinkedinIcon color="blue" size={24} />
+                <a
+                  href="https://www.linkedin.com/in/luca-ferraresso/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" hover:underline"
+                >
+                  Linkedin
+                </a>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,75 +1,26 @@
-import {
-  CodeIcon,
-  LibraryBigIcon,
-  MailIcon,
-  TerminalIcon,
-  User,
-  XCircle,
-} from "lucide-react";
+import links from "@/assets/DataArray/LinkSectionArray";
 import Link from "next/link";
 
 const LinkSection = () => {
   return (
-    <div className="grid grid-cols-2">
-      <div className="flex justify-center items-center gap-12">
-        <div>
-          <ul>
-            <li>
-              <TerminalIcon color="blue" />
-            </li>
-            <li>
-              <CodeIcon color="black" />
-            </li>
-            <li>
-              <User color="green" />
-            </li>
-            <li>
-              <MailIcon color="purple" />
-            </li>
-            <li>
-              <LibraryBigIcon color="orange" />
-            </li>
-            <li>
-              <XCircle color="red" />
-            </li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li>
-              <Link href="/Projects" className="hover:underline">
-                Pagina progetti
-              </Link>
-            </li>
-            <li>
-              <Link href="/TechStack" className="hover:underline">
-                TechStack
-              </Link>
-            </li>
-            <li>
-              <Link href="/AboutMe" className="hover:underline">
-                About me
-              </Link>
-            </li>
-            <li>
-              <Link href="/Contacts" className="hover:underline">
-                Contacts
-              </Link>
-            </li>
-            <li>
-              <Link href="/Library" className="hover:underline">
-                Library
-              </Link>
-            </li>
-            <li>
-              <Link href="/error" className="hover:underline">
-                Error page
-              </Link>
-            </li>
+    <div className="container mx-auto p-6">
+      <h2 className="text-2xl font-semibold text-center mb-6">Link Utili</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex flex-col items-center">
+          <ul className="space-y-4">
+            {links.map((link, index) => (
+              <li key={index} className="flex items-center gap-6">
+                {link.icon}
+                <Link href={link.href} className="text-lg hover:underline">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
     </div>
   );
 };
+
 export default LinkSection;
