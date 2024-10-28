@@ -21,19 +21,20 @@ const AboutMe: React.FC = () => {
     <>
       <Header metadata={metadata} />
       <motion.div
-        className=" gap-4 flex flex-col justify-center items-center p-12 -mt-12  md:p-20 lg:p-40 text-center md:-mt-20  lg:-mt-40"
+        className="flex flex-col text-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28" // Padding top per tenere conto dell'altezza della navbar
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
       >
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">About Me</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
+          About Me
+        </h1>
         <Image
           src={imageUrl}
           alt="Luca Ferraresso"
           width={150}
           height={150}
-          className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
-          style={{ width: "auto", height: "auto" }}
+          className="cursor-pointer hover:animate-pulse rounded-full transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
         />
         <WordTextEffect text="I am a passionate developer with a strong focus on front-end development. I have experience in creating responsive and user-friendly web applications using modern technologies such as React, TypeScript, and Redux. I am constantly learning and staying up-to-date with the latest industry trends and best practices. I am also a team player and enjoy collaborating with others to achieve common goals." />
       </motion.div>

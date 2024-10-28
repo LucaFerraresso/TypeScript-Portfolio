@@ -79,11 +79,12 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
   return (
     <>
       <motion.div
-        className="flex flex-col justify-center items-center p-20 -mt-20 -mb-20"
+        className=" bg-gray-50 min-h-screen"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
       >
+        <h1 className="text-3xl font-bold mt-6 mb-6">I miei Progetti</h1>
         <div className="min-w-full bg-white border border-gray-300 mx-auto text-center">
           {projects.map((project, index) => (
             <div key={index}>

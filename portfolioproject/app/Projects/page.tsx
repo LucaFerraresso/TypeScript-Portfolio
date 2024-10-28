@@ -8,6 +8,8 @@ import ProjectTable from "@/src/components/molecules/ProjectTable";
 import Link from "next/link";
 import { HomeIcon } from "lucide-react";
 import ProjectSection from "@/src/components/sections/ProjectSection";
+import { motion } from "framer-motion";
+import { fadeInVariants } from "@/animation/animation";
 
 const Projects: React.FC = () => {
   const metadata: Metadata = {
@@ -39,23 +41,22 @@ const Projects: React.FC = () => {
     <>
       <Header metadata={metadata} />
 
-      <div className="p-6 bg-gray-50 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
-          Projects
-        </h1>
-
+      <motion.div
+        variants={fadeInVariants}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col text-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28"
+      >
         {isMobile ? <ProjectSection /> : <ProjectTable projects={projects} />}
 
-        <div className="flex flex-col mt-10 items-center">
-          <h2 className="text-xl font-semibold mb-2">Link Utili</h2>
-          <div className="flex items-center text-center gap-2">
-            <HomeIcon color="black" size={20} />
-            <Link href="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-          </div>
+        <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
+        <div className="flex items-center text-center gap-2 mb-24">
+          <HomeIcon color="black" size={20} />
+          <Link href="/" className="text-blue-600 hover:underline">
+            Home
+          </Link>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -30,12 +30,12 @@ const ProjectDetail: React.FC = () => {
 
   return (
     <motion.div
-      className="flex flex-col justify-center items-center p-20 -mt-20 -mb-20"
+      className="flex flex-col justify-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="p-6 md:p-10 lg:p-16 flex flex-col items-center text-center justify-center gap-6">
+      <div className="p-4 flex flex-col items-center text-center justify-center gap-6">
         <Image
           src={project.imageUrl}
           alt={`${project.title} Project Image`}

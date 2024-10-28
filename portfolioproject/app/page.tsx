@@ -21,14 +21,14 @@ export default function Home() {
   return (
     <>
       <motion.div
-        className="p-4  md:p-20 lg:p-32 xl:p-48 -mt-4 -mb-4 md:-mt-20 md:-mb-20 lg:-mt-32 lg:-mb-32 xl:-mt-48 xl:-mb-48 bg-gray-50 min-h-screen"
+        className="p-6 md:p-12 lg:p-32 xl:p-48 bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
       >
         <Header metadata={metadata} />
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="text-center mt-4">Loading...</div>}>
           <SectionSeparator />
           <HeroSection />
           <SectionSeparator />

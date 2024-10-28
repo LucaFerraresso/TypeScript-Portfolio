@@ -19,14 +19,14 @@ const Contacts: React.FC = () => {
     <>
       <Header metadata={metadata} />
       <motion.div
-        className="flex flex-col justify-center items-center p-12 md:p-20 lg:p-40 text-center md:-mt-20 lg:-mt-40"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
+        className="flex flex-col text-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28" // Padding top per tenere conto dell'altezza della navbar
       >
-        <h1 className="text-3xl font-bold">Contacts</h1>
-        <p className="mt-4">Phone: 000000000000</p>
-        <p>Email: info@example.com</p>
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">Contacts</h1>
+        <p className="mt-2 text-lg">Phone: 000000000000</p>
+        <p className="mt-2 text-lg">Email: info@example.com</p>
       </motion.div>
     </>
   );
