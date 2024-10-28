@@ -26,30 +26,31 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
 
   return (
     <>
-      <motion.div
-        className={` flex flex-col items-center mb-4 border-2 p-4 cursor-pointer rounded-lg min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
-        initial="initial"
-        whileHover="hover"
-        variants={hoverEffectVariants}
-        style={{ willChange: "transform, background-color, border-color" }}
-        title={title}
-        aria-label={title}
-      >
-        {isLoading ? (
-          // Mostra uno Skeleton rotondo al posto dell'icona durante il caricamento
-          <Skeleton width="48px" height="48px" className="rounded-full mb-2" />
-        ) : (
+      {isLoading ? (
+        // Mostra uno Skeleton rotondo al posto dell'icona durante il caricamento
+        <Skeleton width="48px" height="48px" className="rounded-full mb-2" />
+      ) : (
+        <motion.div
+          className={` flex flex-col items-center mb-4 border-2 p-4 cursor-pointer rounded-lg min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
+          initial="initial"
+          whileHover="hover"
+          variants={hoverEffectVariants}
+          style={{ willChange: "transform, background-color, border-color" }}
+          title={title}
+          aria-label={title}
+        >
           <motion.div className="text-4xl mb-2" variants={iconHoverVariants}>
             {icon}
           </motion.div>
-        )}
-        <motion.p
-          className="text-sm text-center text-gray-800 font-medium"
-          variants={textHoverVariants}
-        >
-          {title}
-        </motion.p>
-      </motion.div>
+
+          <motion.h1
+            className="text-sm text-center text-gray-800 font-medium"
+            variants={textHoverVariants}
+          >
+            {title}
+          </motion.h1>
+        </motion.div>
+      )}
     </>
   );
 };
