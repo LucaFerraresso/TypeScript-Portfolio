@@ -1,19 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-
 import GenericModal from "./GenericModal";
-
-import icons from "@/assets/DataArray/TechSectionArray";
 import Image from "next/image";
-import { EyeIcon, Github, Loader, Upload } from "lucide-react";
+import { CarIcon, Github, Loader, Upload } from "lucide-react";
 import Link from "next/link";
 
 interface Project {
   title: string;
   imageUrl?: string;
-  githubLink?: string;
-  vercelLink?: string;
+  githubLink?: string | undefined;
+  vercelLink?: string | undefined;
   technologies?: string[];
   date?: string;
   description?: string;
@@ -38,13 +35,21 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
   const handleGenerateDescription = async (index: number, project: Project) => {
     setIsGenerating((prev) => ({ ...prev, [index]: true }));
     setIsLoading(true);
+
     try {
+      // Creare un prompt come stringa
+      const prompt = `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". 
+        elenca in paragrafi le sue funzionalità dopo che lo hai analizzato visitando il link su Vercel: ${project.vercelLink} 
+        e su GitHub: ${project.githubLink}. massimo 100 parole. 
+        Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`;
+
+      // Creare un buffer dal prompt
+      const promptBuffer = Buffer.from(prompt, "utf-8");
+
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". elenca in paragrafi le sue funzionalità dopo che lo hai analizzato visitando il link su Vercel: ${project.vercelLink} e su GitHub: ${project.githubLink}.massimo 200 parole. Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`,
-        }),
+        body: JSON.stringify({ prompt: promptBuffer.toString("utf-8") }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
@@ -72,18 +77,17 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
   return (
     <>
       <div className="min-w-full bg-white border border-gray-300 mx-auto text-center">
-        <div>
-          <div className="grid grid-cols-5 bg-gray-100  w-full">
-            <th className="py-3 px-2 sm:px-4 border-b">Immagine</th>
-            <th className="py-3 px-2 sm:px-4 border-b">Titolo</th>
-            <th className="py-3 px-2 sm:px-4 border-b">Data</th>
-            <th className="py-3 px-2 sm:px-4 border-b">Tecnologie</th>
+        {projects.map((project, index) => (
+          <>
+            <div className="grid grid-cols-5 bg-gray-100  w-full">
+              <th className="py-3 px-2 sm:px-4 border-b">Immagine</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Titolo</th>
+              <th className="py-3 px-2 sm:px-4 border-b">Data</th>
 
-            <th className="py-3 px-2 sm:px-4 border-b">Azione</th>
-          </div>
-        </div>
-        <div>
-          {projects.map((project, index) => (
+              <th className="py-3 px-2 sm:px-4 border-b">Web Link</th>
+
+              <th className="py-3 px-2 sm:px-4 border-b">Azione</th>
+            </div>
             <div
               key={index}
               className="hover:bg-gray-200 grid grid-cols-5 justify-between items-center "
@@ -109,63 +113,44 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               </div>
               <td className="py-3 px-2 sm:px-4 ">{project.title}</td>
               <td className="py-3 px-2 sm:px-4 ">{project.date || "TBD"}</td>
-              <div className="py-3 px-2 sm:px-4 ">
-                <div className="grid grid-cols-2 gap-2">
-                  {project.technologies?.map((tech) => {
-                    const techIcon = icons.find((icon) => icon.title === tech);
-                    return (
-                      techIcon && (
-                        <div key={tech} className="flex items-center">
-                          {techIcon.component}
-                          <span className="ml-1">{tech}</span>
-                        </div>
-                      )
-                    );
-                  })}
-                </div>
-              </div>
-              <td className="py-3 px-2 sm:px-4 ">
-                <div className="flex flex-col space-y-2">
+              <td className="flex flex-col justify-around items-center text-center gap-4">
+                <Button
+                  text="Vercel"
+                  color="var(--color-accent)"
+                  hoverColor="var(--color-accent-dark)"
+                  link={project.vercelLink}
+                  icon={<Upload color={"red"} size={15} />}
+                />
+                <Button
+                  text="GitHub"
+                  color="var(--color-green)"
+                  hoverColor="var(--color-green-dark)"
+                  link={project.githubLink}
+                  icon={<Github color={"red"} size={15} />}
+                />
+              </td>
+              <td className="flex flex-col justify-around items-center text-center gap-4 ">
+                <Link href={`Projects/${project.id}`}>
                   <Button
-                    text="Vedi su Vercel"
-                    color="var(--color-accent)"
-                    hoverColor="var(--color-accent-dark)"
-                    link={project.vercelLink}
-                    icon={<Upload color={"red"} size={15} />}
-                  />
-                  <Button
-                    text="Vedi su GitHub"
-                    color="var(--color-green)"
-                    hoverColor="var(--color-green-dark)"
-                    link={project.githubLink}
-                    icon={<Github color={"red"} size={15} />}
-                  />
-                  <Link href={`Projects/${project.id}`}>
-                    <Button
-                      text="Vedi pagina dettaglio"
-                      color="var(--color-accent)"
-                      hoverColor="var(--color-accent-dark)"
-                      icon={<EyeIcon color={"red"} size={15} />}
-                    />
-                  </Link>
-                  <Button
-                    text={
-                      isGenerating[index]
-                        ? "Generando..."
-                        : "Genera Descrizione"
-                    }
+                    text="/id"
                     color="var(--color-orange)"
                     hoverColor="var(--color-orange-dark)"
-                    onClick={() => handleGenerateDescription(index, project)}
-                    disabled={isGenerating[index]}
-                    loading={isLoading}
-                    icon={<Loader color={"red"} size={15} />}
+                    icon={<CarIcon color={"red"} size={15} />}
                   />
-                </div>
+                </Link>
+                <Button
+                  text={isGenerating[index] ? " Loading... " : "view more"}
+                  color="var(--color-orange)"
+                  hoverColor="var(--color-orange-dark)"
+                  onClick={() => handleGenerateDescription(index, project)}
+                  disabled={isGenerating[index]}
+                  loading={isLoading}
+                  icon={<Loader color={"red"} size={15} />}
+                />
               </td>
             </div>
-          ))}
-        </div>
+          </>
+        ))}
       </div>
 
       {/* Modale per l'immagine */}
@@ -180,7 +165,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
             alt="Project Image"
             width={500}
             height={300}
-            className="object-contain cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg"
+            className="object-contain"
           />
         )}
       </GenericModal>
@@ -191,7 +176,11 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
         onClose={closeModal}
         title="Descrizione del Progetto"
       >
-        {modalDescription && <p className="p-4">{modalDescription}</p>}
+        {modalDescription && (
+          <div className="h-[300px] w-full overflow-auto ">
+            <p className="p-4">{modalDescription}</p>
+          </div>
+        )}
       </GenericModal>
     </>
   );

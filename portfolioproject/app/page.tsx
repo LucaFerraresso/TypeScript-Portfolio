@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 import HeroSection from "@/src/components/sections/HeroSection";
-import AnimatedCard from "@/src/components/library/AnimatedCard";
-import TechSection from "@/src/components/sections/TechSection";
+import InfiniteTechSection from "@/src/components/sections/InfiniteTechSection";
+import LinkSection from "@/src/components/sections/LinkSection";
 
 const metadata: Metadata = {
   title: "MyPortfolio",
@@ -23,12 +23,10 @@ export default function Home() {
         <Suspense fallback={<div>Loading...</div>}>
           <SectionSeparator />
           <HeroSection />
-
           <SectionSeparator />
-          <TechSection />
+          <InfiniteTechSection />
           <SectionSeparator />
-
-          <AnimatedCard />
+          <LinkSection />
           <SectionSeparator />
         </Suspense>
       </div>

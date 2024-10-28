@@ -29,11 +29,7 @@ const Navbar: React.FC = () => {
           </div>
         );
       })}
-      <div className="flex items-center">
-        <Link href="/contact">
-          <Button text="Contact" />
-        </Link>
-      </div>
+
       <PromptForm />
     </nav>
   );

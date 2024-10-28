@@ -11,36 +11,54 @@ import {
   Trash2,
 } from "lucide-react";
 
+type MessageType = "user" | "api";
+
+interface Message {
+  text: string;
+  type: MessageType;
+}
+
 const PromptForm = () => {
-  const [messages, setMessages] = useState<
-    { text: string; type: "user" | "api" }[]
-  >([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [maxWords, setMaxWords] = useState(10);
   const [isOpen, setIsOpen] = useState(false);
   const [conversationInput, setConversationInput] = useState("");
+  const [isPromptMode, setIsPromptMode] = useState(true);
 
   const toggleForm = () => setIsOpen((prev) => !prev);
 
-  const handleSubmit = async (type: "prompt" | "conversation") => {
-    setLoading(true);
-    const userMessage = type === "prompt" ? prompt : conversationInput;
+  const handleInputChange =
+    (setter: React.Dispatch<React.SetStateAction<string>>) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setter(event.target.value);
+    };
 
+  const handleSubmit = async () => {
+    setLoading(true);
+    const userMessage = isPromptMode ? prompt : conversationInput;
+
+    // Aggiornare lo stato dei messaggi
     setMessages((prev) => [...prev, { text: userMessage, type: "user" }]);
 
     try {
+      // Creare un buffer dalla stringa del messaggio
+      const userMessageBuffer = Buffer.from(
+        `${userMessage} (${maxWords} words)`,
+        "utf-8"
+      );
+
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: `${userMessage} (${maxWords} words)` }),
+        body: JSON.stringify({ prompt: userMessageBuffer.toString("utf-8") }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
 
-      const data = await res.json();
-      const apiResponse = data.output || "Nessuna risposta ricevuta.";
-      setMessages((prev) => [...prev, { text: apiResponse, type: "api" }]);
+      const { output = "Nessuna risposta ricevuta." } = await res.json();
+      setMessages((prev) => [...prev, { text: output, type: "api" }]);
     } catch (error) {
       console.error("Error:", error);
       setMessages((prev) => [
@@ -49,94 +67,89 @@ const PromptForm = () => {
       ]);
     } finally {
       setLoading(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      type === "prompt" ? setPrompt("") : setConversationInput(""); // Reset accordingly
     }
   };
 
-  const ClearAll = () => {
+  const clearAll = () => {
     setMessages([]);
     setPrompt("");
     setMaxWords(10);
     setConversationInput("");
-    setLoading(false);
-    setIsOpen(false);
-    toggleForm();
   };
 
   return (
-    <div className=" flex flex-col justify-center items-center z-41 ">
+    <div className="flex flex-col justify-center items-center z-41">
       <Button
         text="Gemini AI"
         onClick={toggleForm}
-        color="var(--color-green)" // Colore verde
-        hoverColor="var(--color-green-dark)" // Verde più scuro
-        disabled={false}
-        loading={false}
+        color="var(--color-green)"
+        hoverColor="var(--color-green-dark)"
         icon={<MessageCircleMoreIcon color={"black"} size={25} />}
       />
 
       <GenericModal isOpen={isOpen} onClose={toggleForm}>
-        <h2 className="text-2xl text-green-500 font-bold text-center mb-4">
+        <h2 className="text-3xl text-green-500 font-bold text-center mb-6">
           Assistente Gemini
         </h2>
-        <div className="flex flex-row justify-around items-center text-center p-2 border border-black  ">
+        <div className="flex justify-around items-center text-center p-2 border border-gray-300 rounded-lg mb-4">
           <Button
             text="Pulisci"
-            color="var(--color-red)" // Rosso
-            hoverColor="var(--color-red-dark)" // Rosso scuro
-            loading={false}
-            disabled={false}
-            onClick={ClearAll}
+            color="var(--color-red)"
+            hoverColor="var(--color-red-dark)"
+            onClick={clearAll}
             icon={<Trash2 color={"black"} size={15} />}
           />
           <Button
-            onClick={() => handleSubmit("prompt")}
-            text="Risposta"
-            color="var(--color-green)" // Verde
-            hoverColor="var(--color-green-dark)" // Verde più scuro
-            disabled={loading || !prompt}
+            onClick={() => {
+              handleSubmit();
+              setIsPromptMode(!isPromptMode);
+            }}
+            text={isPromptMode ? "Risposta" : "Invia"}
+            color={
+              isPromptMode ? "var(--color-green)" : "var(--color-blue-light)"
+            }
+            hoverColor={
+              isPromptMode
+                ? "var(--color-green-dark)"
+                : "var(--color-blue-dark)"
+            }
+            disabled={loading || (isPromptMode ? !prompt : !conversationInput)}
             loading={loading}
-            icon={<ChevronDown color={"red"} size={15} />}
-          />
-          <Button
-            onClick={() => handleSubmit("conversation")}
-            text="Invia"
-            color="var(--color-blue-light)" // Blu chiaro
-            hoverColor="var(--color-blue-dark)" // Blu scuro
-            disabled={loading || !conversationInput}
-            loading={loading}
-            icon={<ChevronUp color={"red"} size={15} />}
+            icon={
+              isPromptMode ? (
+                <ChevronDown color={"red"} size={15} />
+              ) : (
+                <ChevronUp color={"red"} size={15} />
+              )
+            }
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-black p-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
           <motion.div
-            className="space-y-4 flex flex-col h-full w-full"
+            className="flex flex-col space-y-4"
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200 h-full w-full">
-              <label
-                htmlFor="prompt"
-                className="block text-sm mb-4 ml-2 mt-2 font-bold"
-              >
+            <div className="border border-gray-900 rounded-lg p-4 bg-gray-100">
+              <label htmlFor="prompt" className="block text-sm mb-2 font-bold">
                 Inserisci Prompt:
               </label>
               <input
                 id="prompt"
                 type="text"
                 value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 px-3 py-5"
+                onChange={handleInputChange(setPrompt)}
+                className="mt-1 block w-full border border-gray-900 rounded-md px-3 py-2"
                 required
+                disabled={!isPromptMode}
               />
             </div>
-            <div className="border border-gray-900 rounded-lg flex flex-col p-4 bg-gray-200 h-full w-full">
+            <div className="border border-gray-900 rounded-lg p-4 bg-gray-100">
               <label
                 htmlFor="maxWords"
-                className="block text-sm mb-4 ml-2 mt-2 font-bold"
+                className="block text-sm mb-2 font-bold"
               >
                 Numero massimo di parole:
               </label>
@@ -144,34 +157,31 @@ const PromptForm = () => {
                 id="maxWords"
                 type="number"
                 value={maxWords}
-                onChange={(e) => setMaxWords(Number(e.target.value))}
+                onChange={(e) =>
+                  setMaxWords(Math.max(Number(e.target.value), 1))
+                }
                 min={1}
-                className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 p-3"
+                className="mt-1 block w-full border border-gray-900 rounded-md px-3 py-2"
                 required
               />
             </div>
           </motion.div>
           <motion.div
-            className="space-y-4 h-full w-full"
+            className="flex flex-col space-y-4"
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="border border-gray-900 rounded-lg p-4 bg-gray-200 flex flex-col w-full h-[400px]">
+            <div className="border border-gray-900 rounded-lg p-4 bg-gray-100 flex flex-col h-[400px]">
               <h3 className="text-lg font-medium">Conversazione:</h3>
-              <div className="flex flex-col-reverse h-full w-full overflow-auto">
+              <div className="flex flex-col-reverse h-full w-full overflow-auto bg-gray-50 p-2 rounded-md">
                 {messages.map((msg, index) => (
                   <div
                     key={index}
-                    className={`mt-2 flex items-center ${
+                    className={`mt-2 p-2 rounded-md ${
                       msg.type === "user" ? "bg-blue-300" : "bg-green-300"
                     }`}
                   >
-                    <span
-                      className={`icon ${
-                        msg.type === "user" ? "icon-user" : "icon-bot"
-                      }`}
-                    ></span>
                     <strong>{msg.type === "user" ? "Tu: " : "Gemini: "}</strong>
                     {loading && index === messages.length - 1 ? (
                       <div>{prompt}</div>
@@ -193,9 +203,10 @@ const PromptForm = () => {
                 id="conversationInput"
                 type="text"
                 value={conversationInput}
-                onChange={(e) => setConversationInput(e.target.value)}
-                className="mt-1 block w-full border border-gray-900 rounded-md sm:text-sm text-gray-900 px-3 py-5"
+                onChange={handleInputChange(setConversationInput)}
+                className="mt-1 block w-full border border-gray-900 rounded-md px-3 py-2"
                 placeholder="Scrivi qui..."
+                disabled={isPromptMode}
               />
             </div>
           </motion.div>
