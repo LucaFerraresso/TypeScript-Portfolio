@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <motion.div
-        className="p-6 md:p-12 lg:p-32 xl:p-48 bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28"
+        className="p-12 md:p-12 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-12 lg:pt-20"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"

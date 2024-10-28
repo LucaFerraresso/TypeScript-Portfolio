@@ -18,7 +18,7 @@ const SectionSeparator: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative my-8">
+    <div className="relative my-6">
       {/* Linea superiore animata */}
       <motion.div
         className={`h-1 bg-gradient-to-r from-blue-400 to-teal-400 rounded-full mb-2 ${

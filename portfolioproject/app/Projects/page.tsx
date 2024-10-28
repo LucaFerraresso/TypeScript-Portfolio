@@ -45,7 +45,7 @@ const Projects: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col text-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28"
+        className="flex flex-col text-center items-center p-12 md:p-12 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-12 lg:pt-20"
       >
         {isMobile ? <ProjectSection /> : <ProjectTable projects={projects} />}
 

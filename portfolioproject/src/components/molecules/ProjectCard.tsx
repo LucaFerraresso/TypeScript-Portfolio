@@ -141,6 +141,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             height={300}
             className="object-cover"
             priority
+            style={{ width: "auto", height: "auto" }}
           />
         )}
         {showConfirm && (

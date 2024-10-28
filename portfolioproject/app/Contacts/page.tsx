@@ -22,7 +22,7 @@ const Contacts: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col text-center items-center bg-gray-50 min-h-screen pt-12 md:pt-24 lg:pt-28" // Padding top per tenere conto dell'altezza della navbar
+        className="flex flex-col text-center items-center p-14 md:p-14 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-14 lg:pt-20"
       >
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Contacts</h1>
         <p className="mt-2 text-lg">Phone: 000000000000</p>

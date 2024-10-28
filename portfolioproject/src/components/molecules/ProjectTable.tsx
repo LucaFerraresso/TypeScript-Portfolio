@@ -117,8 +117,8 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                       alt={project.title}
                       width={200}
                       height={200}
-                      loading="lazy"
-                      priority={false}
+                      priority
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 </div>

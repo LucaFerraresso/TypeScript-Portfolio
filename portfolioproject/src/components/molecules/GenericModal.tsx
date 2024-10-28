@@ -23,7 +23,7 @@ const GenericModal: React.FC<GenericModalProps> = ({
 
   return (
     <div
-      className="min-h-[100vh] fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-80"
+      className="min-h-[100vh] fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-20 "
       onClick={onClose}
     >
       <div
