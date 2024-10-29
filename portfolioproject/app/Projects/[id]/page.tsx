@@ -79,36 +79,42 @@ const ProjectDetail: React.FC = () => {
         <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
           <h2 className="text-xl font-semibold">Link Utili:</h2>
           <div className="flex items-center gap-2">
-            <TriangleIcon color="black" size={20} />
+            <TriangleIcon color="black" size={24} />
             <a
               href={project.vercelLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 hover:underline hover:font-bold"
             >
               Vercel Link
             </a>
           </div>
           <div className="flex items-center gap-2">
-            <GithubIcon color="black" size={20} />
+            <GithubIcon color="black" size={24} />
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 hover:underline  hover:font-bold"
             >
               GitHub Link
             </a>
           </div>
           <div className="flex items-center gap-2">
-            <HomeIcon color="black" size={20} />
-            <Link href="/" className="text-blue-600 hover:underline">
+            <HomeIcon color="black" size={24} />
+            <Link
+              href="/"
+              className="text-blue-600 hover:underline  hover:font-bold"
+            >
               Home
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <TerminalIcon color="black" size={20} />
-            <Link href="/Projects" className="text-blue-600 hover:underline">
+            <TerminalIcon color="black" size={24} />
+            <Link
+              href="/Projects"
+              className="text-blue-600 hover:underline  hover:font-bold"
+            >
               Projects
             </Link>
           </div>

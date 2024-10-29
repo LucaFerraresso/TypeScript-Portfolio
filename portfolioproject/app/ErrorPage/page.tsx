@@ -42,7 +42,7 @@ const ErrorPage: React.FC = () => {
               hoverColor="var(--color-hover-orange)"
               disabled={false}
               loading={false}
-              icon={<HomeIcon color={"red"} size={30} />}
+              icon={<HomeIcon color={"black"} size={24} />}
             />
           </Link>
         </div>

@@ -9,7 +9,8 @@ import {
   // Magic Wand icon for "Genera" (generate)
   // Eye Off icon for "View More"
   IceCream, // Ice Cream icon for "Icescream"
-  Github, // GitHub icon for GitHub links
+  Github,
+  User2Icon, // GitHub icon for GitHub links
   // Mail icon for "Contatti" (contacts)
 } from "lucide-react";
 
@@ -37,7 +38,7 @@ const projects = [
       "VSCode",
     ],
     date: "02/09/2024-07/09/2024",
-    icon: <GitFork color="red" />, // Icona per il fork del progetto
+    icon: <GitFork color="var(--color-foreground)" size={24} />, // Icona per il fork del progetto
     id: 1, // ID univoco per il progetto
   },
   {
@@ -50,7 +51,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
-    icon: <PhoneCall color="red" />, // Icona per contatti
+    icon: <PhoneCall color="var(--color-ocean)" size={24} />, // Icona per contatti
     id: 2, // ID univoco per il progetto
   },
   {
@@ -63,7 +64,7 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
-    icon: <IceCream color="red" />, // Icona per il gelato
+    icon: <IceCream color="var(--color-berry)" size={24} />, // Icona per il gelato
     id: 3, // ID univoco per il progetto
   },
   {
@@ -89,7 +90,7 @@ const projects = [
       "VSCode",
     ],
     date: "09/09/2024-22/09/2024",
-    icon: <User color="red" />, // Icona per il profilo utente
+    icon: <User color="var(--color-emerald)" size={24} />, // Icona per il profilo utente
     id: 4, // ID univoco per il progetto
   },
   {
@@ -113,8 +114,34 @@ const projects = [
       "VSCode",
     ],
     date: "05/08/2024-30/08/2024",
-    icon: <Github color="red" />, // Icona per GitHub
+    icon: <Github color="var(--color-sapphire)" size={24} />, // Icona per GitHub
     id: 5, // ID univoco per il progetto
+  },
+  {
+    title: "Portfolio Nextjs",
+    description:
+      "Potfolio personlae sviluppato con il framework next js e linguaggio typescript.",
+    imageUrl: "/images/homepage/PorfolioNextjs.png",
+    vercelLink: "https://type-script-portfolio-iota.vercel.app/",
+    githubLink:
+      "https://github.com/LucaFerraresso/TypeScript-Portfolio/tree/main/portfolioproject",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "Next.js",
+      "API/REST API",
+      "Node.js",
+      "Gemini API",
+      "Tailwind CSS",
+      "npm",
+      "GitHub",
+      "VSCode",
+    ],
+    date: "21/10/2024 31/10/2024",
+    icon: <User2Icon color="var(--color-purple)" size={24} />, // Icona per chiudere
+    id: 6, // ID univoco per il progetto
   },
   {
     title: "Prossimamente",
@@ -124,8 +151,8 @@ const projects = [
     githubLink: "coming soon",
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
-    icon: <XCircle color="red" />, // Icona per chiudere
-    id: 6, // ID univoco per il progetto
+    icon: <XCircle color="var(--color-orange)" size={24} />, // Icona per chiudere
+    id: 7, // ID univoco per il progetto
   },
 ];
 

@@ -7,40 +7,41 @@ import {
   User,
   XCircle,
 } from "lucide-react";
+import { GiGemini } from "react-icons/gi";
 
 const links = [
   {
-    icon: <TerminalIcon color="blue" size={24} />,
+    icon: <TerminalIcon color="var(--color-blue-dark)" size={24} />,
     href: "/Projects",
     label: "Pagina progetti",
   },
   {
-    icon: <CodeIcon color="black" size={24} />,
+    icon: <CodeIcon color="var(--color-ocean)" size={24} />,
     href: "/TechStack",
-    label: "TechStack",
+    label: "Tech Stack",
   },
   {
-    icon: <StarIcon color="yellow" size={24} />,
+    icon: <GiGemini color="var(--color-ocean)" size={24} />,
     href: "/Gemini",
-    label: "Gemini",
+    label: "Gemini API",
   },
   {
-    icon: <User color="green" size={24} />,
+    icon: <User color="var(--color-emerald)" size={24} />,
     href: "/AboutMe",
     label: "About me",
   },
   {
-    icon: <MailIcon color="purple" size={24} />,
+    icon: <MailIcon color="var(--color-berry)" size={24} />,
     href: "/Contacts",
     label: "Contacts",
   },
   {
-    icon: <LibraryBigIcon color="orange" size={24} />,
+    icon: <LibraryBigIcon color="var(--color-orange)" size={24} />,
     href: "/Library",
     label: "Library",
   },
   {
-    icon: <XCircle color="red" size={24} />,
+    icon: <XCircle color="var(--color-red)" size={24} />,
     href: "/error",
     label: "Error page",
   },

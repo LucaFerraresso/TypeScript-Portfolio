@@ -71,6 +71,8 @@
   --color-hover-emerald: #3abf62; /* Ombra chiara per verde smeraldo */
   --color-hover-berry: #b5005f; /* Ombra chiara per bacca */
   --color-hover-sapphire: #0d4f8b; /* Ombra chiara per blu zaffiro */
+  --color-forest-green: #228b22; /* Verde foresta, tonalità più intensa per hover */
+  --color-violet: #8a2be2; /* Viola vibrante per hover */
 
   --transition-duration: 0.3s;
   --transition-ease: ease-in-out;

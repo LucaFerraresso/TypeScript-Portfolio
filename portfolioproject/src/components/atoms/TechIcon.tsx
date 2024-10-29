@@ -28,7 +28,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
     <>
       {isLoading ? (
         // Mostra uno Skeleton rotondo al posto dell'icona durante il caricamento
-        <Skeleton width="48px" height="48px" className="rounded-full mb-2" />
+        <Skeleton width="120px" height="89px" className="rounded-full mb-2" />
       ) : (
         <motion.div
           className={` flex flex-col items-center mb-4 border-2 p-4 cursor-pointer rounded-lg min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}

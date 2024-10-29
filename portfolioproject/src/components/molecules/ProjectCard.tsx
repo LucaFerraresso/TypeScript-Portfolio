@@ -195,9 +195,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row justify-center items-center p-4 gap-4 bg-gray-50">
+      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-gray-50">
         {isLoading ? (
           <>
+            <Skeleton width="80px" height="32px" className="rounded-md" />
             <Skeleton width="80px" height="32px" className="rounded-md" />
             <Skeleton width="80px" height="32px" className="rounded-md" />
             <Skeleton width="80px" height="32px" className="rounded-md" />
@@ -207,8 +208,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {!isFirst && !generatedDescription && (
               <Button
                 text="Info"
-                color="var(--color-orange)"
-                hoverColor="var(--color-orange-dark)"
+                color="var(--color-sunset)" // Uniformato al bottone "info" nei primi bottoni
+                hoverColor="var(--color-berry)" // Transizione vibrante come nei primi bottoni
                 disabled={isGenerating}
                 loading={isGenerating}
                 onClick={handleGenerateDescription}
@@ -218,22 +219,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <Button
               link={vercelLink}
               text="Vercel"
-              color="var(--color-accent)"
-              hoverColor="var(--color-accent-dark)"
-              icon={<TriangleIcon color={"black"} size={25} />}
+              color="var(--color-ocean)" // Uniformato al bottone "Vercel" nei primi bottoni
+              hoverColor="var(--color-sapphire)" // Intensifica l’effetto hover come nei primi bottoni
+              icon={<TriangleIcon color={"white"} size={25} />}
             />
             <Button
               link={githubLink}
               text="GitHub"
-              color="var(--color-green)"
-              hoverColor="var(--color-green-dark)"
-              icon={<GithubIcon color={"black"} size={25} />}
+              color="var(--color-emerald)" // Uniformato al bottone "GitHub" nei primi bottoni
+              hoverColor="var(--color-forest-green)" // Cambia con un verde più scuro come nei primi bottoni
+              icon={<GithubIcon color={"white"} size={25} />}
             />
             <Link href={`Projects/${project.id}`}>
               <Button
                 text="page/id"
-                color="var(--color-purple)"
-                hoverColor="var(--color-dark)"
+                color="var(--color-lavender)" // Uniformato al bottone "page/id" nei primi bottoni
+                hoverColor="var(--color-violet)" // Usa una sfumatura più intensa di viola come nei primi bottoni
                 icon={<InfoIcon color={"black"} size={25} />}
               />
             </Link>

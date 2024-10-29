@@ -30,7 +30,7 @@ export default function RootLayout({
     <>
       <html lang="en">
         <Header metadata={generateMetadata()} />
-        <body className="antialiased min-h-screen flex flex-col font-mono">
+        <body className="antialiased min-h-screen flex flex-col font-mono bg-gray-50">
           <Navbar />
           <main className="flex-grow mt-20 mb-20 px-4">{children}</main>
           <Footer />

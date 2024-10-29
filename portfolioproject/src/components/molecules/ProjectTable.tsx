@@ -125,14 +125,14 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                 <Button
                   text="Vercel"
                   color="var(--color-ocean)"
-                  hoverColor="var(--color-hover-ocean)"
+                  hoverColor="var(--color-sapphire)" // Intensifica l’effetto hover con un blu più vibrante
                   link={project.vercelLink}
                   icon={<TriangleIcon color={"white"} size={25} />}
                 />
                 <Button
                   text="GitHub"
                   color="var(--color-emerald)"
-                  hoverColor="var(--color-hover-emerald)"
+                  hoverColor="var(--color-forest-green)" // Cambia con un verde più scuro e saturo
                   link={project.githubLink}
                   icon={<GithubIcon color={"white"} size={25} />}
                 />
@@ -142,14 +142,14 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                   <Button
                     text="page/id"
                     color="var(--color-lavender)"
-                    hoverColor="var(--color-hover-lavender)"
+                    hoverColor="var(--color-violet)" // Usa una sfumatura più intensa di viola
                     icon={<InfoIcon color={"black"} size={25} />}
                   />
                 </Link>
                 <Button
                   text={isGenerating[index] ? " Loading... " : "info"}
                   color="var(--color-sunset)"
-                  hoverColor="var(--color-hover-sunset)"
+                  hoverColor="var(--color-berry)" // Transizione a un colore vibrante e accattivante
                   onClick={() => handleGenerateDescription(index, project)}
                   disabled={isGenerating[index]}
                   loading={isLoading}
