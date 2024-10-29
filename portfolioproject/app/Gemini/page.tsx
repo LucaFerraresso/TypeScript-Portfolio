@@ -117,7 +117,7 @@ const Gemini = () => {
           </div>
         </div>
       ) : (
-        <motion.div className="flex flex-col justify-center items-center text-center">
+        <motion.div className="flex flex-col text-center">
           <motion.div
             variants={fadeInVariants}
             initial="hidden"
@@ -205,7 +205,7 @@ const Gemini = () => {
             </div>
 
             {/* Chat Area */}
-            <div className="flex flex-col justify-center items-center p-4 col-span-3">
+            <div className="flex flex-col pt-4 p-4 col-span-3">
               <div className="flex flex-col bg-white shadow-lg rounded-lg p-4 max-h-[300px] overflow-y-auto border border-gray-300 w-full">
                 {messages.length === 0 ? (
                   <div className="flex items-center justify-center h-full text-gray-500">
