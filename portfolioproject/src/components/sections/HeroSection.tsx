@@ -3,7 +3,6 @@ import React, { useState, useEffect, memo } from "react";
 import WordTextEffect from "../library/WordTextEffect";
 import { GithubIcon, LinkedinIcon } from "lucide-react";
 import Skeleton from "../atoms/Skeleton";
-import SectionSeparator from "../atoms/SectionSeparator";
 const HeroSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
 

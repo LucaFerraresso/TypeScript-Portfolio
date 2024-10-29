@@ -1,8 +1,5 @@
 "use client";
 import React from "react";
-
-import { motion } from "framer-motion";
-import { fadeInVariants } from "@/animation/animation";
 import projects from "@/assets/DataArray/ProjectSectionArray";
 import ProjectCard from "../molecules/ProjectCard";
 
