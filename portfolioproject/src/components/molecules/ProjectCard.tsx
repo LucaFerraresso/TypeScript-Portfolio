@@ -49,11 +49,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     const fetchGeneratedDescription = async () => {
       if (isFirst) {
         try {
-          const prompt = `Genera una descrizione dettagliata di massimo 30 parole per l'app ${title}.`;
+          const buffer = Buffer.from(
+            `Genera una descrizione dettagliata di massimo 30 parole per l'app ${title}.`
+          );
+
           const res = await fetch("/api/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt }),
+            body: JSON.stringify({ prompt: buffer.toString("base64") }),
           });
 
           if (!res.ok) throw new Error("Errore nella richiesta");

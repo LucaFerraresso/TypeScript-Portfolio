@@ -22,6 +22,7 @@ const Gemini = () => {
   const [language, setLanguage] = useState("it"); // Default language
   const [tone, setTone] = useState("neutral"); // Default tone
   const [experience, setExperience] = useState("basic"); // Default experience
+  const [reset, setResetting] = useState(false);
 
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -32,21 +33,21 @@ const Gemini = () => {
   const handleSubmit = async () => {
     if (!inputValue) return;
     setLoading(true);
-    const userMessage = inputValue;
+    const userMessage = inputValue.trim();
 
     setMessages((prev) => [...prev, { text: userMessage, type: "user" }]);
     setInputValue("");
 
     try {
+      // Converti la stringa in un Buffer
+      const buffer = Buffer.from(
+        `${userMessage}, in lingua ${language}, con un tono ${tone} per un'utenza ${experience}, limitato a ${maxWords} parole. Si prega di fornire una risposta chiara.`
+      );
+
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: `${userMessage} (${maxWords} words)`,
-          language,
-          tone,
-          experience,
-        }),
+        body: JSON.stringify({ prompt: buffer.toString("base64") }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
@@ -65,8 +66,16 @@ const Gemini = () => {
   };
 
   const clearAll = () => {
-    setMessages([]);
-    setInputValue("");
+    setResetting(true);
+    setTimeout(() => {
+      setMessages([]);
+      setInputValue("");
+      setMaxWords(30);
+      setLanguage("it");
+      setTone("neutral");
+      setExperience("basic");
+      setResetting(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -97,7 +106,7 @@ const Gemini = () => {
       {isMobile ? (
         <div className="fixed inset-0 flex flex-col p-6 items-center justify-center bg-yellow-200 z-50">
           <p className="text-lg text-center p-4">
-            Visualizza in modalità landscape per un'esperienza migliore.
+            Visualizza in modalità landscape per un esperienza migliore.
           </p>
           <div className="flex items-center text-center gap-2 mb-6">
             <HomeIcon color="black" size={24} />
@@ -118,39 +127,54 @@ const Gemini = () => {
             className="grid grid-cols-4 min-h-screen bg-gray-50"
           >
             {/* Sidebar */}
-            <div className="flex flex-col items-start p-4 bg-white shadow-md border-r border-gray-300 h-full">
+            <div className="flex flex-col gap-4 items-start p-4 bg-white shadow-md border-r border-gray-300 h-full">
               <h1 className="text-3xl font-bold text-gray-800 mb-6">
                 Gemini Assistant
               </h1>
-              <Button
-                text="Nuova Chat"
-                color="var(--color-yellow)"
-                hoverColor="var(--color-orange-dark)"
-                onClick={clearAll}
-                icon={<StarIcon color={"black"} size={24} />}
-              />
-              <Button
-                text="Lingua"
-                color="var(--color-accent)"
-                hoverColor="var(--color-accent-dark)"
-                onClick={() => setLanguage(language === "it" ? "en" : "it")}
-              />
-              <Button
-                text="Tono"
-                color="var(--color-accent)"
-                hoverColor="var(--color-accent-dark)"
-                onClick={() =>
-                  setTone(tone === "neutral" ? "friendly" : "neutral")
-                }
-              />
-              <Button
-                text="Esperienza"
-                color="var(--color-accent)"
-                hoverColor="var(--color-accent-dark)"
-                onClick={() =>
-                  setExperience(experience === "basic" ? "advanced" : "basic")
-                }
-              />
+
+              <select
+                id="Lingue"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+              >
+                <option value={"Italian"}>Italian</option>
+                <option value={"English"}>English</option>
+                <option value={"Spanish"}>Spanish</option>
+                <option value={"Francese"}>Francese</option>
+                <option value={"Russian"}>Russian</option>
+                <option value={"Autistic guy"}>Autistic guy</option>
+              </select>
+
+              <select
+                id="tone"
+                value={tone}
+                onChange={(e) => setTone(e.target.value)}
+                className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+              >
+                <option value={"friendly"}>Friendly</option>
+                <option value={"arrogant"}>Arrogant</option>
+                <option value={"shy"}>Shy</option>
+                <option value={"confident"}>Confident</option>
+                <option value={"professor"}>Professor</option>
+                <option value={"Accademy Professor"}>Accademy Professor</option>
+              </select>
+
+              <select
+                id="Experience"
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}
+                className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+              >
+                <option value={"Junior"}>Junior</option>
+                <option value={"Senior"}>Senior</option>
+                <option value={"Full stack developer"}>
+                  Full stack developer
+                </option>
+                <option value={"Project manager"}>Project Manager</option>
+                <option value={"AWS Architect"}>AWS Architect</option>
+                <option value={"Cloud Architect"}>Cloud Architect</option>
+              </select>
               <label
                 htmlFor="maxWords"
                 className="block text-sm font-semibold text-gray-700 mb-1"
@@ -163,23 +187,23 @@ const Gemini = () => {
                 onChange={(e) => setMaxWords(Number(e.target.value))}
                 className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
               >
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={40}>40</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-                <option value={200}>200</option>
+                <option value={10}>30</option>
+                <option value={20}>50</option>
+                <option value={40}>100</option>
+                <option value={50}>150</option>
+                <option value={100}>200</option>
+                <option value={200}>250</option>
               </select>
-              <div className="flex justify-between mt-5 w-full">
-                <Button
-                  onClick={handleSubmit}
-                  text={loading ? "Caricamento..." : "Invia"}
-                  color="var(--color-green)"
-                  hoverColor="var(--color-green-dark)"
-                  icon={<ChevronDown color={"black"} size={24} />}
-                  loading={loading}
-                />
-              </div>
+
+              <Button
+                text="Nuova Chat"
+                color="var(--color-yellow)"
+                hoverColor="var(--color-orange-dark)"
+                onClick={clearAll}
+                icon={<StarIcon color={"black"} size={24} />}
+                loading={loading}
+                disabled={reset}
+              />
             </div>
 
             {/* Chat Area */}
@@ -232,21 +256,26 @@ const Gemini = () => {
                   ))
                 )}
               </div>
-              <div className="flex flex-col w-full max-w-md mt-4">
-                <label
-                  htmlFor="inputMessage"
-                  className="block text-sm font-semibold text-gray-700 mb-1 mt-4"
-                >
-                  Messaggio:
-                </label>
+              <div className="flex items-center mt-5 w-full">
                 <textarea
                   id="inputMessage"
                   value={inputValue}
                   onChange={handleInputChange}
-                  className="block w-full border border-gray-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                  className="flex-1 border border-gray-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                   placeholder="Scrivi qui..."
                   required
                 />
+                <div className="ml-2">
+                  <Button
+                    onClick={handleSubmit}
+                    text={loading ? "Caricamento..." : "Invia"}
+                    color="var(--color-green)"
+                    hoverColor="var(--color-green-dark)"
+                    icon={<ChevronDown color={"black"} size={24} />}
+                    loading={loading}
+                    disabled={loading}
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
