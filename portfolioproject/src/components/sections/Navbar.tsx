@@ -4,8 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import navItems from "@/assets/DataArray/NavbarArray";
 import Button from "../atoms/Button";
-import PromptForm from "../molecules/PromptForm";
-
 const Navbar: React.FC = () => {
   const activePath = usePathname();
 
@@ -29,8 +27,6 @@ const Navbar: React.FC = () => {
           </div>
         );
       })}
-
-      <PromptForm />
     </nav>
   );
 };

@@ -2,6 +2,7 @@ import {
   CodeIcon,
   LibraryBigIcon,
   MailIcon,
+  StarIcon,
   TerminalIcon,
   User,
   XCircle,
@@ -17,6 +18,11 @@ const links = [
     icon: <CodeIcon color="black" size={24} />,
     href: "/TechStack",
     label: "TechStack",
+  },
+  {
+    icon: <StarIcon color="yellow" size={24} />,
+    href: "/Gemini",
+    label: "Gemini",
   },
   {
     icon: <User color="green" size={24} />,

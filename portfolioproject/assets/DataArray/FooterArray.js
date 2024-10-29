@@ -1,9 +1,15 @@
 import {
   User,
-  MailIcon, // Info icon for "About Me"
+  MailIcon,
+  TerminalIcon, // Info icon for "About Me"
 } from "lucide-react";
 
 const footerItems = [
+  {
+    href: "/TechStack",
+    label: "Tech Stack",
+    icon: <TerminalIcon color="blue" size={25} />,
+  },
   {
     href: "/Contacts",
     label: "Contacts",

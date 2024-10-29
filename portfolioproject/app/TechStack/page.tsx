@@ -21,12 +21,12 @@ const TechStack: React.FC = () => {
     <>
       <Header metadata={metadata} />
       <motion.div
-        className="flex flex-col justify-center items-center text-center mx-auto p-4 sm:p-6 lg:p-8 xl:p-12"
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
+        className="p-12 md:p-12 lg:p-12 xl:p-24 bg-gray-50 relative "
       >
-        <h1 className="text-4xl font-bold mt-4 mb-4">TechStack</h1>
+        <h1 className="text-4xl font-bold mt-4 ">TechStack</h1>
         <SectionSeparator />
 
         <div className=" flex flex-col items-start justify-center flex-wrap gap-6 ">

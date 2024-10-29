@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useRef, useEffect } from "react"; // Aggiunto useRef e useEffect
 import Button from "../atoms/Button";
 import GenericModal from "./GenericModal";
 import WordTextEffect from "../library/WordTextEffect";
@@ -17,6 +17,9 @@ const PromptForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [maxWords, setMaxWords] = useState(10);
   const [isOpen, setIsOpen] = useState(false);
+
+  // Riferimento per l'ultimo messaggio
+  const lastMessageRef = useRef<HTMLDivElement>(null);
 
   const toggleForm = () => setIsOpen((prev) => !prev);
 
@@ -59,96 +62,106 @@ const PromptForm = () => {
     setInputValue("");
   };
 
-  const isSubmitDisabled = useMemo(
-    () => loading || !inputValue,
-    [loading, inputValue]
-  );
+  // Effetto per scrollare all'ultimo messaggio
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   return (
-    <div className="flex flex-col justify-center items-center z-41">
+    <div className="flex flex-col z-41 ">
       <Button
         text="Gemini"
         onClick={toggleForm}
         icon={<StarIcon color="yellow" size={25} />}
+        link="/Gemini"
       />
 
-      <GenericModal isOpen={isOpen} onClose={toggleForm}>
-        <div className="flex flex-col bg-white rounded-lg w-full max-w-md md:max-w-2xl lg:max-w-2xl h-[500px]">
-          <h2 className="text-3xl text-green-500 font-bold mb-4">
-            Assistente Gemini
-          </h2>
-
-          <div className="flex-1 overflow-y-auto h-64 p-4 border border-gray-300 rounded-lg">
+      <GenericModal
+        isOpen={isOpen}
+        onClose={toggleForm}
+        title="Gemini assistant"
+      >
+        {/* Modificato per overflow-y e larghezza fissa */}
+        <div>
+          <div>
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`flex items-start mb-2 ${
-                  msg.type === "user" ? "justify-end" : "justify-start"
-                }`}
+                ref={index === messages.length - 1 ? lastMessageRef : null}
+                className="flex flex-col max-h-[200px] overflow-auto"
               >
-                <span
-                  className={`flex items-center ${
-                    msg.type === "user" ? "text-blue-500" : "text-green-500"
-                  } mr-2`}
-                >
-                  {msg.type === "user" ? (
-                    <User size={20} color="blue" />
-                  ) : (
-                    <User size={20} color="green" />
-                  )}
-                </span>
                 <div
-                  className={`p-2 rounded-lg ${
-                    msg.type === "user" ? "bg-blue-300" : "bg-green-300"
+                  className={`flex items-start mb-3 ${
+                    msg.type === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
-                  {msg.type === "api" ? (
-                    <WordTextEffect text={msg.text} />
-                  ) : (
-                    msg.text
-                  )}
+                  <span
+                    className={`flex items-center ${
+                      msg.type === "user" ? "text-blue-600" : "text-green-600"
+                    } mr-2`}
+                  >
+                    <User
+                      size={24}
+                      color={msg.type === "user" ? "blue" : "green"}
+                    />
+                  </span>
+                  <div
+                    className={`p-3 rounded-lg transition-all duration-200 ease-in-out ${
+                      msg.type === "user"
+                        ? "bg-blue-200 hover:bg-blue-300"
+                        : "bg-green-200 hover:bg-green-300"
+                    }`}
+                  >
+                    {msg.type === "api" ? (
+                      <WordTextEffect text={msg.text} />
+                    ) : (
+                      msg.text
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
-          </div>
 
-          <div className="mt-4">
-            <label
-              htmlFor="inputMessage"
-              className="block text-sm mb-2 font-bold"
-            >
-              Messaggio:
-            </label>
-            <textarea
-              id="inputMessage"
-              value={inputValue}
-              onChange={handleInputChange}
-              className="block w-full border border-gray-900 rounded-md px-3 py-2 h-24 resize-none"
-              placeholder="Scrivi qui..."
-              required
-            />
+            <div className="flex flex-col mt-4">
+              <label
+                htmlFor="maxWords"
+                className="block text-sm font-semibold text-gray-700 mb-1"
+              >
+                Max parole:
+              </label>
+              <select
+                id="maxWords"
+                value={maxWords}
+                onChange={(e) => setMaxWords(Number(e.target.value))}
+                className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+              >
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={40}>40</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+                <option value={200}>200</option>
+              </select>
 
-            <label
-              htmlFor="maxWords"
-              className="block text-sm mb-2 font-bold mt-4"
-            >
-              Max parole:
-            </label>
-            <select
-              id="maxWords"
-              value={maxWords}
-              onChange={(e) => setMaxWords(Number(e.target.value))}
-              className="block w-full border border-gray-900 rounded-md px-3 py-2"
-            >
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={40}>40</option>
-              <option value={50}>50</option>
-              <option value={100}>100</option>
-              <option value={200}>200</option>
-            </select>
+              <label
+                htmlFor="inputMessage"
+                className="block text-sm font-semibold text-gray-700 mb-1 mt-4"
+              >
+                Messaggio:
+              </label>
+              <textarea
+                id="inputMessage"
+                value={inputValue}
+                onChange={handleInputChange}
+                className="block w-full border border-gray-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                placeholder="Scrivi qui..."
+                required
+              />
+            </div>
 
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-5">
               <Button
                 text="Pulisci"
                 color="var(--color-red)"
@@ -158,12 +171,11 @@ const PromptForm = () => {
               />
               <Button
                 onClick={handleSubmit}
-                text="Invia"
+                text={loading ? "loading..." : "Invia"}
                 color="var(--color-green)"
                 hoverColor="var(--color-green-dark)"
-                disabled={isSubmitDisabled}
-                loading={loading}
                 icon={<ChevronDown color={"black"} size={20} />}
+                loading={loading}
               />
             </div>
           </div>

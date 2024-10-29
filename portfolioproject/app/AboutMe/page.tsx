@@ -22,10 +22,10 @@ const AboutMe: React.FC = () => {
       <Header metadata={metadata} />
 
       <motion.div
-        className="flex flex-col text-center items-center p-14 md:p-14 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-14 lg:pt-20" // Padding top per tenere conto dell'altezza della navbar
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
+        className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-28 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50"
       >
         <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
           About Me

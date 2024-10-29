@@ -124,36 +124,36 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               <div className="flex flex-col justify-around items-center text-center gap-4">
                 <Button
                   text="Vercel"
-                  color="var(--color-accent)"
-                  hoverColor="var(--color-accent-dark)"
+                  color="var(--color-ocean)"
+                  hoverColor="var(--color-hover-ocean)"
                   link={project.vercelLink}
-                  icon={<TriangleIcon color={"black"} size={25} />}
+                  icon={<TriangleIcon color={"white"} size={25} />}
                 />
                 <Button
                   text="GitHub"
-                  color="var(--color-green)"
-                  hoverColor="var(--color-green-dark)"
+                  color="var(--color-emerald)"
+                  hoverColor="var(--color-hover-emerald)"
                   link={project.githubLink}
-                  icon={<GithubIcon color={"black"} size={25} />}
+                  icon={<GithubIcon color={"white"} size={25} />}
                 />
               </div>
               <div className="flex flex-col justify-around items-center text-center gap-4 ">
                 <Link href={`Projects/${project.id}`}>
                   <Button
                     text="page/id"
-                    color="var(--color-orange)"
-                    hoverColor="var(--color-orange-dark)"
+                    color="var(--color-lavender)"
+                    hoverColor="var(--color-hover-lavender)"
                     icon={<InfoIcon color={"black"} size={25} />}
                   />
                 </Link>
                 <Button
                   text={isGenerating[index] ? " Loading... " : "info"}
-                  color="var(--color-orange)"
-                  hoverColor="var(--color-orange-dark)"
+                  color="var(--color-sunset)"
+                  hoverColor="var(--color-hover-sunset)"
                   onClick={() => handleGenerateDescription(index, project)}
                   disabled={isGenerating[index]}
                   loading={isLoading}
-                  icon={<BookOpenIcon color={"black"} size={25} />}
+                  icon={<BookOpenIcon color={"white"} size={25} />}
                 />
               </div>
             </div>
@@ -175,6 +175,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               width={500}
               height={300}
               className="object-contain"
+              style={{ width: "auto", height: "auto" }}
             />
           </>
         )}

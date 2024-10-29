@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Activity,
   Airplay,
@@ -546,11 +547,9 @@ const iconMap = [
 
 const LibraryPage = () => {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-28 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50">
       <h1 className="text-3xl font-bold mb-4 text-center">Library Page</h1>
-      <p className="text-lg text-gray-700 text-center mb-4">
-        This is a library page.
-      </p>
+
       <p className="text-md text-gray-600 text-center mb-6">
         Here are some components from the library:
       </p>

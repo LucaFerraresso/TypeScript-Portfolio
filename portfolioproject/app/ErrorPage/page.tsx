@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import Button from "@/src/components/atoms/Button";
 import { HomeIcon } from "lucide-react";
+import { fadeInVariants } from "@/animation/animation";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -19,37 +20,21 @@ const ErrorPage: React.FC = () => {
   return (
     <>
       <Header metadata={metadata} />
-      <div className="flex flex-col justify-center items-center text-center p-20">
-        <motion.h1
-          className="text-8xl font-extrabold text-red-600 mb-6"
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.7 }}
-        >
-          Oops!
-        </motion.h1>
-        <motion.h2
-          className="text-4xl font-bold text-red-600 mb-4 "
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
+      <motion.div
+        variants={fadeInVariants}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-28 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50"
+      >
+        <h1 className="text-8xl font-extrabold text-red-600 mb-6">Oops!</h1>
+        <h2 className="text-4xl font-bold text-red-600 mb-4 ">
           Something Went Wrong
-        </motion.h2>
-        <motion.p
-          className="text-lg text-red-600 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
+        </h2>
+        <p className="text-lg text-red-600 mb-8">
           The page you are looking for might be missing or there was an error on
           our side.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
+        </p>
+        <div>
           <Link href="/">
             <Button
               text=""
@@ -60,8 +45,8 @@ const ErrorPage: React.FC = () => {
               icon={<HomeIcon color={"red"} size={30} />}
             />
           </Link>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </>
   );
 };

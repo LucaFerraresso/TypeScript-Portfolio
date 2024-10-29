@@ -41,7 +41,7 @@ const GenericModal: React.FC<GenericModalProps> = ({
           </h2>
         )}
 
-        <div className="p-6">{children}</div>
+        <div className="flex flex-col">{children}</div>
       </div>
     </div>
   );

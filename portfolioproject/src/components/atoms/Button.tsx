@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
     }
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 2000);
   };
 
   const buttonStyles = {
@@ -89,7 +89,7 @@ const Button: React.FC<ButtonProps> = ({
                     d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                   />
                 </svg>
-                <span>loading</span>
+                <span>loading...</span>
               </>
             ) : (
               <>
@@ -106,7 +106,7 @@ const Button: React.FC<ButtonProps> = ({
           style={buttonStyles}
           className={`min-w-[140px]  border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
             transition-transform duration-300 ease-in-out ${animation}
-            focus:outline-none focus:ring focus:ring-opacity-50`}
+            focus:outline-none `}
           onMouseEnter={(e) => {
             if (!disabled) e.currentTarget.style.backgroundColor = hoverColor;
           }}
@@ -136,7 +136,7 @@ const Button: React.FC<ButtonProps> = ({
                   d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                 />
               </svg>
-              <span>loading</span>
+              <span>loading...</span>
             </>
           ) : (
             <>

@@ -10,7 +10,6 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="flex flex-wrap w-full bg-white p-4 gap-4 border-t border-gray-300 fixed bottom-0 justify-around items-center z-39 md:flex-row md:text-start">
-      <p>© 2024 MyPortfolio. All rights reserved</p>
       {footerItems.map((item) => {
         const isActive = activePath === item.href;
 
@@ -29,6 +28,7 @@ const Footer: React.FC = () => {
           </div>
         );
       })}
+      <p>© 2024 MyPortfolio. All rights reserved</p>
     </footer>
   );
 };
