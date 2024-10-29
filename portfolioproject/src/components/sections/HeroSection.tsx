@@ -2,8 +2,7 @@
 import React, { useState, useEffect, memo } from "react";
 import WordTextEffect from "../library/WordTextEffect";
 import { GithubIcon, LinkedinIcon } from "lucide-react";
-import Skeleton from "../atoms/Skeleton"; // Assicurati di importare il tuo componente Skeleton
-
+import Skeleton from "../atoms/Skeleton";
 const HeroSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
 
@@ -27,7 +26,7 @@ const HeroSection: React.FC = () => {
             </>
           ) : (
             <>
-              <WordTextEffect text="Luca Ferraresso, Junior Web Developer" />
+              <WordTextEffect text={"Luca Ferraresso , Junior Web Developer"} />
               <div className="text-base text-gray-600 mt-4 mb-6">
                 <WordTextEffect
                   text={

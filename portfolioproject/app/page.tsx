@@ -19,25 +19,23 @@ const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <motion.div
-        className="p-12 md:p-12 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-12 lg:pt-20"
-        variants={fadeInVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <Header metadata={metadata} />
+    <motion.div
+      className="p-12 md:p-12 lg:p-12 xl:p-24 bg-gray-50 relative z-10"
+      variants={fadeInVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Header metadata={metadata} />
 
-        <Suspense fallback={<div className="text-center mt-4">Loading...</div>}>
-          <SectionSeparator />
-          <HeroSection />
-          <SectionSeparator />
-          <InfiniteTechSection />
-          <SectionSeparator />
-          <LinkSection />
-          <SectionSeparator />
-        </Suspense>
-      </motion.div>
-    </>
+      <Suspense fallback={<div className="text-center mt-4">Loading...</div>}>
+        <SectionSeparator />
+        <HeroSection />
+        <SectionSeparator />
+        <InfiniteTechSection />
+        <SectionSeparator />
+        <LinkSection />
+        <SectionSeparator />
+      </Suspense>
+    </motion.div>
   );
 }

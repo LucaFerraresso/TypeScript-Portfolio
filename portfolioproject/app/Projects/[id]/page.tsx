@@ -44,6 +44,7 @@ const ProjectDetail: React.FC = () => {
           loading="lazy"
           priority={false}
           className="rounded-lg shadow-lg mb-4 max-w-full h-auto"
+          style={{ width: "auto", height: "auto" }}
         />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
           {project.title}

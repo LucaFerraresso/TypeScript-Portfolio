@@ -20,6 +20,7 @@ const AboutMe: React.FC = () => {
   return (
     <>
       <Header metadata={metadata} />
+
       <motion.div
         className="flex flex-col text-center items-center p-14 md:p-14 lg:p-20 xl:p-48 bg-gray-50 min-h-screen md:pt-14 lg:pt-20" // Padding top per tenere conto dell'altezza della navbar
         variants={fadeInVariants}
@@ -35,6 +36,7 @@ const AboutMe: React.FC = () => {
           width={150}
           height={150}
           className="cursor-pointer hover:animate-pulse rounded-full transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
+          style={{ width: "auto", height: "auto" }}
         />
         <WordTextEffect text="I am a passionate developer with a strong focus on front-end development. I have experience in creating responsive and user-friendly web applications using modern technologies such as React, TypeScript, and Redux. I am constantly learning and staying up-to-date with the latest industry trends and best practices. I am also a team player and enjoy collaborating with others to achieve common goals." />
       </motion.div>

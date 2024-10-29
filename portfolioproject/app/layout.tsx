@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "@/src/components/atoms/Header";
 
 const Navbar = dynamic(() => import("@/src/components/sections/Navbar"));
 const Footer = dynamic(() => import("@/src/components/sections/Footer"));
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 // Definisci i metadata di base
 const baseMetadata: Metadata = {
@@ -42,11 +30,8 @@ export default function RootLayout({
     <>
       <html lang="en">
         <Header metadata={generateMetadata()} />
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-mono`}
-        >
+        <body className="antialiased min-h-screen flex flex-col font-mono">
           <Navbar />
-
           <main className="flex-grow mt-20 mb-20 px-4">{children}</main>
           <Footer />
         </body>
