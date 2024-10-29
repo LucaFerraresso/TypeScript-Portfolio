@@ -40,14 +40,12 @@ const Gemini = () => {
 
     try {
       // Converti la stringa in un Buffer
-      const buffer = Buffer.from(
-        `${userMessage}, in lingua ${language}, con un tono ${tone} per un'utenza ${experience}, limitato a ${maxWords} parole. Si prega di fornire una risposta chiara.`
-      );
+      const prompt = `${userMessage}. Rispondi in ${language} con un tono ${tone}. Target: ${experience}. Limita la risposta a ${maxWords} parole. Assicurati di essere chiaro e conciso.`;
 
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: buffer.toString("base64") }),
+        body: JSON.stringify({ prompt }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
