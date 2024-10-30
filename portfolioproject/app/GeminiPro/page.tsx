@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 interface ResponseData {
-  [key: string]: any;
+  [key: string]: any | [];
 }
 
 const GeminiTestPage = () => {
@@ -28,7 +28,7 @@ const GeminiTestPage = () => {
     setInputValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const makeApiRequest = async (url: string, data: any, key: string) => {
+  const makeApiRequest = async (url: string, data: any | "", key: string) => {
     setLoading(true);
     setError(null);
     try {
