@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
-import navItems from "@/assets/DataArray/NavBarArray";
+import navItems from "@/assets/DataArray/NavbarArray";
 import Button from "../atoms/Button";
 
 const Navbar: React.FC = () => {
