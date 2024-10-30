@@ -5,6 +5,9 @@ import { GithubIcon, LinkedinIcon } from "lucide-react";
 import Skeleton from "../atoms/Skeleton";
 const HeroSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
+  const longText = Buffer.from(
+    "Luca Ferraresso è un aspirante sviluppatore web con una solida formazione in sviluppo front-end, recentemente completata con un bootcamp intensivo. Luca padroneggia HTML, CSS, JavaScript, React e ha una conoscenza base di linguaggi back-end come Node.js e Python. Il suo percorso formativo gli ha permesso di sviluppare capacità di problem-solving, teamwork e di lavorare in modo indipendente su progetti web complessi. Luca è attualmente alla ricerca di un'opportunità come sviluppatore web per mettere in pratica le sue competenze e crescere professionalmente in un contesto stimolante."
+  ).toString("utf-8");
 
   //facciamo un set interval si due secondi
   useEffect(() => {
@@ -32,11 +35,7 @@ const HeroSection: React.FC = () => {
                     text={"Luca Ferraresso , Junior Web Developer"}
                   />
 
-                  <WordTextEffect
-                    text={
-                      "Luca Ferraresso è un aspirante sviluppatore web con una solida formazione in sviluppo front-end, recentemente completata con un bootcamp intensivo. Luca padroneggia HTML, CSS, JavaScript, React e ha una conoscenza base di linguaggi back-end come Node.js e Python. Il suo percorso formativo gli ha permesso di sviluppare capacità di problem-solving, teamwork e di lavorare in modo indipendente su progetti web complessi. Luca è attualmente alla ricerca di un'opportunità come sviluppatore web per mettere in pratica le sue competenze e crescere professionalmente in un contesto stimolante."
-                    }
-                  />
+                  <WordTextEffect text={longText.toString()} />
                 </div>
               </>
             )}

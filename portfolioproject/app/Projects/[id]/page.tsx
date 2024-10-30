@@ -27,6 +27,8 @@ const ProjectDetail: React.FC = () => {
       </div>
     );
   }
+  //voglio suffidivere la descrizione con un buffer, aiutami
+  const descriptionLines = Buffer.from(project.description).toString("utf-8");
 
   return (
     <motion.div
@@ -50,7 +52,7 @@ const ProjectDetail: React.FC = () => {
           {project.title}
         </h1>
         <p className="text-gray-700 text-base md:text-lg">
-          {project.description}
+          {descriptionLines.toString()}
         </p>
         <p className="text-gray-500 text-sm md:text-base">
           Data: {project.date}

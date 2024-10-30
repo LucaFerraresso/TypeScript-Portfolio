@@ -39,14 +39,17 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
     setIsLoading(true);
 
     try {
-      const prompt = `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". 
+      const descriptionLines = Buffer.from(
+        `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". 
           elenca e suddividi in piccoli paragrafi le sue funzionalità dopo che hai visitando il link di Vercel: ${project.vercelLink} 
           e su GitHub: ${project.githubLink}. importante parlare dello scopo e delle tecnologie. massimo 200 parole. nessun carattere speciale.
-          Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`;
+          Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`
+      ).toString("utf-8");
+
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt: descriptionLines.toString() }),
       });
 
       if (!res.ok) throw new Error("Errore nella richiesta");
