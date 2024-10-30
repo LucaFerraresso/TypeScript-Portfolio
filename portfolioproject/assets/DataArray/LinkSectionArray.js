@@ -26,6 +26,11 @@ const links = [
     label: "Gemini API",
   },
   {
+    icon: <StarIcon color="var(--color-yellow)" size={24} />,
+    href: "/GeminiPro",
+    label: "Gemini Pro",
+  },
+  {
     icon: <User color="var(--color-emerald)" size={24} />,
     href: "/AboutMe",
     label: "About me",

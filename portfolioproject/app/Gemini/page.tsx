@@ -266,7 +266,7 @@ const Gemini = () => {
                 <div className="ml-2">
                   <Button
                     onClick={handleSubmit}
-                    text={loading ? "Caricamento..." : "Invia"}
+                    text={loading ? "loading..." : "Invia"}
                     color="var(--color-green)"
                     hoverColor="var(--color-green-dark)"
                     icon={<ChevronDown color={"black"} size={24} />}

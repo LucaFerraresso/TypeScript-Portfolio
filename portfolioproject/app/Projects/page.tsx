@@ -90,10 +90,10 @@ const Projects: React.FC = () => {
             className="p-2 border border-gray-300 rounded-md"
           >
             <option value="">Tutte le tecnologie</option>
-            <option value="React app">React</option>
-            <option value="Nextjs app">Next.js</option>
-            <option value="MongoDB">MongoDB</option>
-            <option value="Firebase">Firebase</option>
+            <option value="React">Libreria React</option>
+            <option value="Next.js">Frawork Nextjs</option>
+            <option value="MongoDB">Database MongoDB</option>
+            <option value="Firebase">Database Firebase</option>
             <option value="Gemini API">Gemini API</option>
           </select>
           <label>Data:</label>

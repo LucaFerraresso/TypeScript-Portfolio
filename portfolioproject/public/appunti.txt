@@ -65,3 +65,230 @@ gestione immagini
             const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
 
                className="flex flex-col justify-center items-center text-center p-6  bg-gray-50"
+https://www.visitusaita.org/wp-content/uploads/2023/12/spiaggia-hawaii.jpg
+
+
+<h1 className="text-2xl font-bold text-center mb-8">
+        Gemini AI Test Interface
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Process Image */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">Process Image</h2>
+          <input
+            name="prompt"
+            value={inputValues.prompt}
+            onChange={handleChange}
+            placeholder="Prompt"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <input
+            name="image"
+            value={inputValues.image}
+            onChange={handleChange}
+            placeholder="Image URL"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <Button
+            onClick={() =>
+              makeApiRequest(
+                "/api/processImage",
+                { prompt: inputValues.prompt, image: inputValues.image },
+                "processImage"
+              )
+            }
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.processImage && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Response:</h3>
+              <p>{responses.processImage.output}</p>
+            </div>
+          )}
+        </div>
+
+        {/* List Models */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">List Models</h2>
+          <Button
+            onClick={() => makeApiRequest("/api/listModels", {}, "listModels")}
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.listModels && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Available Models:</h3>
+              <ul className="list-disc ml-4">
+                {responses.listModels.map((model: string, index: number) => (
+                  <li key={index}>{model}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Call Function */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">Call Function</h2>
+          <input
+            name="prompt"
+            value={inputValues.prompt}
+            onChange={handleChange}
+            placeholder="Prompt"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <textarea
+            name="functions"
+            value={inputValues.functions}
+            onChange={handleChange}
+            placeholder="Functions (JSON format)"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <Button
+            onClick={() =>
+              makeApiRequest(
+                "/api/callFunction",
+                {
+                  prompt: inputValues.prompt,
+                  functions: inputValues.functions,
+                },
+                "callFunction"
+              )
+            }
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.callFunction && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Response:</h3>
+              <p>{JSON.stringify(responses.callFunction)}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Fine Tune Model */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">Fine Tune Model</h2>
+          <textarea
+            name="trainingData"
+            value={inputValues.trainingData}
+            onChange={handleChange}
+            placeholder="Training Data"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <Button
+            onClick={() =>
+              makeApiRequest(
+                "/api/fineTuneMode",
+                { trainingData: inputValues.trainingData },
+                "fineTuneModel"
+              )
+            }
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.fineTuneModel && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Response:</h3>
+              <p>{responses.fineTuneModel.message}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Generate Embedding */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">Generate Embedding</h2>
+          <input
+            name="text"
+            value={inputValues.text}
+            onChange={handleChange}
+            placeholder="Text to Embed"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <Button
+            onClick={() =>
+              makeApiRequest(
+                "/api/generateEmbedding",
+                { text: inputValues.text },
+                "generateEmbedding"
+              )
+            }
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.generateEmbedding && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Embedding:</h3>
+              <p>{JSON.stringify(responses.generateEmbedding.embedding)}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Generate Structured Data */}
+        <div className="bg-white p-4 shadow rounded">
+          <h2 className="text-lg font-semibold mb-4">
+            Generate Structured Data
+          </h2>
+          <input
+            name="prompt"
+            value={inputValues.prompt}
+            onChange={handleChange}
+            placeholder="Prompt"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <textarea
+            name="schema"
+            value={inputValues.schema}
+            onChange={handleChange}
+            placeholder="Schema"
+            className="w-full p-2 mb-2 border rounded"
+          />
+          <Button
+            onClick={() =>
+              makeApiRequest(
+                "/api/generateStructuredData",
+                { prompt: inputValues.prompt, schema: inputValues.schema },
+                "generateStructuredData"
+              )
+            }
+            text={loading ? "loading..." : "Invia"}
+            color="var(--color-green)"
+            hoverColor="var(--color-green-dark)"
+            icon={<ChevronDown color={"black"} size={24} />}
+            loading={loading}
+            disabled={loading}
+          />
+
+          {responses.generateStructuredData && (
+            <div className="mt-4">
+              <h3 className="font-semibold">Structured Data:</h3>
+              <p>{JSON.stringify(responses.generateStructuredData)}</p>
+            </div>
+          )}
+        </div>

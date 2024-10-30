@@ -1,4 +1,5 @@
 import { HomeIcon, TerminalIcon, StarIcon } from "lucide-react";
+import { GiGemini } from "react-icons/gi";
 
 const navItems = [
   {
@@ -14,6 +15,11 @@ const navItems = [
   {
     href: "/Gemini",
     label: "Gemini",
+    icon: <GiGemini color="var(--color-ocean)" size={24} />, // Giallo
+  },
+  {
+    href: "/GeminiPro",
+    label: "Gemini Pro",
     icon: <StarIcon color="var(--color-yellow)" size={24} />, // Giallo
   },
 ];
