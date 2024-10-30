@@ -1,30 +1,31 @@
 "use client";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import { usePathname } from "next/navigation";
-import navItems from "@/assets/DataArray/NavbarArray";
+import navItems from "@/assets/DataArray/NavBarArray";
 import Button from "../atoms/Button";
 
 const Navbar: React.FC = () => {
   const activePath = usePathname();
 
   return (
-    <nav className="w-full p-4 bg-white border-b border-gray-300 fixed top-0 flex justify-around items-center z-50">
-      {navItems.map((item) => {
-        const isActive = activePath === item.href;
-
-        return (
-          <div
-            key={item.href}
-            className={`relative ${isActive ? "underline" : ""}`}
-          >
-            <Link href={item.href} className="flex items-center">
-              <Button text={item.label} icon={item.icon} />
-            </Link>
-          </div>
-        );
-      })}
-    </nav>
+    <div className="w-full p-4 bg-white border-b border-gray-300 mt-auto flex flex-col items-center border">
+      <div className="flex flex-wrap justify-center gap-4 mb-2">
+        {navItems.map((item) => {
+          const isActive = activePath === item.href;
+          return (
+            <div
+              key={item.href}
+              className={`relative ${isActive ? "underline" : ""}`}
+            >
+              <Link href={item.href} className="flex items-center">
+                <Button text={item.label} icon={item.icon} />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

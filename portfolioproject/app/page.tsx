@@ -16,7 +16,7 @@ const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col pt-20 pb-20 px-4 sm:px-6 md:px-8">
+    <div className="flex flex-col pt-6 pb-6 px-4 sm:px-6 md:px-8">
       <Header metadata={metadata} />
 
       <Suspense fallback={<div className="text-center mt-4">Loading...</div>}>
