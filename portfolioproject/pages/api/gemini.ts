@@ -26,7 +26,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Inizializza GoogleGenerativeAI
     const genAI = new GoogleGenerativeAI(apiKey);
     //modello
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
     //generationConfig
     const generationConfig = {

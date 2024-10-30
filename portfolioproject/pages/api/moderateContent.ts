@@ -18,7 +18,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const genAI = new GoogleGenerativeAI(apiKey);
 
     const result = await genAI
-      .getGenerativeModel({ model: "gemini-pro" })
+      .getGenerativeModel({ model: "gemini-1.5-pro" })
       .generateContent(prompt);
 
     return res.status(200).json({ result });

@@ -129,19 +129,49 @@ const Gemini = () => {
               <h1 className="text-3xl font-bold text-gray-800 mb-6">
                 Gemini Assistant
               </h1>
-
               <select
                 id="Lingue"
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
                 className="block w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
               >
-                <option value={"Italian"}>Italian</option>
-                <option value={"English"}>English</option>
-                <option value={"Spanish"}>Spanish</option>
-                <option value={"Francese"}>Francese</option>
-                <option value={"Russian"}>Russian</option>
-                <option value={"Autistic guy"}>Autistic guy</option>
+                <option value={"it"}>Italiano</option>
+                <option value={"en"}>Englese</option>
+                <option value={"es"}>Spagnolo</option>
+                <option value={"fr"}>Francese</option>
+                <option value={"re"}>Russo</option>
+                <option value={"bn"}>Bengalese</option>
+                <option value={"bg"}>Bulgaro</option>
+                <option value={"zh"}>Cinese</option>
+                <option value={"hr"}>Croato</option>
+                <option value={"cs"}>Ceco</option>
+                <option value={"da"}>Danese</option>
+                <option value={"nl"}>Olandese</option>
+                <option value={"et"}>Estone</option>
+                <option value={"fi"}>Finlandese</option>
+                <option value={"de"}>tedesco</option>
+                <option value={"el"}>Greco</option>
+                <option value={"iw"}>Ebraico</option>
+                <option value={"hi"}>Hindi</option>
+                <option value={"ja"}>Giapponese</option>
+                <option value={"id"}>Indonesiano</option>
+                <option value={"ko"}>Coreano</option>
+                <option value={"lv"}>Lettone</option>
+                <option value={"lt"}>Lituano</option>
+                <option value={"no"}>Norvegese</option>
+                <option value={"pl"}>Polacco</option>
+                <option value={"pt"}>Portoghese</option>
+                <option value={"ro"}>Rumeno</option>
+                <option value={"ru"}>Russo</option>
+                <option value={"sr"}>Serbo</option>
+                <option value={"sk"}>Slovacco</option>
+                <option value={"sl"}>Sloveno</option>
+                <option value={"sw"}>Swahili</option>
+                <option value={"sv"}>Svedese</option>
+                <option value={"th"}>Thailandese</option>
+                <option value={"tr"}>Turco</option>
+                <option value={"uk"}>Ucraino</option>
+                <option value={"vi"}>Vietnamita</option>
               </select>
 
               <select
@@ -157,7 +187,6 @@ const Gemini = () => {
                 <option value={"professor"}>Professor</option>
                 <option value={"Accademy Professor"}>Accademy Professor</option>
               </select>
-
               <select
                 id="Experience"
                 value={experience}
@@ -192,7 +221,6 @@ const Gemini = () => {
                 <option value={100}>200</option>
                 <option value={200}>250</option>
               </select>
-
               <Button
                 text="Nuova Chat"
                 color="var(--color-yellow)"
