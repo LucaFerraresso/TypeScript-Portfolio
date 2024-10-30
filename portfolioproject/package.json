@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
     "@google/generative-ai": "^0.21.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.10",

@@ -6,7 +6,7 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "../atoms/Skeleton";
 import Button from "../atoms/Button";
 import WordTextEffect from "../library/WordTextEffect";
-import { GithubIcon, InfoIcon, LogIn, TriangleIcon } from "lucide-react";
+import { GithubIcon, InfoIcon, TriangleIcon, XCircle } from "lucide-react";
 
 interface Project {
   title: string;
@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     imageUrl = "/images/homepage/coming-soon.jpg",
     githubLink = "#",
     date = "TBD",
-    icon = <LogIn size={20} color="red" />,
+    icon = <XCircle size={24} color="red" />,
   } = project;
 
   useEffect(() => {

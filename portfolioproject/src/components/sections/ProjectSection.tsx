@@ -1,9 +1,23 @@
 "use client";
 import React from "react";
-import projects from "@/assets/DataArray/ProjectSectionArray";
 import ProjectCard from "../molecules/ProjectCard";
 
-const ProjectSection: React.FC = () => {
+interface Project {
+  title: string;
+  imageUrl?: string;
+  githubLink?: string | undefined;
+  vercelLink?: string | undefined;
+  technologies?: string[];
+  date?: string;
+  description?: string;
+  id?: number;
+}
+
+interface ProjectSectionProps {
+  projects: Project[];
+}
+
+const ProjectSection: React.FC<ProjectSectionProps> = ({ projects }) => {
   return (
     <>
       <h1 className="text-3xl font-bold mt-6 mb-6">I miei Progetti</h1>

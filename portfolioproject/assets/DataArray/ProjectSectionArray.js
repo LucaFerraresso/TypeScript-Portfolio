@@ -36,6 +36,7 @@ const projects = [
       "npm",
       "GitHub",
       "VSCode",
+      "React",
     ],
     date: "02/09/2024-07/09/2024",
     icon: <GitFork color="var(--color-foreground)" size={24} />, // Icona per il fork del progetto
@@ -88,6 +89,7 @@ const projects = [
       "npm",
       "GitHub",
       "VSCode",
+      "React",
     ],
     date: "09/09/2024-22/09/2024",
     icon: <User color="var(--color-emerald)" size={24} />, // Icona per il profilo utente
@@ -112,6 +114,7 @@ const projects = [
       "npm",
       "GitHub",
       "VSCode",
+      "React",
     ],
     date: "05/08/2024-30/08/2024",
     icon: <Github color="var(--color-sapphire)" size={24} />, // Icona per GitHub
@@ -138,6 +141,7 @@ const projects = [
       "npm",
       "GitHub",
       "VSCode",
+      "React",
     ],
     date: "21/10/2024 31/10/2024",
     icon: <User2Icon color="var(--color-purple)" size={24} />, // Icona per chiudere

@@ -63,3 +63,5 @@ gestione immagini
             />
 
             const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
+
+               className="flex flex-col justify-center items-center text-center p-6  bg-gray-50"
