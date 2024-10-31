@@ -66,3 +66,85 @@ gestione immagini
 
                className="flex flex-col justify-center items-center text-center p-6  bg-gray-50"
 Esplora la potenza di MongoDB con la "CRUD operations App", un'applicazione web intuitiva progettata per semplificare la gestione dei dati. Questo progetto dimostra l'implementazione delle quattro operazioni fondamentali del database: Create, Read, Update e Delete. L'applicazione, ospitata su Vercel, offre un'interfaccia utente pulita e reattiva, permettendo di aggiungere, visualizzare, modificare ed eliminare record con facilità. Sperimenta la gestione dati in tempo reale grazie all'aggiornamento dinamico della lista. Sviluppata con Next.js e MongoDB, questa applicazione sfrutta la velocità e l'efficienza di queste tecnologie. Il codice sorgente, disponibile su GitHub, offre un'ottima opportunità di apprendimento per chi desidera approfondire lo sviluppo web full-stack. Il progetto "CRUD operations App" non è solo un'applicazione funzionale, ma anche un prezioso strumento didattico per comprendere le basi della gestione dati con MongoDB. Scopri il potenziale di questa tecnologia e inizia a costruire le tue applicazioni web dinamiche!
+
+
+////////////////////////////////////////////
+api/chat _________ geminipropage.tsx:
+"use client";
+import Button from "@/src/components/atoms/Button"; // Assicurati che il componente Button esista
+import { useState } from "react";
+
+interface ResponseData {
+  response?: string;
+}
+
+const GeminiTestPage = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [responses, setResponses] = useState<ResponseData[]>([]);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const makeApiRequest = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: inputValue }),
+      });
+      if (!res.ok) throw new Error("Errore nella risposta della rete.");
+      const result: ResponseData = await res.json();
+      setResponses((prev) => [...prev, result]); // Aggiungi la risposta all'array
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+      setInputValue(""); // Resetta l'input dopo la richiesta
+    }
+  };
+
+  const resetAll = () => {
+    setResponses([]);
+    setInputValue("");
+    setError(null);
+  };
+
+  return (
+    <div className="flex flex-col items-center p-4">
+      <h1 className="text-xl font-bold">Gemini Chat</h1>
+      <textarea
+        value={inputValue}
+        onChange={handleChange}
+        placeholder="Scrivi il tuo messaggio..."
+        className="border rounded p-2 w-full mb-2"
+      />
+      <Button
+        onClick={makeApiRequest}
+        disabled={loading}
+        text={loading ? "Loading..." : "Invia"}
+      />
+      <Button onClick={resetAll} text="Reset" />
+
+      {error && <p className="text-red-500">{error}</p>}
+
+      <div className="mt-4">
+        <h2>Risposte:</h2>
+        <ul>
+          {responses.map((response, index) => (
+            <li key={index} className="border p-2 rounded mb-1">
+              {response.response}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default GeminiTestPage;
+/////////////////////////////////////////////////////////7

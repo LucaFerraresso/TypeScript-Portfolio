@@ -26,14 +26,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Inizializza GoogleGenerativeAI
     const genAI = new GoogleGenerativeAI(apiKey);
     //modello
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     //generationConfig
     const generationConfig = {
       temperature: 0.9,
       topK: 1,
       topP: 1,
-      maxOutputTokens: 2048,
+      maxOutputTokens: 150,
     };
 
     //configurazione attiva

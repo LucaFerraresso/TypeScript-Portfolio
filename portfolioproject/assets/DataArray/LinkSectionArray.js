@@ -22,13 +22,8 @@ const links = [
   },
   {
     icon: <GiGemini color="var(--color-ocean)" size={24} />,
-    href: "/Gemini",
-    label: "Gemini API",
-  },
-  {
-    icon: <StarIcon color="var(--color-yellow)" size={24} />,
     href: "/GeminiPro",
-    label: "Gemini Pro",
+    label: "Gemini",
   },
   {
     icon: <User color="var(--color-emerald)" size={24} />,
