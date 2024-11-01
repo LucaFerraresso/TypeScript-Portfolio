@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
                     href="https://github.com/LucaFerraresso"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className=" hover:underline"
+                    className="text-black hover:underline  hover:font-bold hover:text-blue-600"
                   >
                     GitHub
                   </a>
@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
                     href="https://www.linkedin.com/in/luca-ferraresso/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className=" hover:underline"
+                    className="text-black hover:underline  hover:font-bold hover:text-blue-600"
                   >
                     Linkedin
                   </a>
