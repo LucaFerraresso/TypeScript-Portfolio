@@ -8,7 +8,6 @@ import WordTextEffect from "@/src/components/library/WordTextEffect";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeIcon } from "lucide-react";
-import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const AboutMe: React.FC = () => {
   const metadata: Metadata = {
@@ -33,7 +32,7 @@ const AboutMe: React.FC = () => {
         animate="visible"
         className="flex flex-col justify-center items-center text-center  p-6 bg-gray-50"
       >
-        <div>
+        <>
           <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
             About Me
           </h1>
@@ -46,8 +45,8 @@ const AboutMe: React.FC = () => {
             style={{ width: "auto", height: "auto" }}
           />
           <WordTextEffect text={descriptionLines.toString()} />
-        </div>
-        <SectionSeparator />
+        </>
+
         <div className="flex items-center text-center gap-2 mb-6">
           <HomeIcon color="black" size={24} />
           <Link

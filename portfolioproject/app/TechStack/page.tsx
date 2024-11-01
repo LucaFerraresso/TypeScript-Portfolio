@@ -26,14 +26,14 @@ const TechStack: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="p-12 md:p-12 lg:p-12 xl:p-24 bg-gray-50 relative"
+        className="p-4 bg-gray-50 relative"
       >
         <h1 className="text-4xl font-bold mt-4 text-center text-gray-800">
           TechStack
         </h1>
         <SectionSeparator />
 
-        <div className="flex flex-col items-center justify-center flex-wrap gap-6 mt-8">
+        <div className="flex flex-col  lg:grid lg:grid-cols-2 items-center justify-center gap-6 mt-8">
           {icons.map((icon, index) => (
             <div
               key={`tech-${index}`}
@@ -51,7 +51,7 @@ const TechStack: React.FC = () => {
         </div>
 
         <SectionSeparator />
-        <div className="flex items-center text-center gap-2 mb-6">
+        <div className="flex items-center text-center gap-2 mb-6 p-6">
           <HomeIcon color="black" size={24} />
           <Link
             href="/"

@@ -25,8 +25,11 @@ const HeroSection: React.FC = () => {
           <div className="flex flex-col justify-center min-h-[398px] ">
             {isLoading ? (
               <>
-                <Skeleton width="672px" height="24px" className="mb-2" />
-                <Skeleton width="672px" height="192px" className="mb-4" />
+                <div className="flex flex-col gap-6 text-base text-gray-600 mt-6  mb-6 ">
+                  <Skeleton width="672px" height="24px" className="mb-4" />
+
+                  <Skeleton width="672px" height="192px" className="mb-4" />
+                </div>
               </>
             ) : (
               <>

@@ -173,7 +173,7 @@ const GeminiTestPage = () => {
             </div>
           </div>
           <SectionSeparator />
-          <div className="flex items-center text-center gap-2 mb-6">
+          <div className="flex items-center text-center gap-2 mb-6 p-6">
             <HomeIcon color="black" size={24} />
             <Link
               href="/"
