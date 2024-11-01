@@ -119,6 +119,7 @@ import {
   HelpCircle,
   Hexagon,
   Home,
+  HomeIcon,
   Image,
   Inbox,
   Info,
@@ -271,6 +272,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from "lucide-react";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 // Mappa le icone a un nome
 const iconMap = [
@@ -565,6 +567,16 @@ const LibraryPage = () => {
             </span>
           </div>
         ))}
+      </div>
+      <SectionSeparator />
+      <div className="flex items-center text-center gap-2 mb-6">
+        <HomeIcon color="black" size={24} />
+        <Link
+          href="/"
+          className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+        >
+          Home
+        </Link>
       </div>
     </div>
   );

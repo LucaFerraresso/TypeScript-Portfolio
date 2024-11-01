@@ -6,6 +6,8 @@ import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
 import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 import icons from "@/assets/DataArray/TechSectionArray";
+import { HomeIcon } from "lucide-react";
+import Link from "next/link";
 
 const TechStack: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -49,6 +51,15 @@ const TechStack: React.FC = () => {
         </div>
 
         <SectionSeparator />
+        <div className="flex items-center text-center gap-2 mb-6">
+          <HomeIcon color="black" size={24} />
+          <Link
+            href="/"
+            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+          >
+            Home
+          </Link>
+        </div>
       </motion.div>
     </>
   );

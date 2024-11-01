@@ -9,6 +9,7 @@ import { HomeIcon } from "lucide-react";
 import ProjectSection from "@/src/components/sections/ProjectSection";
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const Projects: React.FC = () => {
   const metadata: Metadata = {
@@ -129,6 +130,7 @@ const Projects: React.FC = () => {
           <p className="text-gray-500 bg-red-500">Nessun progetto trovato.</p>
         )}
         <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
+        <SectionSeparator />
         <div className="flex items-center text-center gap-2 mb-6">
           <HomeIcon color="black" size={24} />
           <Link

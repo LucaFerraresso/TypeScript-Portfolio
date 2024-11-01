@@ -7,6 +7,7 @@ import Header from "@/src/components/atoms/Header";
 import Button from "@/src/components/atoms/Button";
 import { HomeIcon } from "lucide-react";
 import { fadeInVariants } from "@/animation/animation";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const ErrorPage: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -34,16 +35,15 @@ const ErrorPage: React.FC = () => {
           The page you are looking for might be missing or there was an error on
           our side.
         </p>
-        <div>
-          <Link href="/">
-            <Button
-              text=""
-              color="var(--color-orange)"
-              hoverColor="var(--color-hover-orange)"
-              disabled={false}
-              loading={false}
-              icon={<HomeIcon color={"black"} size={24} />}
-            />
+
+        <SectionSeparator />
+        <div className="flex items-center text-center gap-2 mb-6">
+          <HomeIcon color="black" size={24} />
+          <Link
+            href="/"
+            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+          >
+            Home
           </Link>
         </div>
       </motion.div>

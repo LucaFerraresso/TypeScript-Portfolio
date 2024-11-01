@@ -5,6 +5,7 @@ import { HomeIcon, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
 import Link from "next/link";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 interface Message {
   text: string;
@@ -84,7 +85,7 @@ const GeminiTestPage = () => {
             <HomeIcon color="black" size={24} />
             <Link
               href="/"
-              className="text-blue-600 hover:underline  hover:font-bold"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
             >
               Home
             </Link>
@@ -164,6 +165,16 @@ const GeminiTestPage = () => {
                 disabled={loading}
               />
             </div>
+          </div>
+          <SectionSeparator />
+          <div className="flex items-center text-center gap-2 mb-6">
+            <HomeIcon color="black" size={24} />
+            <Link
+              href="/"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Home
+            </Link>
           </div>
         </motion.div>
       )}

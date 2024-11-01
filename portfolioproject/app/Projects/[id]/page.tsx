@@ -7,6 +7,7 @@ import icons from "@/assets/DataArray/TechSectionArray";
 import { GithubIcon, HomeIcon, TerminalIcon, TriangleIcon } from "lucide-react";
 import { fadeInVariants } from "@/animation/animation";
 import { motion } from "framer-motion";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const ProjectDetail: React.FC = () => {
   const params = useParams() as { id?: string };
@@ -79,6 +80,7 @@ const ProjectDetail: React.FC = () => {
         </div>
 
         <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
+          <SectionSeparator />
           <h2 className="text-xl font-semibold">Link Utili:</h2>
           <div className="flex items-center gap-2">
             <TriangleIcon color="black" size={24} />

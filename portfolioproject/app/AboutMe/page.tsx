@@ -6,6 +6,9 @@ import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
 import WordTextEffect from "@/src/components/library/WordTextEffect";
 import Image from "next/image";
+import Link from "next/link";
+import { HomeIcon } from "lucide-react";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const AboutMe: React.FC = () => {
   const metadata: Metadata = {
@@ -42,6 +45,16 @@ const AboutMe: React.FC = () => {
           style={{ width: "auto", height: "auto" }}
         />
         <WordTextEffect text={descriptionLines.toString()} />
+        <SectionSeparator />
+        <div className="flex items-center text-center gap-2 mb-6">
+          <HomeIcon color="black" size={24} />
+          <Link
+            href="/"
+            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+          >
+            Home
+          </Link>
+        </div>
       </motion.div>
     </>
   );

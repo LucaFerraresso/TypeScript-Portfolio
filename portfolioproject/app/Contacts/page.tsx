@@ -4,6 +4,9 @@ import React from "react";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
 import { fadeInVariants } from "@/animation/animation";
+import { HomeIcon } from "lucide-react";
+import Link from "next/link";
+import SectionSeparator from "@/src/components/atoms/SectionSeparator";
 
 const Contacts: React.FC = () => {
   // Definisci i metadata specifici per la pagina
@@ -27,6 +30,16 @@ const Contacts: React.FC = () => {
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Contacts</h1>
         <p className="mt-2 text-lg">Phone: 000000000000</p>
         <p className="mt-2 text-lg">Email: info@example.com</p>
+        <SectionSeparator />
+        <div className="flex items-center text-center gap-2 mb-6">
+          <HomeIcon color="black" size={24} />
+          <Link
+            href="/"
+            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+          >
+            Home
+          </Link>
+        </div>
       </motion.div>
     </>
   );
