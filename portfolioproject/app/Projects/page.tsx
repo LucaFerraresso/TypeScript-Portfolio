@@ -127,7 +127,7 @@ const Projects: React.FC = () => {
           <ProjectTable projects={filteredProjects} />
         )}
         {filteredProjects.length === 0 && (
-          <p className="text-gray-500 bg-red-500">Nessun progetto trovato.</p>
+          <p className=" bg-red-500 text-white">Nessun progetto trovato.</p>
         )}
         <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
         <SectionSeparator />
