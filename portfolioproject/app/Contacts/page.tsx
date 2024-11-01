@@ -27,9 +27,11 @@ const Contacts: React.FC = () => {
         animate="visible"
         className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-28 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50"
       >
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">Contacts</h1>
-        <p className="mt-2 text-lg">Phone: 000000000000</p>
-        <p className="mt-2 text-lg">Email: info@example.com</p>
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Contacts</h1>
+          <p className="mt-2 text-lg">Phone: 000000000000</p>
+          <p className="mt-2 text-lg">Email: info@example.com</p>
+        </div>
         <SectionSeparator />
         <div className="flex items-center text-center gap-2 mb-6">
           <HomeIcon color="black" size={24} />

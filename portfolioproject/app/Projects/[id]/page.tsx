@@ -78,9 +78,8 @@ const ProjectDetail: React.FC = () => {
             })}
           </div>
         </div>
-
+        <SectionSeparator />
         <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4">
-          <SectionSeparator />
           <h2 className="text-xl font-semibold">Link Utili:</h2>
           <div className="flex items-center gap-2">
             <TriangleIcon color="black" size={24} />

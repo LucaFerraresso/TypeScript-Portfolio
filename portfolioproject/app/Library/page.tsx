@@ -550,23 +550,25 @@ const iconMap = [
 const LibraryPage = () => {
   return (
     <div className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-28 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50">
-      <h1 className="text-3xl font-bold mb-4 text-center">Library Page</h1>
+      <div>
+        <h1 className="text-3xl font-bold mb-4 text-center">Library Page</h1>
 
-      <p className="text-md text-gray-600 text-center mb-6">
-        Here are some components from the library:
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        {iconMap.map((Icon, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105"
-          >
-            <Icon color={"red"} size={45} />
-            <span className="mt-2 text-center text-gray-800 font-medium">
-              {Icon.displayName}
-            </span>
-          </div>
-        ))}
+        <p className="text-md text-gray-600 text-center mb-6">
+          Here are some components from the library:
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+          {iconMap.map((Icon, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105"
+            >
+              <Icon color={"red"} size={45} />
+              <span className="mt-2 text-center text-gray-800 font-medium">
+                {Icon.displayName}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
       <SectionSeparator />
       <div className="flex items-center text-center gap-2 mb-6">

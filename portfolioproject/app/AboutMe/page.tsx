@@ -33,18 +33,20 @@ const AboutMe: React.FC = () => {
         animate="visible"
         className="flex flex-col justify-center items-center text-center  p-6 bg-gray-50"
       >
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
-          About Me
-        </h1>
-        <Image
-          src={imageUrl}
-          alt="Luca Ferraresso"
-          width={150}
-          height={150}
-          className="cursor-pointer hover:animate-pulse rounded-full transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
-          style={{ width: "auto", height: "auto" }}
-        />
-        <WordTextEffect text={descriptionLines.toString()} />
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
+            About Me
+          </h1>
+          <Image
+            src={imageUrl}
+            alt="Luca Ferraresso"
+            width={150}
+            height={150}
+            className="cursor-pointer hover:animate-pulse rounded-full transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <WordTextEffect text={descriptionLines.toString()} />
+        </div>
         <SectionSeparator />
         <div className="flex items-center text-center gap-2 mb-6">
           <HomeIcon color="black" size={24} />
