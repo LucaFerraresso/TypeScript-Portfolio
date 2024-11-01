@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Metadata } from "next";
 import Header from "@/src/components/atoms/Header";
-import Button from "@/src/components/atoms/Button";
 import { HomeIcon } from "lucide-react";
 import { fadeInVariants } from "@/animation/animation";
 import SectionSeparator from "@/src/components/atoms/SectionSeparator";
