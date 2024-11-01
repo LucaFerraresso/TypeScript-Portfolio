@@ -91,83 +91,80 @@ const GeminiTestPage = () => {
           </div>
         </div>
       ) : (
-        <motion.div className="flex flex-col justify-center p-80 -mt-80 text-center">
-          <motion.div
-            variants={fadeInVariants}
-            initial="hidden"
-            animate="visible"
-            className=" min-h-screen bg-gray-50"
-          >
-            <div className="flex flex-col items-center p-4">
-              <h1 className="text-3xl font-bold mb-4">Gemini Chat</h1>
-              <div className="flex flex-col bg-white shadow-lg rounded-lg p-4 max-h-[500px] w-full overflow-y-auto border border-gray-300 mb-4">
-                {messages.length === 0 ? (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    Inizia la chat!
-                  </div>
-                ) : (
-                  messages.map((msg, index) => (
-                    <div
-                      key={index}
-                      ref={
-                        index === messages.length - 1 ? lastMessageRef : null
-                      }
-                      className={`flex mb-2 ${
-                        msg.type === "user" ? "justify-end" : "justify-start"
-                      }`}
+        <motion.div
+          variants={fadeInVariants}
+          initial="hidden"
+          animate="visible"
+          className=" bg-gray-50 relative"
+        >
+          <div className="flex flex-col items-center p-4">
+            <h1 className="text-3xl font-bold mb-4">Gemini Chat</h1>
+            <div className="flex flex-col bg-white shadow-lg rounded-lg p-4 max-h-[500px] w-full overflow-y-auto border border-gray-300 mb-4 h-[400px]">
+              {messages.length === 0 ? (
+                <div className="flex items-center justify-center h-full text-gray-500 ">
+                  <User size={24} color={"green"} textAnchor="bot" />
+                  Inizia la chat!
+                  <User size={24} color={"blue"} />
+                </div>
+              ) : (
+                messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    ref={index === messages.length - 1 ? lastMessageRef : null}
+                    className={`flex mb-2 ${
+                      msg.type === "user" ? "justify-end" : "justify-start"
+                    }`}
+                  >
+                    <span
+                      className={`flex items-center ${
+                        msg.type === "user" ? "text-blue-600" : "text-green-600"
+                      } mr-2`}
                     >
-                      <span
-                        className={`flex items-center ${
-                          msg.type === "user"
-                            ? "text-blue-600"
-                            : "text-green-600"
-                        } mr-2`}
-                      >
-                        <User
-                          size={24}
-                          color={msg.type === "user" ? "blue" : "green"}
-                        />
-                      </span>
-                      <div
-                        className={`p-2 rounded-lg ${
-                          msg.type === "user" ? "bg-blue-200" : "bg-green-200"
-                        } max-w-[70%]`}
-                      >
-                        {msg.text}
-                      </div>
-                    </div>
-                  ))
-                )}
-                {loading && (
-                  <div className="flex justify-start mb-2">
-                    <span className="flex items-center text-green-600 mr-2">
-                      <User size={24} color="green" />
+                      <User
+                        size={24}
+                        color={msg.type === "user" ? "blue" : "green"}
+                      />
                     </span>
-                    <div className="p-2 rounded-lg bg-green-200 max-w-[70%]">
-                      Loading...
+                    <div
+                      className={`p-2 rounded-lg ${
+                        msg.type === "user" ? "bg-blue-200" : "bg-green-200"
+                      } max-w-[70%]`}
+                    >
+                      {msg.text}
                     </div>
                   </div>
-                )}
-              </div>
-              <div className="flex items-center w-full">
-                <textarea
-                  value={inputValue}
-                  onChange={handleChange}
-                  className="flex-1 border border-gray-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
-                  placeholder="Scrivi qui..."
-                  required
-                />
-                <Button
-                  onClick={makeApiRequest}
-                  text={loading ? "Loading..." : "Invia"}
-                  color="var(--color-green)"
-                  hoverColor="var(--color-green-dark)"
-                  loading={loading}
-                  disabled={loading}
-                />
-              </div>
+                ))
+              )}
+              {loading && (
+                <div className="flex justify-start mb-2">
+                  <span className="flex items-center text-green-600 mr-2">
+                    <User size={24} color="green" />
+                  </span>
+                  <div className="p-2 rounded-lg bg-green-200 max-w-[70%]">
+                    Loading...
+                  </div>
+                </div>
+              )}
             </div>
-          </motion.div>
+
+            <div className="flex items-center w-full">
+              <textarea
+                value={inputValue}
+                onChange={handleChange}
+                className="flex-1 border border-gray-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                placeholder="Scrivi qui..."
+                required
+              />
+              <Button
+                onClick={makeApiRequest}
+                text={loading ? "Loading..." : "Invia"}
+                color="var(--color-green)"
+                hoverColor="var(--color-green-dark)"
+                loading={loading}
+                disabled={loading}
+              />
+            </div>
+          </div>
         </motion.div>
       )}
     </>

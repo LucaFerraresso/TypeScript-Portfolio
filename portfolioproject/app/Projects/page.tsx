@@ -105,15 +105,15 @@ const Projects: React.FC = () => {
             className="p-2 border border-gray-300 rounded-md"
           >
             <option value="">2024</option>
-            <option value="01">gennaio</option>
-            <option value="02">febbraio</option>
-            <option value="03">marzo</option>
-            <option value="04">aprile</option>
-            <option value="05">maggio</option>
-            <option value="06">giugno</option>
-            <option value="07">luglio</option>
-            <option value="08">agosto</option>
-            <option value="09">settembre</option>
+            <option value="/01">gennaio</option>
+            <option value="/02">febbraio</option>
+            <option value="/03">marzo</option>
+            <option value="/04">aprile</option>
+            <option value="/05">maggio</option>
+            <option value="/06">giugno</option>
+            <option value="/07">luglio</option>
+            <option value="/08">agosto</option>
+            <option value="/09">settembre</option>
             <option value="/10">ottobre</option>
             <option value="/11">novembre</option>
             <option value="/12">dicembre</option>
