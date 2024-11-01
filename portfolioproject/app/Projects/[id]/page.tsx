@@ -86,7 +86,7 @@ const ProjectDetail: React.FC = () => {
               href={project.vercelLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline hover:font-bold"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
             >
               Vercel Link
             </a>
@@ -97,27 +97,28 @@ const ProjectDetail: React.FC = () => {
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline  hover:font-bold"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
             >
               GitHub Link
             </a>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <TerminalIcon color="black" size={24} />
+            <Link
+              href="/Projects"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Projects
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <HomeIcon color="black" size={24} />
             <Link
               href="/"
-              className="text-blue-600 hover:underline  hover:font-bold"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
             >
               Home
-            </Link>
-          </div>
-          <div className="flex items-center gap-2">
-            <TerminalIcon color="black" size={24} />
-            <Link
-              href="/Projects"
-              className="text-blue-600 hover:underline  hover:font-bold"
-            >
-              Projects
             </Link>
           </div>
         </div>

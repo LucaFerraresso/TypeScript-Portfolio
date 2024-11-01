@@ -133,7 +133,7 @@ const Projects: React.FC = () => {
           <HomeIcon color="black" size={24} />
           <Link
             href="/"
-            className="text-blue-600 hover:underline hover:font-bold"
+            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
           >
             Home
           </Link>

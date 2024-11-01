@@ -14,7 +14,7 @@ const LinkSection = () => {
                   {link.icon}
                   <Link
                     href={link.href}
-                    className="text-lg hover:underline hover:font-bold text-blue-600"
+                    className="text-black hover:underline  hover:font-bold hover:text-blue-600"
                   >
                     {link.label}
                   </Link>
