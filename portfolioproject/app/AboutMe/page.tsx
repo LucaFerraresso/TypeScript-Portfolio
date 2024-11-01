@@ -36,26 +36,27 @@ const AboutMe: React.FC = () => {
           <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
             About Me
           </h1>
-          <Image
-            src={imageUrl}
-            alt="Luca Ferraresso"
-            width={150}
-            height={150}
-            className="cursor-pointer hover:animate-pulse rounded-full transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
-            style={{ width: "auto", height: "auto" }}
-          />
-          <WordTextEffect text={descriptionLines.toString()} />
+          <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row justify-center items-center text-center gap-6">
+            <Image
+              src={imageUrl}
+              alt="Luca Ferraresso"
+              width={90}
+              height={90}
+              className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
+              style={{ width: "auto", height: "auto" }}
+            />
+            <WordTextEffect text={descriptionLines.toString()} />
+          </div>
+          <div className="flex items-start text-center gap-2 mb-0 p-6">
+            <HomeIcon color="black" size={24} />
+            <Link
+              href="/"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Home
+            </Link>
+          </div>
         </>
-
-        <div className="flex items-center text-center gap-2 mb-6">
-          <HomeIcon color="black" size={24} />
-          <Link
-            href="/"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Home
-          </Link>
-        </div>
       </motion.div>
     </>
   );

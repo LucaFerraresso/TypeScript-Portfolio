@@ -28,20 +28,10 @@ export const hoverEffectVariants = {
 };
 
 export const iconHoverVariants = {
-  initial: { color: "#1D4ED8", rotate: 0 },
+  initial: { rotate: 0 },
   hover: {
-    color: "#000000",
     rotate: 360, // Rotazione completa
     transition: { duration: 0.5, ease: "easeInOut" },
-  },
-};
-
-export const textHoverVariants = {
-  initial: { fontWeight: 500, color: "#4B5563" },
-  hover: {
-    fontWeight: 700,
-    color: "#000000",
-    transition: { duration: 0.3, ease: "easeInOut" },
   },
 };
 

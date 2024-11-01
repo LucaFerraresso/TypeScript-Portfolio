@@ -119,7 +119,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               </div>
               <div className="py-3 px-2 sm:px-4 ">{project.title}</div>
               <div className="py-3 px-2 sm:px-4 ">{project.date || "TBD"}</div>
-              <div className="flex flex-col justify-around items-center text-center gap-4">
+              <div className="flex flex-col justify-center items-center text-center gap-4 p-4">
                 <Button
                   text="Vercel"
                   color="var(--color-ocean)"
@@ -135,7 +135,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                   icon={<GithubIcon color={"white"} size={25} />}
                 />
               </div>
-              <div className="flex flex-col justify-around items-center text-center gap-4 ">
+              <div className="flex flex-col justify-center items-center text-center gap-4 p-4 ">
                 <Link href={`Projects/${project.id}`}>
                   <Button
                     text="page/id"

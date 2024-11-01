@@ -1,11 +1,7 @@
 "use client";
 import React, { memo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  hoverEffectVariants,
-  iconHoverVariants,
-  textHoverVariants,
-} from "@/animation/animation";
+import { hoverEffectVariants, iconHoverVariants } from "@/animation/animation";
 import Skeleton from "./Skeleton"; // Importa il componente Skeleton
 
 interface TechIconProps {
@@ -31,7 +27,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
         <Skeleton width="120px" height="89px" className="rounded-full mb-2" />
       ) : (
         <motion.div
-          className={` flex flex-col items-center mb-4 border-2 p-4 cursor-pointer rounded-lg min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
+          className={` flex flex-col items-center mb-4 border border-black p-4 cursor-pointer  min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
           initial="initial"
           whileHover="hover"
           variants={hoverEffectVariants}
@@ -43,12 +39,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
             {icon}
           </motion.div>
 
-          <motion.h1
-            className="text-sm text-center text-gray-800 font-medium"
-            variants={textHoverVariants}
-          >
-            {title}
-          </motion.h1>
+          {title}
         </motion.div>
       )}
     </>

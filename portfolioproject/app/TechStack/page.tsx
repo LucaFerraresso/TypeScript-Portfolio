@@ -26,25 +26,30 @@ const TechStack: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="p-4 bg-gray-50 relative"
+        className=" bg-gray-50 relative"
       >
-        <h1 className="text-4xl font-bold mt-4 text-center text-gray-800">
+        <h1 className="text-4xl font-bold text-center text-gray-800">
           TechStack
         </h1>
         <SectionSeparator />
 
-        <div className="flex flex-col  lg:grid lg:grid-cols-2 items-center justify-center gap-6 mt-8">
+        <div className="flex flex-wrap border border-black  items-center justify-center gap-6 p-6 ">
           {icons.map((icon, index) => (
             <div
               key={`tech-${index}`}
-              className="flex items-start gap-4 p-6 border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md"
+              className="flex items-start gap-4 p-4 border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md"
             >
               <div className="flex-shrink-0">{icon.component}</div>
               <div>
                 <h2 className="font-bold text-xl text-gray-800">
                   {icon.title}
                 </h2>
-                <p className="text-gray-600 mt-1">{icon.description}</p>
+                <p
+                  className="p-2 text-gray-600 mt-2 border-t h-[200px] overflow-auto scrollbar-hidden"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {icon.description}
+                </p>
               </div>
             </div>
           ))}

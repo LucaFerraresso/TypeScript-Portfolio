@@ -67,56 +67,62 @@ const Projects: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col justify-center items-center text-center pb-32 pt-32 p-6 sm:pb-28 sm:pt-14 sm:p-6 md:pb-24 mb:pt-24 md:p-6 lg:pb-20 lg:pt-20 lg:p-6 xl:pb-16 xl:pt-16 xl:p-6 2xl:pb-12 2xl:pt-12 2xl:p-6 bg-gray-50"
+        className="flex flex-col justify-center items-center text-center bg-gray-50"
       >
-        <form className="mb-6 flex flex-col gap-4 w-full max-w-xl">
-          <h1>Cerca:</h1>
-          <input
-            id="searchText"
-            type="text"
-            name="searchText"
-            placeholder="Cerca per titolo..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="p-2 border border-gray-300 rounded-md"
-          />
-          <label>Tecnologie implementate:</label>
-          <select
-            name="technologyFilter"
-            id={technologyFilter}
-            value={technologyFilter}
-            onChange={(e) => setTechnologyFilter(e.target.value)}
-            className="p-2 border border-gray-300 rounded-md"
-          >
-            <option value="">Tutte le tecnologie</option>
-            <option value="React">Libreria React</option>
-            <option value="Next.js">Frawork Nextjs</option>
-            <option value="MongoDB">Database MongoDB</option>
-            <option value="Firebase">Database Firebase</option>
-            <option value="Gemini API">Gemini API</option>
-          </select>
-          <label>Data:</label>
-          <select
-            name="dateFilter"
-            id={dateFilter}
-            value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
-            className="p-2 border border-gray-300 rounded-md"
-          >
-            <option value="">2024</option>
-            <option value="/01">gennaio</option>
-            <option value="/02">febbraio</option>
-            <option value="/03">marzo</option>
-            <option value="/04">aprile</option>
-            <option value="/05">maggio</option>
-            <option value="/06">giugno</option>
-            <option value="/07">luglio</option>
-            <option value="/08">agosto</option>
-            <option value="/09">settembre</option>
-            <option value="/10">ottobre</option>
-            <option value="/11">novembre</option>
-            <option value="/12">dicembre</option>
-          </select>
+        <form className="flex flex-col justify-center items-center mb-6 sm:grid sm:grid-cols-3  ">
+          <div className="flex flex-col justify-start items-start p-2 border">
+            <h1>Cerca:</h1>
+            <input
+              id="searchText"
+              type="text"
+              name="searchText"
+              placeholder="Cerca per titolo..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div className="flex flex-col justify-start items-start p-2 border">
+            <label>Tecnologie implementate:</label>
+            <select
+              name="technologyFilter"
+              id={technologyFilter}
+              value={technologyFilter}
+              onChange={(e) => setTechnologyFilter(e.target.value)}
+              className="p-2 border border-gray-300 rounded-md"
+            >
+              <option value="">Tutte le tecnologie</option>
+              <option value="React">Libreria React</option>
+              <option value="Next.js">Frawork Nextjs</option>
+              <option value="MongoDB">Database MongoDB</option>
+              <option value="Firebase">Database Firebase</option>
+              <option value="Gemini API">Gemini API</option>
+            </select>
+          </div>
+          <div className="flex flex-col justify-start items-start p-2 border">
+            <label>Data:</label>
+            <select
+              name="dateFilter"
+              id={dateFilter}
+              value={dateFilter}
+              onChange={(e) => setDateFilter(e.target.value)}
+              className="p-2 border border-gray-300 rounded-md"
+            >
+              <option value="">2024</option>
+              <option value="/01">gennaio</option>
+              <option value="/02">febbraio</option>
+              <option value="/03">marzo</option>
+              <option value="/04">aprile</option>
+              <option value="/05">maggio</option>
+              <option value="/06">giugno</option>
+              <option value="/07">luglio</option>
+              <option value="/08">agosto</option>
+              <option value="/09">settembre</option>
+              <option value="/10">ottobre</option>
+              <option value="/11">novembre</option>
+              <option value="/12">dicembre</option>
+            </select>
+          </div>
         </form>
 
         {isMobile ? (
