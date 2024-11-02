@@ -82,48 +82,52 @@ const ProjectDetail: React.FC = () => {
           )}
         </div>
       </div>
-      <div className=" mt-4 flex flex-col md:flex-row  gap-4">
-        <h2 className="text-xl font-semibold">Link Utili:</h2>
-        <div className="flex items-center gap-4">
-          <TriangleIcon color="black" size={24} />
-          <a
-            href={project.vercelLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Vercel Link
-          </a>
+      <div className=" mt-6 mb-6 flex flex-col  gap-4">
+        <div>
+          <h2 className="text-3xl font-semibold">Link Utili</h2>
         </div>
-        <div className="flex items-center gap-4">
-          <GithubIcon color="black" size={24} />
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            GitHub Link
-          </a>
-        </div>
+        <div className="flex flex-col sm:flex-row justify-center items-center  text-center p-2 gap-4">
+          <div className="flex items-center gap-4 ">
+            <TriangleIcon color="black" size={24} />
+            <a
+              href={project.vercelLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Vercel Link
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            <GithubIcon color="black" size={24} />
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              GitHub Link
+            </a>
+          </div>
 
-        <div className="flex items-center gap-4">
-          <TerminalIcon color="black" size={24} />
-          <Link
-            href="/Projects"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Projects
-          </Link>
-        </div>
-        <div className="flex items-center gap-4">
-          <HomeIcon color="black" size={24} />
-          <Link
-            href="/"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Home
-          </Link>
+          <div className="flex items-center gap-4">
+            <TerminalIcon color="black" size={24} />
+            <Link
+              href="/Projects"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Projects
+            </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <HomeIcon color="black" size={24} />
+            <Link
+              href="/"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Home
+            </Link>
+          </div>
         </div>
       </div>
     </motion.div>

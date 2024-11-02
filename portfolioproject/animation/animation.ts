@@ -3,7 +3,7 @@ export const fadeInVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.2, ease: "easeOut", staggerChildren: 0.3 },
+    transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.15 },
   },
 };
 
@@ -12,7 +12,7 @@ export const slideInVariants = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
@@ -31,13 +31,13 @@ export const iconHoverVariants = {
   initial: { rotate: 0 },
   hover: {
     rotate: 360, // Rotazione completa
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transition: { duration: 0.6, ease: "easeInOut" },
   },
 };
 
 export const fadeInVariantsSeparator = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 10.5 } },
 };
 
 export const waveVariants = {
@@ -53,24 +53,24 @@ export const fadeInOutVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 0.2,
-    transition: { duration: 1, repeat: Infinity, repeatType: "mirror" },
+    transition: { duration: 0.5, repeat: Infinity, repeatType: "mirror" },
   },
 };
 
 // Nuove animazioni per l'inversione delle linee
 export const invertVariants = {
   hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 2 } },
+  visible: { opacity: 0.5, y: 0, transition: { duration: 1 } },
 };
 
 export const fadeInVariantsSeparator2 = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  visible: { opacity: 0.5, y: 0, transition: { duration: 0.5 } },
 };
 
 export const fadeInVariants2 = {
-  fadeIn: { opacity: 1, transition: { duration: 3 } },
-  fadeOut: { opacity: 0, transition: { duration: 3 } },
-  invert: { opacity: 1, transition: { duration: 3 } }, // Mantenere solo l'opacità
-  pause: { opacity: 1, transition: { duration: 0 } },
+  fadeIn: { opacity: 0.5, transition: { duration: 1.5 } },
+  fadeOut: { opacity: 0, transition: { duration: 1.5 } },
+  invert: { opacity: 0.5, transition: { duration: 1.5 } }, // Mantenere solo l'opacità
+  pause: { opacity: 0.5, transition: { duration: 0 } },
 };

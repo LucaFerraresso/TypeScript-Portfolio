@@ -16,7 +16,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Imposta un timeout di 2 secondi per ogni icona
+    }, 1000); // Imposta un timeout di 2 secondi per ogni icona
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,7 +27,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
         <Skeleton width="120px" height="89px" className="rounded-full mb-2" />
       ) : (
         <motion.div
-          className={`font-bold flex flex-col items-center mb-4 border-2 rounded-lg border-black p-4 cursor-pointer  min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
+          className={` flex flex-col items-center mb-4 border-2 rounded-lg border-black p-4 cursor-pointer  min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
           initial="initial"
           whileHover="hover"
           variants={hoverEffectVariants}

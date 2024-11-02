@@ -37,7 +37,7 @@ const TechStack: React.FC = () => {
           {icons.map((icon, index) => (
             <div
               key={`tech-${index}`}
-              className="flex items-start gap-4 p-4 border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md"
+              className="flex items-start gap-4 p-4 border border-black rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md"
             >
               <div className="flex-shrink-0">{icon.component}</div>
               <div>

@@ -46,7 +46,7 @@ const Projects: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Imposta la larghezza a 768px come soglia per mobile
+      setIsMobile(window.innerWidth < 1024); // Imposta la larghezza a 768px come soglia per mobile
     };
 
     // Aggiungi l'event listener
@@ -69,8 +69,9 @@ const Projects: React.FC = () => {
         animate="visible"
         className="flex flex-col justify-center items-center text-center bg-gray-50 "
       >
-        <form className="flex flex-row gap-6 justify-center items-center mb-6 border border-black   ">
-          <div className="flex flex-col justify-start items-start p-2 ">
+        <h2 className="text-3xl mb-6 font-bold text-black">Progetti</h2>
+        <form className="p-2 flex flex-col sm:flex-row gap-2 justify-center items-center mb-6 border border-black   ">
+          <div className="flex flex-col justify-start items-start p-8 ">
             <h1>Cerca:</h1>
             <input
               id="searchText"
@@ -124,17 +125,19 @@ const Projects: React.FC = () => {
             </select>
           </div>
         </form>
+        <div className=" p-2 sm:p-8 sm:-mt-8 lg:p-24 lg:-mt-24">
+          {isMobile ? (
+            <ProjectSection projects={filteredProjects} />
+          ) : (
+            <ProjectTable projects={filteredProjects} />
+          )}
+          {filteredProjects.length === 0 && (
+            <p className="text-2xl bg-red-500 text-white p-3 ">
+              Nessun progetto trovato
+            </p>
+          )}
+        </div>
 
-        {isMobile ? (
-          <ProjectSection projects={filteredProjects} />
-        ) : (
-          <ProjectTable projects={filteredProjects} />
-        )}
-        {filteredProjects.length === 0 && (
-          <p className="text-2xl bg-red-500 text-white p-4 ">
-            Nessun progetto trovato.
-          </p>
-        )}
         <div className="flex flex-col justify-center items-center p-2">
           <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
           <div className="flex items-center text-center gap-2 mb-6 p-6">

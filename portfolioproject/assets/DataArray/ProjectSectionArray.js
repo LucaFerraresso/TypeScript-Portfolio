@@ -39,7 +39,7 @@ const projects = [
       "React",
     ],
     date: "02/09/2024-07/09/2024",
-    icon: <GitFork color="var(--color-foreground)" size={24} />, // Icona per il fork del progetto
+    icon: <GitFork color={"var(--color-foreground)"} size={34} />, // Icona per il fork del progetto
     id: 1, // ID univoco per il progetto
   },
   {
@@ -52,26 +52,26 @@ const projects = [
       "https://github.com/LucaFerraresso/Edgemony/tree/main/CODE-WEEK-ACTIVITY-SUPER",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "10/06/2024-15/06/2024",
-    icon: <PhoneCall color="var(--color-ocean)" size={24} />, // Icona per contatti
+    icon: <PhoneCall color={"var(--color-ocean)"} size={34} />, // Icona per contatti
     id: 2, // ID univoco per il progetto
   },
   {
     title: "Ice-cream menu App",
     description:
-      "Sei pronto a rivoluzionare il tuo desiderio di gelato con la nostra Ice-cream menu App? Questa innovativa applicazione ti porta il mondo dei gelati a portata di mano. **Esplora una vasta selezione:** Immergiti in un mondo di sapori con il nostro ampio catalogo di gelati. Dal classico alla vaniglia cremosa alle avventurose opzioni al pistacchio, c'è qualcosa per soddisfare ogni palato. **Personalizza il tuo gelato:** Trasforma il tuo gelato in un capolavoro personalizzando i tuoi topping e condimenti. Scegli tra una varietà di noci, caramelle, sciroppi e molto altro per creare il tuo dolce unico. **Trova la gelateria più vicina:** Non perderti mai un gelato con la nostra funzione di localizzatore della gelateria. Individua rapidamente le gelaterie vicine e ottieni indicazioni stradali con pochi tocchi. **Tecnologie all'avanguardia:** Costruita utilizzando l'ultima tecnologia JavaScript, la nostra app è veloce, intuitiva e facile da usare. Il suo design ottimizzato per i dispositivi mobili garantisce un'esperienza senza interruzioni su qualsiasi smartphone.",
+      "Sei pronto a rivoluzionare il tuo desiderio di gelato con la nostra Ice-cream menu App? Questa innovativa applicazione ti porta il mondo dei gelati a portata di mano. Esplora una vasta selezione: Immergiti in un mondo di sapori con il nostro ampio catalogo di gelati. Dal classico alla vaniglia cremosa alle avventurose opzioni al pistacchio, c'è qualcosa per soddisfare ogni palato. Personalizza il tuo gelato: Trasforma il tuo gelato in un capolavoro personalizzando i tuoi topping e condimenti. Scegli tra una varietà di noci, caramelle, sciroppi e molto altro per creare il tuo dolce unico. Trova la gelateria più vicina: Non perderti mai un gelato con la nostra funzione di localizzatore della gelateria. Individua rapidamente le gelaterie vicine e ottieni indicazioni stradali con pochi tocchi. Tecnologie all'avanguardia: Costruita utilizzando l'ultima tecnologia JavaScript, la nostra app è veloce, intuitiva e facile da usare. Il suo design ottimizzato per i dispositivi mobili garantisce un'esperienza senza interruzioni su qualsiasi smartphone.",
     imageUrl: "/images/homepage/ice-cream-menu-preview1.png",
     vercelLink: "https://icescream-menu-app.vercel.app/",
     githubLink:
       "https://github.com/LucaFerraresso/Edgemony/tree/main/HTML%20CSS%20JAVA-SCRIPT/Javascript%20Project",
     technologies: ["HTML5", "CSS3", "JavaScript", "Sass", "VSCode"],
     date: "27/05/2024-31/05/2024",
-    icon: <IceCream color="var(--color-berry)" size={24} />, // Icona per il gelato
+    icon: <IceCream color={"var(--color-berry)"} size={34} />, // Icona per il gelato
     id: 3, // ID univoco per il progetto
   },
   {
     title: "SicilyPulse App",
     description:
-      "Entra nel cuore della Sicilia con SicilyPulse App, il tuo compagno di viaggio digitale che offre un'esperienza immersiva nell'isola mediterranea. **Esplora la Sicilia:** Immergiti in una mappa interattiva che ti guida attraverso città nascoste, riserve naturali e siti archeologici. Pianifica i tuoi itinerari con facilità e scopri i tesori che la Sicilia ha da offrire. **Connessioni locali:** Collega con guide turistiche locali, scopri aziende autentiche e accedi a consigli esclusivi su gemme nascoste. SicilyPulse App ti avvicina alla vera essenza della cultura siciliana. **Innovazione tecnologica:** Costruita utilizzando tecnologie all'avanguardia, SicilyPulse App sfrutta la realtà aumentata, la geolocalizzazione e l'apprendimento automatico per offrire un'esperienza di viaggio senza precedenti. Scopri la storia e la cultura siciliane in modo interattivo e coinvolgente. Scarica SicilyPulse App oggi e sblocca il vero potenziale di viaggio della Sicilia, creando ricordi indimenticabili lungo il percorso!",
+      "Entra nel cuore della Sicilia con SicilyPulse App, il tuo compagno di viaggio digitale che offre un'esperienza immersiva nell'isola mediterranea. Esplora la Sicilia: Immergiti in una mappa interattiva che ti guida attraverso città nascoste, riserve naturali e siti archeologici. Pianifica i tuoi itinerari con facilità e scopri i tesori che la Sicilia ha da offrire. Connessioni locali: Collega con guide turistiche locali, scopri aziende autentiche e accedi a consigli esclusivi su gemme nascoste. SicilyPulse App ti avvicina alla vera essenza della cultura siciliana. Innovazione tecnologica: Costruita utilizzando tecnologie all'avanguardia, SicilyPulse App sfrutta la realtà aumentata, la geolocalizzazione e l'apprendimento automatico per offrire un'esperienza di viaggio senza precedenti. Scopri la storia e la cultura siciliane in modo interattivo e coinvolgente. Scarica SicilyPulse App oggi e sblocca il vero potenziale di viaggio della Sicilia, creando ricordi indimenticabili lungo il percorso!",
     imageUrl: "/images/homepage/sicily-pulse-app.png",
     vercelLink: "https://edgemony-final-project.vercel.app/",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
@@ -92,13 +92,13 @@ const projects = [
       "React",
     ],
     date: "09/09/2024-22/09/2024",
-    icon: <User color="var(--color-emerald)" size={24} />, // Icona per il profilo utente
+    icon: <User color={"var(--color-emerald)"} size={34} />, // Icona per il profilo utente
     id: 4, // ID univoco per il progetto
   },
   {
     title: "myPortfolio in React",
     description:
-      "**myPortfolio in React: un palcoscenico per il tuo talento** Preparati a stupire con myPortfolio in React, il portfolio digitale all'avanguardia creato per esporre il meglio delle tue abilità. Questa piattaforma dinamica ti consente di mostrare i tuoi progetti più belli, raccontare la tua storia professionale e connetterti con potenziali datori di lavoro. **Funzionalità da esplorare:** * **Presentazione accattivante:** Crea un layout personalizzato che rifletta la tua personalità e il tuo stile unico. * **Galleria progetti:** Presenta i tuoi lavori migliori in un formato coinvolgente, con anteprime, descrizioni e link demo. * **Informazioni dettagliate:** Fornisci un curriculum dettagliato, esperienze lavorative e certificazioni per mettere in evidenza le tue competenze. * **Contatti fluidi:** Assegna il tuo portfolio a un URL personalizzato e collega facilmente i tuoi profili social per una connessione immediata. myPortfolio in React è realizzato utilizzando ReactJS, HTML e CSS, garantendo prestazioni eccellenti e un'esperienza utente fluida. Sviluppatori e professionisti creativi troveranno questa soluzione ideale per distinguersi in un mercato competitivo.",
+      "Portfolio in React: un portfolio digitale  creato per esporre il meglio delle tue abilità. Questa piattaforma dinamica ti consente di mostrare i tuoi progetti più belli, raccontare la tua storia professionale e connetterti con potenziali datori di lavoro. **Funzionalità da esplorare:** * **Presentazione accattivante:** Crea un layout personalizzato che rifletta la tua personalità e il tuo stile unico. Galleria progetti: Presenta i tuoi lavori migliori in un formato coinvolgente, con anteprime, descrizioni e link demo. * **Informazioni dettagliate:** Fornisci un curriculum dettagliato, esperienze lavorative e certificazioni per mettere in evidenza le tue competenze. Contatti fluidi: Assegna il tuo portfolio a un URL personalizzato e collega facilmente i tuoi profili social per una connessione immediata. Portfolio in React è realizzato utilizzando ReactJS, HTML e CSS, garantendo prestazioni eccellenti e un'esperienza utente fluida. Sviluppatori e professionisti creativi troveranno questa soluzione ideale per distinguersi in un mercato competitivo.",
     imageUrl: "/images/homepage/portfolio-preview.png",
     vercelLink: "https://react-portfolio-coral-five.vercel.app/homepage",
     githubLink: "https://github.com/LucaFerraresso/Edgemony-FinalProject",
@@ -117,13 +117,13 @@ const projects = [
       "React",
     ],
     date: "05/08/2024-30/08/2024",
-    icon: <Github color="var(--color-sapphire)" size={24} />, // Icona per GitHub
+    icon: <Github color={"var(--color-sapphire)"} size={34} />, // Icona per GitHub
     id: 5, // ID univoco per il progetto
   },
   {
     title: "Portfolio Nextjs",
     description:
-      "Potfolio personlae sviluppato con il framework next js e linguaggio typescript.",
+      "Potfolio personlae sviluppato con il framework next js e linguaggio typescript. Ultimo progetto pubblicato. ",
     imageUrl: "/images/homepage/PorfolioNextjs.png",
     vercelLink: "https://type-script-portfolio-iota.vercel.app/",
     githubLink:
@@ -144,7 +144,7 @@ const projects = [
       "React",
     ],
     date: "21/10/2024 31/10/2024",
-    icon: <User2Icon color="var(--color-purple)" size={24} />, // Icona per chiudere
+    icon: <User2Icon color={"var(--color-purple)"} size={34} />, // Icona per chiudere
     id: 6, // ID univoco per il progetto
   },
   {
@@ -155,7 +155,7 @@ const projects = [
     githubLink: "coming soon",
     technologies: ["coming soon"],
     date: "-/-/- -/-/-",
-    icon: <XCircle color="var(--color-orange)" size={24} />, // Icona per chiudere
+    icon: <XCircle color={"var(--color-orange)"} size={34} />, // Icona per chiudere
     id: 7, // ID univoco per il progetto
   },
 ];

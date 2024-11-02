@@ -40,10 +40,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
 
     try {
       const descriptionLines = Buffer.from(
-        `Crea una descrizione accattivante e dettagliata per il progetto "${project.title}". 
-          elenca e suddividi in piccoli paragrafi le sue funzionalità dopo che hai visitando il link di Vercel: ${project.vercelLink} 
-          e su GitHub: ${project.githubLink}. importante parlare dello scopo e delle tecnologie. massimo 200 parole. nessun carattere speciale.
-          Assicurati che il tono sia coinvolgente e stimolante, in modo da incuriosire i visitatori!`
+        `Genera una descrizione dettagliata di massimo 150 parole per l'app ${project.title}.`
       ).toString("utf-8");
 
       const res = await fetch("/api/gemini", {
@@ -55,7 +52,10 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
       if (!res.ok) throw new Error("Errore nella richiesta");
 
       const data = await res.json();
-      setGeneratedDescriptions((prev) => ({ ...prev, [index]: data.output }));
+      setGeneratedDescriptions((prev) => ({
+        ...prev,
+        [index]: data.output,
+      }));
       setModalDescription(data.output); // Apri la modale con la descrizione
     } catch (error) {
       console.error("Error fetching description:", error);
@@ -76,20 +76,18 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
 
   return (
     <>
-      <div className="min-w-full bg-inherit  mx-auto text-center border ">
+      <div className="min-w-full bg-inherit  mx-auto text-center ">
         {projects.map((project, index) => (
           <motion.div
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
             key={index}
-            className="bg-gray-100 hover:bg-gray-200 mb-8 border border-black"
+            className=" mb-8 border-2 border-black hover:shadow-lg"
           >
-            <div className="grid grid-cols-5 bg-blue-600 text-white text-2xl  w-full ">
-              <div className="py-3 px-2 sm:px-4 border-b">
-                {project.id}-Immagine
-              </div>
-              <div className="py-3 px-2 sm:px-4 border-b">Titolo</div>
+            <div className="grid grid-cols-5 bg-blue-500 text-white text-2xl  w-full ">
+              <div className="py-3 px-2 sm:px-4 border-b">Preview</div>
+              <div className="py-3 px-2 sm:px-4 border-b">Progetto</div>
               <div className="py-3 px-2 sm:px-4 border-b">Data</div>
 
               <div className="py-3 px-2 sm:px-4 border-b">Web Link</div>
@@ -98,7 +96,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
             </div>
             <div
               key={index}
-              className="hover:bg-gray-200 grid grid-cols-5 justify-between items-center "
+              className="bg-blue-100 text-black hover:bg-gray-300 grid grid-cols-5 justify-between items-center "
             >
               <div
                 className="py-3 px-2 sm:px-4  cursor-pointer"
@@ -124,36 +122,36 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               <div className="flex flex-col justify-center items-center text-center gap-4 p-4">
                 <Button
                   text="Vercel"
-                  color="var(--color-ocean)"
-                  hoverColor="var(--color-sapphire)" // Intensifica l’effetto hover con un blu più vibrante
+                  color={"var(--color-ocean)"}
+                  hoverColor={"var(--color-hover-ocean)"} // Intensifica l’effetto hover con un blu più vibrante
                   link={project.vercelLink}
-                  icon={<TriangleIcon color={"white"} size={25} />}
+                  icon={<TriangleIcon color={"white"} size={34} />}
                 />
                 <Button
                   text="GitHub"
                   color="var(--color-emerald)"
-                  hoverColor="var(--color-forest-green)" // Cambia con un verde più scuro e saturo
+                  hoverColor="var(--color-hover-emerald)" // Cambia con un verde più scuro e saturo
                   link={project.githubLink}
-                  icon={<GithubIcon color={"white"} size={25} />}
+                  icon={<GithubIcon color={"white"} size={34} />}
                 />
               </div>
               <div className="flex flex-col justify-center items-center text-center gap-4 p-4 ">
                 <Link href={`Projects/${project.id}`}>
                   <Button
                     text="page/id"
-                    color="var(--color-lavender)"
-                    hoverColor="var(--color-violet)" // Usa una sfumatura più intensa di viola
-                    icon={<InfoIcon color={"black"} size={25} />}
+                    color={"var(--color-purple)"}
+                    hoverColor={"var(--color-hover-purple)"} // Usa una sfumatura più intensa di viola
+                    icon={<InfoIcon color={"white"} size={34} />}
                   />
                 </Link>
                 <Button
                   text={isGenerating[index] ? " loading... " : "info"}
-                  color="var(--color-sunset)"
-                  hoverColor="var(--color-berry)" // Transizione a un colore vibrante e accattivante
+                  color={"var(--color-sunset)"}
+                  hoverColor={"var(--color-sunset-dark)"} // Transizione a un colore vibrante e accattivante
                   onClick={() => handleGenerateDescription(index, project)}
                   disabled={isGenerating[index]}
                   loading={isLoading}
-                  icon={<BookOpenIcon color={"white"} size={25} />}
+                  icon={<BookOpenIcon color={"white"} size={34} />}
                 />
               </div>
             </div>

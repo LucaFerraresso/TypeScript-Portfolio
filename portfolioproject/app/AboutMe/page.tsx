@@ -43,6 +43,7 @@ const AboutMe: React.FC = () => {
             height={90}
             className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
             style={{ width: "auto", height: "auto" }}
+            priority={false}
           />
           <WordTextEffect text={descriptionLines.toString()} />
         </div>

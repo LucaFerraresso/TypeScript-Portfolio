@@ -118,7 +118,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="relative flex flex-col rounded-lg border border-black  bg-white shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
+      className="relative flex flex-col rounded-lg border-2 border-black  bg-white shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
@@ -145,7 +145,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         )}
         {showConfirm && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-800 bg-opacity-80 text-white p-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-600 bg-opacity-80 text-white p-4">
             <p className="text-center">
               Vuoi essere rimandato al {vercelLink}?
             </p>
@@ -167,14 +167,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </div>
 
-      <div className="flex justify-between items-center p-4 border-b border-gray-300 bg-gray-50">
-        <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
+      <div className="flex justify-between items-center p-4 text-white text-xl font-bold bg-blue-500">
+        <h2 className="text-lg font-semibold text-gray-800 line-clamp-1 ">
           {isLoading ? <Skeleton width="70%" height="24px" /> : title}
         </h2>
         {icon}
       </div>
 
-      <div className="flex flex-col justify-center items-center text-center p-4">
+      <div className="flex flex-col justify-center items-center text-center p-4 ">
         <div className="bg-blue-100 text-blue-800 rounded p-2 mb-2">
           <span className="text-xs italic">
             Durata progetto:{" "}
@@ -196,14 +196,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <WordTextEffect text={generatedDescription} />
             </div>
           ) : (
-            <div className="mt-2 text-gray-600 border h-[130px]">
-              "Click info button for more information"
+            <div className="mt-2 text-gray-600  h-[130px]">
+              <p>"Click info button for more information"</p>
             </div>
           )}
         </div>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-gray-50 border">
+      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-blue-200 border">
         {isLoading ? (
           <>
             <Skeleton width="80px" height="32px" className="rounded-md" />
@@ -213,37 +213,37 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </>
         ) : (
           <>
-            {!isFirst && !generatedDescription && (
-              <Button
-                text="Info"
-                color="var(--color-sunset)" // Uniformato al bottone "info" nei primi bottoni
-                hoverColor="var(--color-berry)" // Transizione vibrante come nei primi bottoni
-                disabled={isGenerating}
-                loading={isGenerating}
-                onClick={handleGenerateDescription}
-                icon={<InfoIcon color={"black"} size={25} />}
-              />
-            )}
             <Button
               link={vercelLink}
               text="Vercel"
-              color="var(--color-ocean)" // Uniformato al bottone "Vercel" nei primi bottoni
-              hoverColor="var(--color-sapphire)" // Intensifica l’effetto hover come nei primi bottoni
-              icon={<TriangleIcon color={"white"} size={25} />}
+              color={"var(--color-ocean)"} // Uniformato al bottone "Vercel" nei primi bottoni
+              hoverColor={"var(--color-hover-ocean)"} // Intensifica l’effetto hover come nei primi bottoni
+              icon={<TriangleIcon color={"white"} size={34} />}
             />
             <Button
               link={githubLink}
               text="GitHub"
-              color="var(--color-emerald)" // Uniformato al bottone "GitHub" nei primi bottoni
-              hoverColor="var(--color-forest-green)" // Cambia con un verde più scuro come nei primi bottoni
-              icon={<GithubIcon color={"white"} size={25} />}
+              color={"var(--color-emerald)"} // Uniformato al bottone "GitHub" nei primi bottoni
+              hoverColor={"var(--color-hover-emeral)"} // Cambia con un verde più scuro come nei primi bottoni
+              icon={<GithubIcon color={"white"} size={34} />}
             />
+            {!isFirst && (
+              <Button
+                text="Info"
+                color={"var(--color-sunset)"} // Uniformato al bottone "info" nei primi bottoni
+                hoverColor={"var(--color-sunset-dark)"} // Transizione vibrante come nei primi bottoni
+                disabled={isGenerating}
+                loading={isGenerating}
+                onClick={handleGenerateDescription}
+                icon={<InfoIcon color={"white"} size={34} />}
+              />
+            )}
             <Link href={`Projects/${project.id}`}>
               <Button
                 text="page/id"
-                color="var(--color-lavender)" // Uniformato al bottone "page/id" nei primi bottoni
-                hoverColor="var(--color-violet)" // Usa una sfumatura più intensa di viola come nei primi bottoni
-                icon={<InfoIcon color={"black"} size={25} />}
+                color={"var(--color-purple)"} // Uniformato al bottone "page/id" nei primi bottoni
+                hoverColor={"var(--color-hover-purple)"} // Usa una sfumatura più intensa di viola come nei primi bottoni
+                icon={<InfoIcon color={"white"} size={34} />}
               />
             </Link>
           </>

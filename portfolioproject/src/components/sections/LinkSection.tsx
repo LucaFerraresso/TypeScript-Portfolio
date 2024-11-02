@@ -3,6 +3,7 @@ import links from "@/assets/DataArray/LinkSectionArray";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Skeleton from "../atoms/Skeleton";
+import Button from "../atoms/Button";
 
 const LinkSection = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
@@ -10,7 +11,7 @@ const LinkSection = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
   return (
@@ -28,7 +29,7 @@ const LinkSection = () => {
                     {link.icon}
                     <Link
                       href={link.href}
-                      className="text-black font-bold hover:underline hover:font-bold hover:text-blue-600"
+                      className="text-black  hover:underline hover:font-bold hover:text-blue-600"
                     >
                       {link.label}
                     </Link>
