@@ -68,13 +68,13 @@ const HeroSection: React.FC = () => {
                   {isLoading ? (
                     <>
                       <Skeleton
-                        width="40px"
-                        height="40px"
+                        width="87px"
+                        height="28px"
                         className="rounded-full"
                       />
                       <Skeleton
-                        width="40px"
-                        height="40px"
+                        width="87px"
+                        height="28px"
                         className="rounded-full"
                       />
                     </>
@@ -118,13 +118,13 @@ const HeroSection: React.FC = () => {
                   {isLoading ? (
                     <>
                       <Skeleton
-                        width="40px"
-                        height="40px"
+                        width="87px"
+                        height="28px"
                         className="rounded-full"
                       />
                       <Skeleton
-                        width="40px"
-                        height="40px"
+                        width="87px"
+                        height="28px"
                         className="rounded-full"
                       />
                     </>
