@@ -50,14 +50,12 @@ const ErrorPage: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
-          <Link href="/">
+          <Link href={"/"}>
             <Button
-              text="Back Home"
+              text="Home"
+              icon={<HomeIcon color="black" size={34} />}
               color="var(--color-orange)"
               hoverColor="var(--color-hover-orange)"
-              disabled={false}
-              loading={false}
-              icon={<HomeIcon color={"red"} size={30} />}
             />
           </Link>
         </motion.div>

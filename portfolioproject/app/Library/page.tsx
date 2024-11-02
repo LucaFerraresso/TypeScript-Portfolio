@@ -272,6 +272,7 @@ import {
   ZoomOut,
 } from "lucide-react";
 import Link from "next/link";
+import Button from "@/src/components/atoms/Button";
 
 // Mappa le icone a un nome
 const iconMap = [
@@ -569,12 +570,8 @@ const LibraryPage = () => {
       <div className="flex flex-col justify-center items-center p-2">
         <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
         <div className="flex items-center text-center gap-2 mb-6 p-6">
-          <HomeIcon color="black" size={24} />
-          <Link
-            href="/"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Home
+          <Link href={"/"}>
+            <Button text="Home" icon={<HomeIcon color="black" size={34} />} />
           </Link>
         </div>
       </div>

@@ -1,5 +1,6 @@
+"use client";
 import React, { useState } from "react";
-//l'icone e' un componente
+
 interface ButtonProps {
   text: string;
   color?: string; // Colore di sfondo
@@ -16,8 +17,8 @@ interface ButtonProps {
 //l'icone e' un componente
 const Button: React.FC<ButtonProps> = ({
   text,
-  color = "",
-  hoverColor = "",
+  color = "white",
+  hoverColor = "white",
   onClick,
   loading = false,
   disabled = false,
@@ -54,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={handleClick}
             disabled={disabled || isLoading}
             style={buttonStyles}
-            className={`min-w-[150px] hover:underline text-xl  flex items-center justify-between py-2 px-4  text-white 
+            className={`min-w-[145px] max-w-[145px] min-h-[45px] max-h-[45px] border border-black hover:underline text-xl flex flex-row gap-2  justify-center items-center py-2 px-4  text-white 
               transition-transform duration-300 ease-in-out ${animation}
               focus:outline-none`}
             onMouseEnter={(e) => {
@@ -89,7 +90,7 @@ const Button: React.FC<ButtonProps> = ({
                     d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                   />
                 </svg>
-                <span>loading...</span>
+                <span>loading</span>
               </>
             ) : (
               <>
@@ -104,7 +105,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={handleClick}
           disabled={disabled || isLoading}
           style={buttonStyles}
-          className={`min-w-[150px] hover:underline text-xl flex items-center justify-between py-2 px-4 text-black 
+          className={`min-w-[145px] max-w-[145px] min-h-[45px] max-h-[45px] border border-black hover:underline flex flex-row gap-2  justify-center items-center text-xl py-2 px-4 text-black 
             transition-transform duration-300 ease-in-out ${animation}
             focus:outline-none `}
           onMouseEnter={(e) => {
@@ -136,7 +137,7 @@ const Button: React.FC<ButtonProps> = ({
                   d="M4 12a8 8 0 1 1 12 0A8 8 0 0 1 4 12z"
                 />
               </svg>
-              <span>loading...</span>
+              <span>loading</span>
             </>
           ) : (
             <>

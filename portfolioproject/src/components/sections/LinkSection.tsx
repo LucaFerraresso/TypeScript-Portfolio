@@ -3,6 +3,7 @@ import links from "@/assets/DataArray/LinkSectionArray";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Skeleton from "../atoms/Skeleton";
+import Button from "../atoms/Button";
 
 const LinkSection = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
@@ -23,17 +24,14 @@ const LinkSection = () => {
               {isLoading ? (
                 <Skeleton width="220px" height="45px" className="mb-4" />
               ) : (
-                <ul className="space-y-4 ">
-                  <li className="p-2 flex items-center gap-6  w-[220px] h-[45px]">
-                    {link.icon}
-                    <Link
-                      href={link.href}
-                      className="text-black  hover:underline hover:font-bold hover:text-blue-600"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                </ul>
+                <>
+                  <Link
+                    href={link.href}
+                    className="flex items-center hover:font-bold hover:text-blue-500"
+                  >
+                    <Button text={link.label} icon={link.icon} />
+                  </Link>
+                </>
               )}
             </div>
           ))}

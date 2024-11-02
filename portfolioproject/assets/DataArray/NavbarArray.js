@@ -9,7 +9,7 @@ const navItems = [
   },
   {
     href: "/Projects",
-    label: "Projects",
+    label: "Progetti",
     icon: <TerminalIcon color={"var(--color-blue-dark)"} size={34} />, // Blu scuro
   },
   {

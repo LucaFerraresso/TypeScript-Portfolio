@@ -6,7 +6,13 @@ import { fadeInVariants } from "@/animation/animation";
 import Skeleton from "../atoms/Skeleton";
 import Button from "../atoms/Button";
 import WordTextEffect from "../library/WordTextEffect";
-import { GithubIcon, InfoIcon, TriangleIcon, XCircle } from "lucide-react";
+import {
+  BookOpenIcon,
+  GithubIcon,
+  InfoIcon,
+  TriangleIcon,
+  XCircle,
+} from "lucide-react";
 
 interface Project {
   title: string;
@@ -118,7 +124,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="relative flex flex-col rounded-lg border-2 border-black  bg-white shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
+      className="pb-4 bg-blue-200 relative flex flex-col rounded-lg border-2 border-black shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
@@ -175,13 +181,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       <div className="flex flex-col justify-center items-center text-center p-4 ">
-        <div className="bg-blue-100 text-blue-800 rounded p-2 mb-2">
-          <span className="text-xs italic">
-            Durata progetto:{" "}
-            {isLoading ? <Skeleton width="50%" height="16px" /> : date}
-          </span>
-        </div>
-
         <div
           className={`text-sm text-gray-700 mb-2 p-2  h-[130px] ${
             isLoading ? "" : " line-clamp-2"
@@ -192,18 +191,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : isGenerating ? (
             "loading..."
           ) : generatedDescription ? (
-            <div className="mt-2 text-gray-600">
+            <div className="p-2 mt-2 text-gray-600 bg-white h-[130px]">
               <WordTextEffect text={generatedDescription} />
             </div>
           ) : (
-            <div className="mt-2 text-gray-600  h-[130px]">
-              <p>&quot;Click info button for more information&quot;</p>
+            <div className="mt-2 text-gray-600 h-[130px] bg-white">
+              <p>
+                `&quot;Click info button to generate a dynamic project&apos;s
+                description with Gemini API&quot;`
+              </p>
             </div>
           )}
         </div>
+        <div className="bg-white text-blue-800 rounded p-2 mb-2">
+          <span className="text-xs italic">
+            Durata progetto:`&apos;
+            {isLoading ? <Skeleton width="50%" height="16px" /> : date}`
+          </span>
+        </div>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-blue-200 border">
+      <div className=" w-full grid sm:grid-cols-2 md:grid-cols-2 justify-center items-center  gap-4 ">
         {isLoading ? (
           <>
             <Skeleton width="80px" height="32px" className="rounded-md" />
@@ -216,36 +224,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <Button
               link={vercelLink}
               text="Vercel"
-              color={"var(--color-ocean)"} // Uniformato al bottone "Vercel" nei primi bottoni
-              hoverColor={"var(--color-hover-ocean)"} // Intensifica l’effetto hover come nei primi bottoni
+              color={"var(--color-emerald)"}
+              hoverColor={"var(--color-hover-emerald)"}
               icon={<TriangleIcon color={"white"} size={34} />}
             />
+
             <Button
-              link={githubLink}
               text="GitHub"
-              color={"var(--color-emerald)"} // Uniformato al bottone "GitHub" nei primi bottoni
-              hoverColor={"var(--color-hover-emeral)"} // Cambia con un verde più scuro come nei primi bottoni
-              icon={<GithubIcon color={"white"} size={34} />}
+              icon={<GithubIcon color="white" size={34} />}
+              link={githubLink}
+              color={"var(--color-hover)"}
+              hoverColor={"var(--color-foreground)"}
             />
+
+            <Link href={`Projects/${project.id}`}>
+              <Button
+                text="Detail"
+                color={"var(--color-orange)"}
+                hoverColor={"var(--color-hover-orange)"}
+                icon={<BookOpenIcon color={"white"} size={34} />}
+              />
+            </Link>
             {!isFirst && (
               <Button
                 text="Info"
-                color={"var(--color-sunset)"} // Uniformato al bottone "info" nei primi bottoni
-                hoverColor={"var(--color-sunset-dark)"} // Transizione vibrante come nei primi bottoni
+                color={"var(--color-sunset)"}
+                hoverColor={"var(--color-sunset-dark)"}
                 disabled={isGenerating}
                 loading={isGenerating}
                 onClick={handleGenerateDescription}
                 icon={<InfoIcon color={"white"} size={34} />}
               />
             )}
-            <Link href={`Projects/${project.id}`}>
-              <Button
-                text="page/id"
-                color={"var(--color-purple)"} // Uniformato al bottone "page/id" nei primi bottoni
-                hoverColor={"var(--color-hover-purple)"} // Usa una sfumatura più intensa di viola come nei primi bottoni
-                icon={<InfoIcon color={"white"} size={34} />}
-              />
-            </Link>
           </>
         )}
       </div>

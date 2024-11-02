@@ -3,6 +3,8 @@ import React, { useState, useEffect, memo } from "react";
 import WordTextEffect from "../library/WordTextEffect";
 import { GithubIcon, LinkedinIcon } from "lucide-react";
 import Skeleton from "../atoms/Skeleton";
+import Button from "../atoms/Button";
+
 const HeroSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
   const [isMobile, setIsMobile] = useState(false);
@@ -78,24 +80,21 @@ const HeroSection: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <GithubIcon color="black" size={34} />
-                      <a
-                        href="https://github.com/LucaFerraresso"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-                      >
-                        GitHub
-                      </a>
-                      <LinkedinIcon color="blue" size={34} />
-                      <a
-                        href="https://www.linkedin.com/in/luca-ferraresso/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-                      >
-                        Linkedin
-                      </a>
+                      <Button
+                        text="GitHub"
+                        link="https://github.com/LucaFerraresso"
+                        icon={<GithubIcon color="white" size={34} />}
+                        color={"var(--color-hover)"}
+                        hoverColor={"var(--color-foreground)"}
+                      />
+
+                      <Button
+                        link="https://www.linkedin.com/in/luca-ferraresso/"
+                        text="Linkedin"
+                        icon={<LinkedinIcon color="blue" size={34} />}
+                        color={"var(--color-hover-lavender)"}
+                        hoverColor={"var(--color-hover-lavender)"}
+                      />
                     </>
                   )}
                 </div>
@@ -131,24 +130,21 @@ const HeroSection: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <GithubIcon color="black" size={34} />
-                      <a
-                        href="https://github.com/LucaFerraresso"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-                      >
-                        GitHub
-                      </a>
-                      <LinkedinIcon color="blue" size={34} />
-                      <a
-                        href="https://www.linkedin.com/in/luca-ferraresso/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-                      >
-                        Linkedin
-                      </a>
+                      <Button
+                        text="GitHub"
+                        icon={<GithubIcon color="white" size={34} />}
+                        link={"https://github.com/LucaFerraresso"}
+                        color={"var(--color-hover)"} // Uniformato al bottone "GitHub" nei primi bottoni
+                        hoverColor={"var(--color-foreground)"}
+                      />
+
+                      <Button
+                        link="https://www.linkedin.com/in/luca-ferraresso/"
+                        text="Linkedin"
+                        icon={<LinkedinIcon color="blue" size={34} />}
+                        color={"var(--color-hover-lavender)"}
+                        hoverColor={"var(--color-hover-lavender)"}
+                      />
                     </>
                   )}
                 </div>

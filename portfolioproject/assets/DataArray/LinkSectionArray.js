@@ -12,12 +12,12 @@ const links = [
   {
     icon: <TerminalIcon color="var(--color-blue-dark)" size={34} />,
     href: "/Projects",
-    label: "Pagina progetti",
+    label: "Progetti",
   },
   {
     icon: <CodeIcon color={"var(--color-ocean)"} size={34} />,
     href: "/TechStack",
-    label: "Tech Stack",
+    label: "Tech",
   },
   {
     icon: <GiGemini color={"var(--color-purple)"} size={34} />,
@@ -27,22 +27,22 @@ const links = [
   {
     icon: <User color={"var(--color-emerald)"} size={34} />,
     href: "/AboutMe",
-    label: "About me",
+    label: "Info",
   },
   {
     icon: <MailIcon color={"var(--color-berry)"} size={34} />,
     href: "/Contacts",
-    label: "Contacts",
+    label: "Contatti",
   },
   {
     icon: <LibraryBigIcon color={"var(--color-orange)"} size={34} />,
     href: "/Library",
-    label: "Library",
+    label: "Libreria",
   },
   {
     icon: <XCircle color={"var(--color-red)"} size={34} />,
     href: "/error",
-    label: "Error page",
+    label: "Errore",
   },
 ];
 

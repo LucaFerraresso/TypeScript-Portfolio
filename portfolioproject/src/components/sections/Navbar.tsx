@@ -9,8 +9,8 @@ const Navbar: React.FC = () => {
   const activePath = usePathname();
 
   return (
-    <div className="w-full p-4 bg-white border-b-black border-gray-300 mt-auto flex flex-col items-center border">
-      <div className="flex flex-wrap justify-center gap-4 mb-2">
+    <div className="w-full p-4 bg-blue-100 border-b-black border-gray-300 mt-auto flex flex-col items-center border">
+      <div className="flex flex-wrap justify-center sm:flex-row gap-4 items-center sm:gap-16 mb-2">
         {navItems.map((item) => {
           const isActive = activePath === item.href;
           return (

@@ -7,17 +7,17 @@ import {
 const footerItems = [
   {
     href: "/TechStack",
-    label: "Tech Stack",
+    label: "Tech",
     icon: <CodeIcon color={"var(--color-ocean)"} size={34} />, // Blu oceano vibrante
   },
   {
     href: "/Contacts",
-    label: "Contacts",
+    label: "Contatti",
     icon: <MailIcon color={"var(--color-berry)"} size={34} />, // Colore bacca audace
   },
   {
     href: "/AboutMe",
-    label: "About Me",
+    label: "Info",
     icon: <User color={"var(--color-emerald)"} size={34} />, // Verde smeraldo fresco
   },
 ];

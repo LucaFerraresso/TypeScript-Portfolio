@@ -9,6 +9,7 @@ import { HomeIcon } from "lucide-react";
 import ProjectSection from "@/src/components/sections/ProjectSection";
 import { motion } from "framer-motion";
 import { fadeInVariants } from "@/animation/animation";
+import Button from "@/src/components/atoms/Button";
 
 const Projects: React.FC = () => {
   const metadata: Metadata = {
@@ -46,7 +47,7 @@ const Projects: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024); // Imposta la larghezza a 768px come soglia per mobile
+      setIsMobile(window.innerWidth < 895); // Imposta la larghezza a 768px come soglia per mobile
     };
 
     // Aggiungi l'event listener
@@ -67,10 +68,9 @@ const Projects: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col justify-center items-center text-center bg-gray-50 "
+        className="flex flex-col justify-center items-center text-center bg-gray-50  "
       >
-        <h2 className="text-3xl mb-6 font-bold text-black">Progetti</h2>
-        <form className="p-2 flex flex-col sm:flex-row gap-2 justify-center items-center mb-6 border border-black   ">
+        <form className="flex flex-col sm:flex-row sm:flex-wrap m-auto p-2 justify-center items-center mb-6 border border-black bg-blue-100  ">
           <div className="flex flex-col justify-start items-start p-8 ">
             <h1>Cerca:</h1>
             <input
@@ -125,7 +125,11 @@ const Projects: React.FC = () => {
             </select>
           </div>
         </form>
-        <div className=" p-2 sm:p-8 sm:-mt-8 lg:p-24 lg:-mt-24">
+        <hr className="w-full border-t border-gray-300" />
+        <h2 className="text-3xl mb-6 mt-4 font-bold text-black">
+          I miei progetti
+        </h2>
+        <div className=" p-6 -mt-6 sm:p-12 sm:-mt-12 md:p-18 md:-mt-18 lg:-mt-24 lg:p-24">
           {isMobile ? (
             <ProjectSection projects={filteredProjects} />
           ) : (
@@ -141,12 +145,8 @@ const Projects: React.FC = () => {
         <div className="flex flex-col justify-center items-center p-2">
           <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
           <div className="flex items-center text-center gap-2 mb-6 p-6">
-            <HomeIcon color="black" size={24} />
-            <Link
-              href="/"
-              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-            >
-              Home
+            <Link href={"/"}>
+              <Button text="Home" icon={<HomeIcon color="black" size={34} />} />
             </Link>
           </div>
         </div>

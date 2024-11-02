@@ -56,7 +56,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
         ...prev,
         [index]: data.output,
       }));
-      setModalDescription(data.output); // Apri la modale con la descrizione
+      setModalDescription(data.output);
     } catch (error) {
       console.error("Error fetching description:", error);
     } finally {
@@ -121,33 +121,34 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
               <div className="py-3 px-2 sm:px-4 ">{project.date || "TBD"}</div>
               <div className="flex flex-col justify-center items-center text-center gap-4 p-4">
                 <Button
-                  text="Vercel"
-                  color={"var(--color-ocean)"}
-                  hoverColor={"var(--color-hover-ocean)"} // Intensifica l’effetto hover con un blu più vibrante
                   link={project.vercelLink}
+                  text="Vercel"
+                  color={"var(--color-emerald)"}
+                  hoverColor={"var(--color-hover-emerald)"}
                   icon={<TriangleIcon color={"white"} size={34} />}
                 />
+
                 <Button
                   text="GitHub"
-                  color="var(--color-emerald)"
-                  hoverColor="var(--color-hover-emerald)" // Cambia con un verde più scuro e saturo
+                  icon={<GithubIcon color="white" size={34} />}
                   link={project.githubLink}
-                  icon={<GithubIcon color={"white"} size={34} />}
+                  color={"var(--color-hover)"}
+                  hoverColor={"var(--color-foreground)"}
                 />
               </div>
               <div className="flex flex-col justify-center items-center text-center gap-4 p-4 ">
                 <Link href={`Projects/${project.id}`}>
                   <Button
-                    text="page/id"
-                    color={"var(--color-purple)"}
-                    hoverColor={"var(--color-hover-purple)"} // Usa una sfumatura più intensa di viola
+                    text="Detail"
+                    color={"var(--color-orange)"}
+                    hoverColor={"var(--color-hover-orange)"}
                     icon={<InfoIcon color={"white"} size={34} />}
                   />
                 </Link>
                 <Button
                   text={isGenerating[index] ? " loading... " : "info"}
                   color={"var(--color-sunset)"}
-                  hoverColor={"var(--color-sunset-dark)"} // Transizione a un colore vibrante e accattivante
+                  hoverColor={"var(--color-sunset-dark)"}
                   onClick={() => handleGenerateDescription(index, project)}
                   disabled={isGenerating[index]}
                   loading={isLoading}

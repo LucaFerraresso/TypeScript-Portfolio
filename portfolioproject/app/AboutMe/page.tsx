@@ -8,6 +8,7 @@ import WordTextEffect from "@/src/components/library/WordTextEffect";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeIcon } from "lucide-react";
+import Button from "@/src/components/atoms/Button";
 
 const AboutMe: React.FC = () => {
   const metadata: Metadata = {
@@ -18,8 +19,8 @@ const AboutMe: React.FC = () => {
     },
   };
   const imageUrl = "/images/personal/Luca-Ferraresso.jpg";
-  const descriptionLines = Buffer.from(
-    "I am a passionate developer with a strong focus on front-end development. I have experience in creating responsive and user-friendly web applications using modern technologies such as React, TypeScript, and Redux. I am constantly learning and staying up-to-date with the latest industry trends and best practices. I am also a team player and enjoy collaborating with others to achieve common goals."
+  const longText = Buffer.from(
+    "Luca Ferraresso è un aspirante sviluppatore web con una solida formazione in sviluppo front-end, recentemente completata con un bootcamp intensivo. Luca padroneggia HTML, CSS, JavaScript, React e ha una conoscenza base di linguaggi back-end come Node.js e Python. Il suo percorso formativo gli ha permesso di sviluppare capacità di problem-solving, teamwork e di lavorare in modo indipendente su progetti web complessi. Luca è attualmente alla ricerca di un'opportunità come sviluppatore web per mettere in pratica le sue competenze e crescere professionalmente in un contesto stimolante."
   ).toString("utf-8");
 
   return (
@@ -30,12 +31,12 @@ const AboutMe: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col justify-center items-center text-center  p-6 bg-gray-50"
+        className="flex flex-col justify-center items-center text-center p-8 -mt-8 md:p-12 md:-mt-12 lg:p-16 lg:-mt-16  bg-gray-50"
       >
         <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
           About Me
         </h1>
-        <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row justify-center items-center text-center gap-6">
+        <div className="flex flex-col  justify-center items-center text-center gap-6">
           <Image
             src={imageUrl}
             alt="Luca Ferraresso"
@@ -45,18 +46,15 @@ const AboutMe: React.FC = () => {
             style={{ width: "auto", height: "auto" }}
             priority={false}
           />
-          <WordTextEffect text={descriptionLines.toString()} />
+          <WordTextEffect text={longText.toString()} />
         </div>
+        <hr className="w-full border-t border-gray-300 mt-8" />
 
         <div className="flex flex-col justify-center items-center p-2">
           <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
           <div className="flex items-center text-center gap-2 mb-6 p-6">
-            <HomeIcon color="black" size={24} />
-            <Link
-              href="/"
-              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-            >
-              Home
+            <Link href={"/"}>
+              <Button text="Home" icon={<HomeIcon color="black" size={34} />} />
             </Link>
           </div>
         </div>

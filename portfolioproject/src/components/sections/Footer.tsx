@@ -9,8 +9,8 @@ const Footer: React.FC = () => {
   const activePath = usePathname();
 
   return (
-    <footer className="w-full p-4 bg-white border border-t-black border-gray-300 mt-auto flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-4 mb-2">
+    <footer className="w-full p-4 bg-blue-100 border border-t-black border-gray-300 mt-auto flex flex-col  items-center">
+      <div className="flex flex-wrap justify-center gap-4 sm:flex-row sm:gap-16 mb-2">
         {footerItems.map((item) => {
           const isActive = activePath === item.href;
           return (

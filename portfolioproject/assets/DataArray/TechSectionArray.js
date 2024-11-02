@@ -10,7 +10,12 @@ import { FaNodeJs } from "react-icons/fa6";
 import { GiGemini } from "react-icons/gi";
 import { GrReactjs } from "react-icons/gr";
 import { LiaCss3Alt, LiaJsSquare, LiaNpm } from "react-icons/lia";
-import { SiNextdotjs, SiVisualstudiocode, SiPostman } from "react-icons/si";
+import {
+  SiNextdotjs,
+  SiVisualstudiocode,
+  SiPostman,
+  SiVuetify,
+} from "react-icons/si";
 const icons = [
   {
     component: <DiHtml5 color={"var(--color-emerald)"} size={34} />, // Verde smeraldo
@@ -107,6 +112,12 @@ const icons = [
     title: "React",
     description:
       "React è una libreria JavaScript sviluppata da Facebook per creare interfacce utente interattive, particolarmente adatte per applicazioni web a pagina singola (SPA). La sua forza risiede nel modello a componenti, che permette di costruire elementi riutilizzabili e modulari, ciascuno con gestione autonoma dello stato e rendering. Grazie al Virtual DOM, React aggiorna la UI in modo efficiente, riducendo il carico sul DOM reale e migliorando le prestazioni. Inoltre, la libreria ha un vasto ecosistema, supportato da una grande comunità, con strumenti complementari come Redux per la gestione dello stato e React Router per la navigazione. Con React Native, inoltre, è possibile creare applicazioni mobile usando una base di codice simile, rendendo React fondamentale per sviluppare interfacce utente performanti, scalabili e modulari.",
+  },
+  {
+    component: <SiVuetify color={"var(--color-sunset-dark)"} size={34} />, // Blu oceano vibrante
+    title: "Vue.js",
+    description:
+      "Vue.js è un framework JavaScript progressivo per la creazione di interfacce utente e applicazioni web, noto per la sua facilità d'integrazione in progetti esistenti grazie alla modularità. Utilizza componenti riutilizzabili e offre data binding reattivo, rendendo le applicazioni scalabili e manutenibili. Il suo ecosistema include strumenti come Vue Router per la gestione delle rotte e Vuex per la gestione dello stato, ed è apprezzato per la sua curva di apprendimento dolce, che lo rende accessibile a sviluppatori di tutti i livelli.",
   },
 ];
 
