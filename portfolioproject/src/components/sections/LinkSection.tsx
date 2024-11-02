@@ -3,7 +3,6 @@ import links from "@/assets/DataArray/LinkSectionArray";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Skeleton from "../atoms/Skeleton";
-import Button from "../atoms/Button";
 
 const LinkSection = () => {
   const [isLoading, setIsLoading] = useState(true); // Stato di caricamento

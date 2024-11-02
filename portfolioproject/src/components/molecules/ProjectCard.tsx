@@ -197,7 +197,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
           ) : (
             <div className="mt-2 text-gray-600  h-[130px]">
-              <p>"Click info button for more information"</p>
+              <p>&quot;Click info button for more information&quot;</p>
             </div>
           )}
         </div>
