@@ -54,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={handleClick}
             disabled={disabled || isLoading}
             style={buttonStyles}
-            className={`min-w-[140px]  border border-black rounded-lg flex items-center justify-between py-2 px-4  text-gray-900 font-bold 
+            className={`min-w-[150px] hover:underline   flex items-center justify-between py-2 px-4  text-gray-900 font-bold 
               transition-transform duration-300 ease-in-out ${animation}
               focus:outline-none `}
             onMouseEnter={(e) => {
@@ -104,7 +104,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={handleClick}
           disabled={disabled || isLoading}
           style={buttonStyles}
-          className={`min-w-[140px]  border border-black rounded-lg flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
+          className={`min-w-[150px] hover:underline flex items-center justify-between py-2 px-4 text-gray-900 font-bold 
             transition-transform duration-300 ease-in-out ${animation}
             focus:outline-none `}
           onMouseEnter={(e) => {

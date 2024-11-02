@@ -1,7 +1,6 @@
 import {
   User,
   MailIcon,
-  TerminalIcon,
   CodeIcon, // Info icon for "About Me"
 } from "lucide-react";
 

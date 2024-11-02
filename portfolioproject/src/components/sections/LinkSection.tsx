@@ -23,12 +23,12 @@ const LinkSection = () => {
               {isLoading ? (
                 <Skeleton width="220px" height="45px" className="mb-4" />
               ) : (
-                <ul className="space-y-4 hover:shadow-lg">
-                  <li className="p-2 flex items-center gap-6 border border-black w-[220px] h-[45px]">
+                <ul className="space-y-4 ">
+                  <li className="p-2 flex items-center gap-6  w-[220px] h-[45px]">
                     {link.icon}
                     <Link
                       href={link.href}
-                      className="text-black hover:underline hover:font-bold hover:text-blue-600"
+                      className="text-black font-bold hover:underline hover:font-bold hover:text-blue-600"
                     >
                       {link.label}
                     </Link>

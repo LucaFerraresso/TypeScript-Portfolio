@@ -6,7 +6,7 @@ const InfiniteTechSection = () => {
   return (
     <>
       <InfiniteSlider gap={24} reverse className="p-4">
-        <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4">
+        <div className="flex items-center justify-around min-w-full flex-shrink-0 flex-wrap gap-4 text-black">
           {icons.map((icon, index) => (
             <TechIcon
               key={`duplicate-${index}`}

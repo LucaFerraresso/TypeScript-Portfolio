@@ -118,7 +118,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="relative flex flex-col rounded-lg border border-gray-300 bg-white shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
+      className="relative flex flex-col rounded-lg border border-black  bg-white shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl mb-6 w-full h-auto"
       variants={fadeInVariants}
       initial="hidden"
       animate="visible"
@@ -183,25 +183,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div
-          className={`text-sm text-gray-700 mb-2 p-2 overflow-auto h-[120px] ${
+          className={`text-sm text-gray-700 mb-2 p-2  h-[130px] ${
             isLoading ? "" : " line-clamp-2"
           }`}
         >
           {isLoading ? (
             <Skeleton width="100%" height="16px" />
           ) : isGenerating ? (
-            "Loading..."
+            "loading..."
           ) : generatedDescription ? (
             <div className="mt-2 text-gray-600">
               <WordTextEffect text={generatedDescription} />
             </div>
           ) : (
-            "Click info button for more information"
+            <div className="mt-2 text-gray-600 border h-[130px]">
+              "Click info button for more information"
+            </div>
           )}
         </div>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-gray-50">
+      <div className="w-full flex flex-col sm:flex-col md:flex-col justify-center items-center p-4 gap-4 bg-gray-50 border">
         {isLoading ? (
           <>
             <Skeleton width="80px" height="32px" className="rounded-md" />

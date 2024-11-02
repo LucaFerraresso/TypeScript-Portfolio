@@ -32,22 +32,24 @@ const AboutMe: React.FC = () => {
         animate="visible"
         className="flex flex-col justify-center items-center text-center  p-6 bg-gray-50"
       >
-        <>
-          <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
-            About Me
-          </h1>
-          <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row justify-center items-center text-center gap-6">
-            <Image
-              src={imageUrl}
-              alt="Luca Ferraresso"
-              width={90}
-              height={90}
-              className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
-              style={{ width: "auto", height: "auto" }}
-            />
-            <WordTextEffect text={descriptionLines.toString()} />
-          </div>
-          <div className="flex items-start text-center gap-2 mb-0 p-6">
+        <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">
+          About Me
+        </h1>
+        <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row justify-center items-center text-center gap-6">
+          <Image
+            src={imageUrl}
+            alt="Luca Ferraresso"
+            width={90}
+            height={90}
+            className="cursor-pointer hover:animate-pulse rounded-3xl transition-shadow duration-300 ease-in-out hover:shadow-lg mb-6"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <WordTextEffect text={descriptionLines.toString()} />
+        </div>
+
+        <div className="flex flex-col justify-center items-center p-2">
+          <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
+          <div className="flex items-center text-center gap-2 mb-6 p-6">
             <HomeIcon color="black" size={24} />
             <Link
               href="/"
@@ -56,7 +58,7 @@ const AboutMe: React.FC = () => {
               Home
             </Link>
           </div>
-        </>
+        </div>
       </motion.div>
     </>
   );

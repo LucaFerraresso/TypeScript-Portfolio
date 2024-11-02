@@ -1,4 +1,4 @@
-import { HomeIcon, TerminalIcon, StarIcon } from "lucide-react";
+import { HomeIcon, TerminalIcon } from "lucide-react";
 import { GiGemini } from "react-icons/gi";
 
 const navItems = [

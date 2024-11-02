@@ -76,17 +76,19 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mt-6 mb-6">I miei Progetti</h1>
-      <div className="min-w-full bg-white border border-gray-300 mx-auto text-center">
+      <div className="min-w-full bg-inherit  mx-auto text-center border ">
         {projects.map((project, index) => (
           <motion.div
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
             key={index}
+            className="bg-gray-100 hover:bg-gray-200 mb-8 border border-black"
           >
-            <div className="grid grid-cols-5 bg-gray-100  w-full">
-              <div className="py-3 px-2 sm:px-4 border-b">Immagine</div>
+            <div className="grid grid-cols-5 bg-blue-600 text-white text-2xl  w-full ">
+              <div className="py-3 px-2 sm:px-4 border-b">
+                {project.id}-Immagine
+              </div>
               <div className="py-3 px-2 sm:px-4 border-b">Titolo</div>
               <div className="py-3 px-2 sm:px-4 border-b">Data</div>
 
@@ -145,7 +147,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                   />
                 </Link>
                 <Button
-                  text={isGenerating[index] ? " Loading... " : "info"}
+                  text={isGenerating[index] ? " loading... " : "info"}
                   color="var(--color-sunset)"
                   hoverColor="var(--color-berry)" // Transizione a un colore vibrante e accattivante
                   onClick={() => handleGenerateDescription(index, project)}
@@ -165,17 +167,17 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
         onClose={closeModal}
         title="Image Preview"
       >
-        {modalImage && (
-          <>
-            <Image
-              src={modalImage}
-              alt="Project Image"
-              width={500}
-              height={300}
-              className="object-contain"
-              style={{ width: "auto", height: "auto" }}
-            />
-          </>
+        {!modalImage ? (
+          <p>Loading...</p>
+        ) : (
+          <Image
+            src={modalImage}
+            alt="Project Image"
+            width={500}
+            height={300}
+            className="object-contain"
+            style={{ width: "100%", height: "100%" }}
+          />
         )}
       </GenericModal>
 

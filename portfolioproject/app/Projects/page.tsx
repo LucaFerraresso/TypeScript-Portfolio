@@ -67,10 +67,10 @@ const Projects: React.FC = () => {
         variants={fadeInVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col justify-center items-center text-center bg-gray-50"
+        className="flex flex-col justify-center items-center text-center bg-gray-50 "
       >
-        <form className="flex flex-col justify-center items-center mb-6 sm:grid sm:grid-cols-3  ">
-          <div className="flex flex-col justify-start items-start p-2 border">
+        <form className="flex flex-row gap-6 justify-center items-center mb-6 border border-black   ">
+          <div className="flex flex-col justify-start items-start p-2 ">
             <h1>Cerca:</h1>
             <input
               id="searchText"
@@ -82,14 +82,14 @@ const Projects: React.FC = () => {
               className="p-2 border border-gray-300 rounded-md"
             />
           </div>
-          <div className="flex flex-col justify-start items-start p-2 border">
+          <div className="flex flex-col justify-start items-start p-2 ">
             <label>Tecnologie implementate:</label>
             <select
               name="technologyFilter"
               id={technologyFilter}
               value={technologyFilter}
               onChange={(e) => setTechnologyFilter(e.target.value)}
-              className="p-2 border border-gray-300 rounded-md"
+              className="p-2 border border-gray-300 rounded-md "
             >
               <option value="">Tutte le tecnologie</option>
               <option value="React">Libreria React</option>
@@ -99,7 +99,7 @@ const Projects: React.FC = () => {
               <option value="Gemini API">Gemini API</option>
             </select>
           </div>
-          <div className="flex flex-col justify-start items-start p-2 border">
+          <div className="flex flex-col justify-start items-start p-2 ">
             <label>Data:</label>
             <select
               name="dateFilter"
@@ -131,18 +131,21 @@ const Projects: React.FC = () => {
           <ProjectTable projects={filteredProjects} />
         )}
         {filteredProjects.length === 0 && (
-          <p className=" bg-red-500 text-white">Nessun progetto trovato.</p>
+          <p className="text-2xl bg-red-500 text-white p-4 ">
+            Nessun progetto trovato.
+          </p>
         )}
-        <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
-
-        <div className="flex items-center text-center gap-2 mb-6">
-          <HomeIcon color="black" size={24} />
-          <Link
-            href="/"
-            className="text-black hover:underline  hover:font-bold hover:text-blue-600"
-          >
-            Home
-          </Link>
+        <div className="flex flex-col justify-center items-center p-2">
+          <h2 className="text-3xl font-bold mt-6 mb-6">Link Utili</h2>
+          <div className="flex items-center text-center gap-2 mb-6 p-6">
+            <HomeIcon color="black" size={24} />
+            <Link
+              href="/"
+              className="text-black hover:underline  hover:font-bold hover:text-blue-600"
+            >
+              Home
+            </Link>
+          </div>
         </div>
       </motion.div>
     </>

@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
           <div className="flex flex-col justify-center min-h-[398px] ">
             {isLoading ? (
               <>
-                <div className="flex flex-col gap-6 text-base text-gray-600 mt-6  mb-6 ">
+                <div className="flex flex-col gap-6 text-base text-black mt-6  mb-6 font-bold">
                   <Skeleton width="672px" height="24px" className="mb-4" />
 
                   <Skeleton width="672px" height="192px" className="mb-4" />
@@ -33,7 +33,7 @@ const HeroSection: React.FC = () => {
               </>
             ) : (
               <>
-                <div className="flex flex-col gap-6 text-base text-gray-600 mt-6  mb-6 ">
+                <div className="flex flex-col gap-6 text-base text-black mt-6  mb-6 font-bold ">
                   <WordTextEffect
                     text={"Luca Ferraresso , Junior Web Developer"}
                   />
@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
             )}
 
             {/* Icone Social */}
-            <div className="flex justify-center items-center space-x-6 mt-4 border rounded-lg p-2">
+            <div className="flex justify-center items-center space-x-6 mt-4  rounded-lg p-2 font-bold">
               {isLoading ? (
                 <>
                   <Skeleton
@@ -60,6 +60,7 @@ const HeroSection: React.FC = () => {
                 </>
               ) : (
                 <>
+                  <p className="text-black">Visita le mie pagine:</p>
                   <GithubIcon color="black" size={24} />
                   <a
                     href="https://github.com/LucaFerraresso"

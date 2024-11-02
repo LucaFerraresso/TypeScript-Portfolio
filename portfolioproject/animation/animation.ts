@@ -17,7 +17,7 @@ export const slideInVariants = {
 };
 
 export const hoverEffectVariants = {
-  initial: { scale: 1, y: 0, rotateY: 0, borderColor: "#1D4ED8" },
+  initial: { scale: 1, y: 0, rotateY: 0, borderColor: "fff000" },
   hover: {
     scale: 1.2,
     y: -5,

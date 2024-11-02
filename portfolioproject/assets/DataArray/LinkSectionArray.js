@@ -2,7 +2,6 @@ import {
   CodeIcon,
   LibraryBigIcon,
   MailIcon,
-  StarIcon,
   TerminalIcon,
   User,
   XCircle,

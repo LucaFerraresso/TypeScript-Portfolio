@@ -27,15 +27,18 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
         <Skeleton width="120px" height="89px" className="rounded-full mb-2" />
       ) : (
         <motion.div
-          className={` flex flex-col items-center mb-4 border border-black p-4 cursor-pointer  min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
+          className={`font-bold flex flex-col items-center mb-4 border-2 rounded-lg border-black p-4 cursor-pointer  min-w-[100px] md:min-w-[120px] transition-transform duration-500 ease-in-out hover:shadow-lg`}
           initial="initial"
           whileHover="hover"
           variants={hoverEffectVariants}
-          style={{ willChange: "transform, background-color, border-color" }}
+          style={{ willChange: "transform, background-color" }}
           title={title}
           aria-label={title}
         >
-          <motion.div className="text-4xl mb-2" variants={iconHoverVariants}>
+          <motion.div
+            className="text-4xl mb-2 border-black"
+            variants={iconHoverVariants}
+          >
             {icon}
           </motion.div>
 
