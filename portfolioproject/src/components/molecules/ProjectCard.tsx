@@ -222,7 +222,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ) : (
           <>
             <Button
-              link={vercelLink}
+              link={project.vercelLink}
               text="Vercel"
               color={"var(--color-emerald)"}
               hoverColor={"var(--color-hover-emerald)"}
