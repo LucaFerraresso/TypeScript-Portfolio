@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
   useEffect(() => {

@@ -16,7 +16,7 @@ const TechIcon: React.FC<TechIconProps> = ({ icon, title }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // Imposta un timeout di 2 secondi per ogni icona
+    }, 200); // Imposta un timeout di 2 secondi per ogni icona
     return () => clearTimeout(timer);
   }, []);
 
