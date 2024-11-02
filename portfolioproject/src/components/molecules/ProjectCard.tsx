@@ -197,16 +197,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : (
             <div className="mt-2 text-gray-600 h-[130px] bg-white">
               <p>
-                `&quot;Usa Gemini API per generare una descrizione dinamica,
-                clicca il bottone 'info'!&quot;`
+                Usa Gemini API per generare una descrizione dinamica, clicca il
+                bottone &apos;info&apos;!
               </p>
             </div>
           )}
         </div>
         <div className="bg-white text-blue-800 rounded p-2 mb-2">
           <span className="text-xs italic">
-            Periodo:`&apos;
-            {isLoading ? <Skeleton width="50%" height="16px" /> : date}&quot;`
+            Periodo:
+            {isLoading ? <Skeleton width="50%" height="16px" /> : date}
           </span>
         </div>
       </div>
