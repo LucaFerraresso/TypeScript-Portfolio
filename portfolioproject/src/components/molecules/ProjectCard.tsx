@@ -174,13 +174,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       <div className="flex justify-between items-center p-4 text-white text-xl font-bold bg-blue-500">
-        <h2 className="text-lg font-semibold text-gray-800 line-clamp-1 ">
+        <h2 className="text-lg font-semibold text-white line-clamp-1 ">
           {isLoading ? <Skeleton width="70%" height="24px" /> : title}
         </h2>
         {icon}
       </div>
 
-      <div className="flex flex-col justify-center items-center text-center p-4 ">
+      <div className="flex flex-col justify-center items-center text-center p-2 ">
         <div
           className={`text-sm text-gray-700 mb-2 p-2  h-[130px] ${
             isLoading ? "" : " line-clamp-2"
@@ -197,16 +197,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : (
             <div className="mt-2 text-gray-600 h-[130px] bg-white">
               <p>
-                `&quot;Click info button to generate a dynamic project&apos;s
-                description with Gemini API&quot;`
+                `&quot;Usa Gemini API per generare una descrizione dinamica,
+                clicca il bottone 'info'!&quot;`
               </p>
             </div>
           )}
         </div>
         <div className="bg-white text-blue-800 rounded p-2 mb-2">
           <span className="text-xs italic">
-            Durata progetto:`&apos;
-            {isLoading ? <Skeleton width="50%" height="16px" /> : date}`
+            Periodo:`&apos;
+            {isLoading ? <Skeleton width="50%" height="16px" /> : date}&quot;`
           </span>
         </div>
       </div>
